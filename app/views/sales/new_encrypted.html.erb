@@ -1,0 +1,31 @@
+<%= link_to 'PayTrace API Example', new_sale_path %>
+<br/>
+<br/>
+<br/>
+
+Keyed Sale Entry Example - Client-Side Encryption
+<br/>
+<br/>
+
+<form accept-charset="UTF-8" action="/sales" method="post">
+  <div style="display:none">
+    <input name="utf8" type="hidden" value="&#x2713;" />
+    <input name="authenticity_token" type="hidden" value="Dwu9MIDkU3VgXnmDm03ai/uItsFYU6h4qpIb9y8yVZw=" />
+  </div>
+
+  <div>
+    <label for="sale_amount">Amount</label>
+    <input type="text" id="sale_amount" name="sale[amount]" value="1.00" />
+  </div>
+  <div>
+    <label for="sale_credit_card_number">Credit Card Number</label>
+    <input type="text" id="sale_credit_card_number" data-name="sale[credit_card][encrypted:number]" class="pt-encrypt" value="5454545454545454" />
+    <label for="sale_credit_card_expiration_month">Credit Card Expiration month</label>
+    <input id="sale_credit_card_expiration_month" name="sale[credit_card][expiration_month]" type="text" value="12" />
+    <label for="sale_credit_card_expiration_year">Credit Card Expiration year</label>
+    <input id="sale_credit_card_expiration_year" name="sale[credit_card][expiration_year]" type="text" value="2020" />
+  </div>
+  <input name="commit" type="submit" value="Submit" />
+</form>
+
+<script src="https://apitest2.paytrace.com/assets/e2ee/paytrace-e2ee.js" data-paytrace-keyurl="/e2ee-public-key.pem"></script>
