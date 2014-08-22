@@ -79,6 +79,4 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  config.paytrace_api_server = 'http://api.paytrace.com'
 end
