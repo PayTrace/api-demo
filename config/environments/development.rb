@@ -34,4 +34,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  
+  # Credentials for accessing the API account at api.paytrace.com (username, password)
+  # NOTE: Set this configuration variable in your production environment and mock the connection for testing.
+  config.paytrace_api_credentials = ['demo123', 'demo123']
 end
