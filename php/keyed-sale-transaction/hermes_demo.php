@@ -6,7 +6,7 @@ require 'vendor/autoload.php';
 $client = new GuzzleHttp\Client();
 
 // DRY
-$auth_server = 'http://localhost:3000';
+$auth_server = 'https://api.paytrace.com';
 
 // send a request to the authentication server
 // note: normally, you'd store the username/password in a more secure fashion!
