@@ -1,0 +1,15 @@
+C:\Users\ahatch1490\Documents\Visual Studio 2013\Projects\PayTrace.Hermes\PayTrace.Hermes\obj\Debug\PayTrace.Hermes.csprojResolveAssemblyReference.cache
+C:\Users\ahatch1490\Documents\Visual Studio 2013\Projects\PayTrace.Hermes\PayTrace.Hermes\bin\Debug\PayTrace.Hermes.exe
+C:\Users\ahatch1490\Documents\Visual Studio 2013\Projects\PayTrace.Hermes\PayTrace.Hermes\bin\Debug\PayTrace.Hermes.pdb
+C:\Users\ahatch1490\Documents\Visual Studio 2013\Projects\PayTrace.Hermes\PayTrace.Hermes\obj\Debug\PayTrace.Hermes.exe
+C:\Users\ahatch1490\Documents\Visual Studio 2013\Projects\PayTrace.Hermes\PayTrace.Hermes\obj\Debug\PayTrace.Hermes.pdb
+C:\Users\ahatch1490\Documents\Visual Studio 2013\Projects\PayTrace.Hermes\PayTrace.Hermes\bin\Debug\PayTrace.Hermes.exe.config
+C:\Users\ahatch1490\Documents\Visual Studio 2013\Projects\PayTrace.Hermes\PayTrace.Hermes\bin\Debug\DotNetOpenAuth.dll
+C:\Users\ahatch1490\Documents\Visual Studio 2013\Projects\PayTrace.Hermes\PayTrace.Hermes\bin\Debug\System.Net.Http.dll
+C:\Users\ahatch1490\Documents\Visual Studio 2013\Projects\PayTrace.Hermes\PayTrace.Hermes\bin\Debug\DotNetOpenAuth.xml
+C:\Users\ahatch1490\Documents\Visual Studio 2013\Projects\PayTrace.Hermes\PayTrace.Hermes\bin\Debug\System.Net.Http.xml
+C:\Users\ahatch1490\Documents\Visual Studio 2013\Projects\PayTrace.Hermes\PayTrace.Hermes\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ahatch1490\Documents\Visual Studio 2013\Projects\PayTrace.Hermes\PayTrace.Hermes\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ahatch1490\Documents\GitHub\api-demo\dot_net\keyed_sale_transaction\PayTrace.Hermes\PayTrace.Hermes\bin\Debug\PayTrace.Hermes.exe.config
+C:\Users\ahatch1490\Documents\GitHub\api-demo\dot_net\keyed_sale_transaction\PayTrace.Hermes\PayTrace.Hermes\obj\Debug\PayTrace.Hermes.exe
+C:\Users\ahatch1490\Documents\GitHub\api-demo\dot_net\keyed_sale_transaction\PayTrace.Hermes\PayTrace.Hermes\obj\Debug\PayTrace.Hermes.pdb
