@@ -30,4 +30,15 @@ Keyed Sale Entry Example - Client-Side Encryption
   <input name="commit" type="submit" value="Submit" />
 </form>
 
-<script src="https://api.paytrace.com/assets/e2ee/paytrace-e2ee.js" data-paytrace-keyurl="/e2ee-public-key.pem"></script>
+<script type="text/javascript">
+window['PayTrace.publicKey'] = '-----BEGIN PUBLIC KEY-----\
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArh4rCshAYy9LJgtHjz81\
+tuM/7y7S5UU9xackRVvEWBt1vdGZfJEn+PPgvqsMjimIsteK5kq6SPmQfC0Dc7Tu\
+OGKQfZZqoyjrUEkRo8vCqbvYrX0s14ho9rDH6hg1j0/Vk979BUoPMztdiNps1M5g\
+t6I/49d+R2jH43PppqDUBRZF4Hli9XUkI3/CTdmhNydSXNijnkC5yg6nAcdBVUMe\
+rpaOTCvpkqLQLQVcvL4FPi7iVfDJBvmqPpl9a9Amdpq8issPVzGJfvjwYf15Q0Ju\
+xeWHXnSbioiTbnnjnOS3BT3WWpH5ZX+5OAeByceq4Io2uRVV8RFZs5CfqafnB0uU\
+zQIDAQAB\
+-----END PUBLIC KEY-----';
+</script>
+<script src="https://api.paytrace.com/assets/e2ee/paytrace-e2ee.js"></script>
