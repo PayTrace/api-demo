@@ -4,8 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   def self.paytrace_connection
-    OAuth2::Client.new(
-      nil, nil, :site => 'https://api.paytrace.com'
+    OAuth2::Client.new(nil, nil,
+      site: ENV['HERMES_AUTHENTICATION_SERVER'] || 'https://api.paytrace.com',
+      ssl: {verify: [false, 'false', 'FALSE', 0, '0'].include?(ENV.fetch('HERMES_DISABLE_SSL_VERIFICATION', false))}
     ).password.get_token(
       *Rails.configuration.paytrace_api_credentials
     )
