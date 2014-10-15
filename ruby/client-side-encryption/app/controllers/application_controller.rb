@@ -5,10 +5,11 @@ class ApplicationController < ActionController::Base
   
   def self.paytrace_connection
     OAuth2::Client.new(nil, nil,
-      site: ENV['HERMES_AUTHENTICATION_SERVER'] || 'https://api.paytrace.com',
-      ssl: {verify: [false, 'false', 'FALSE', 0, '0'].include?(ENV.fetch('HERMES_DISABLE_SSL_VERIFICATION', false))}
+      site: ENV['HERMES_AUTHENTICATION_SERVER'],
+      ssl: {verify: ENV['HERMES_DISABLE_SSL_VERIFICATION'] != '1'}
     ).password.get_token(
-      *Rails.configuration.paytrace_api_credentials
+      ENV['HERMES_USERNAME'],
+      ENV['HERMES_PASSWORD']
     )
   end
   
