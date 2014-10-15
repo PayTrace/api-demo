@@ -7,12 +7,7 @@ Keyed Sale Entry Example
 <br/>
 <br/>
 
-<form accept-charset="UTF-8" action="/sales" method="post">
-  <div style="display:none">
-    <input name="utf8" type="hidden" value="&#x2713;" />
-    <input name="authenticity_token" type="hidden" value="Dwu9MIDkU3VgXnmDm03ai/uItsFYU6h4qpIb9y8yVZw=" />
-  </div>
-
+<%= form_tag(sales_path) do %>
   <div>
     <label for="sale_amount">Amount</label>
     <input type="text" id="sale_amount" name="sale[amount]" value="1.00" />
@@ -28,4 +23,4 @@ Keyed Sale Entry Example
     <input id="sale_credit_card_expiration_year" name="sale[credit_card][expiration_year]" type="text" value="2020" />
   </div>
   <input name="commit" type="submit" value="Submit" />
-</form>
+<% end %>
