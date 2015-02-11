@@ -7,7 +7,7 @@ Keyed Sale Entry Example - Client-Side Encryption
 <br/>
 <br/>
 
-<%= form_tag(sales_path) do %>
+<%= form_tag(sales_path, id: 'theForm') do %>
   <div>
     <label for="sale_amount">Amount</label>
     <input type="text" id="sale_amount" name="sale[amount]" value="1.00" />
@@ -16,26 +16,35 @@ Keyed Sale Entry Example - Client-Side Encryption
   </div>
   <div>
     <label for="sale_credit_card_number">Credit Card Number</label>
-    <input type="text" id="sale_credit_card_number" data-name="sale[credit_card][encrypted:number]" class="pt-encrypt" value="4111111111111111" />
+    <input type="text" id="sale_credit_card_encrypted_number" name="sale[credit_card][encrypted_number]" class="pt-encrypt" value="4111111111111111" />
     <label for="sale_credit_card_expiration_month">Credit Card Expiration month</label>
     <input id="sale_credit_card_expiration_month" name="sale[credit_card][expiration_month]" type="text" value="12" />
     <label for="sale_credit_card_expiration_year">Credit Card Expiration year</label>
     <input id="sale_credit_card_expiration_year" name="sale[credit_card][expiration_year]" type="text" value="2020" />
     <label for="sale_csc">CSC</label>
-    <input id="sale_csc" data-name="sale[encrypted:csc]" class="pt-encrypt" type="text" value="999" />
+    <input id="sale_encrypted_csc" name="sale[encrypted_csc]" class="pt-encrypt" type="text" value="999" />
   </div>
-  <input name="commit" type="submit" value="Submit" />
+  <input name="commit" type="submit" value="Submit" id="submitButton" style="display:none;" />
 <% end %>
 
-<script type="text/javascript">
-window['PayTrace.publicKey'] = '-----BEGIN PUBLIC KEY-----\
-MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArh4rCshAYy9LJgtHjz81\
-tuM/7y7S5UU9xackRVvEWBt1vdGZfJEn+PPgvqsMjimIsteK5kq6SPmQfC0Dc7Tu\
-OGKQfZZqoyjrUEkRo8vCqbvYrX0s14ho9rDH6hg1j0/Vk979BUoPMztdiNps1M5g\
-t6I/49d+R2jH43PppqDUBRZF4Hli9XUkI3/CTdmhNydSXNijnkC5yg6nAcdBVUMe\
-rpaOTCvpkqLQLQVcvL4FPi7iVfDJBvmqPpl9a9Amdpq8issPVzGJfvjwYf15Q0Ju\
-xeWHXnSbioiTbnnjnOS3BT3WWpH5ZX+5OAeByceq4Io2uRVV8RFZs5CfqafnB0uU\
-zQIDAQAB\
------END PUBLIC KEY-----';
-</script>
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="https://api.paytrace.com/assets/e2ee/paytrace-e2ee.js"></script>
+
+<script type="text/javascript">
+  $('#submitButton').hide();
+  // this hooks form submission.
+  $(document).ready(function() {
+    paytrace.hookFormSubmit('#theForm'); // do this first, or wrap in a try/catch to ensure the form is never un-hooked
+
+    paytrace.setKey('-----BEGIN PUBLIC KEY-----' +
+      'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqr0q5WgXwZH+ZA9Cry2d' +
+      'Gh82ZxMa5jRH7DZznqX+ByZxGQkAjT43Cs56WW0nudiIMYSj6VADz+1gSoMWDYE0' +
+      '9kSgBTVh0tiqDixjhlkZA5VBsrfhczQZV0LWQNTgDfQiebsjydgwVadjUifw3Afe' +
+      'am+R+AK4t8umBhRplpGR04sCZmDTTFPvSb1l3TFn7j+YLSp9ekmIDApEJpj52WDv' +
+      'j295FeHgm0SyS9X6pCsWMt/eHCUhjGm9NkDq6B/HMbIeIdURv/aR1ejW0HbrOFB1' +
+      '5aT8axPIpQwXHCYnt+L4Zk8yjyV53/iaF30mdiE9yJG1UA0UsRcXwJ30lCim4GSN' +
+      'mwIDAQAB' +
+      '-----END PUBLIC KEY----- ');
+  });
+  $('#submitButton').show(); // do this first, or wrap in a try/catch to ensure the form is never un-hooked
+</script>
