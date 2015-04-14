@@ -56,7 +56,14 @@ public class HermesConnection {
                 output.write(query.getBytes("UTF-8"));
             }
 
-            InputStream is = con.getInputStream();
+            InputStream is;
+
+            try {
+                is = con.getInputStream();
+            } catch (java.io.IOException e) {
+                is = con.getErrorStream(); // for non-fatal HTTP 400 errors, this returns the response JSON
+            }
+
             StringBuilder sb = new StringBuilder();
             int ch;
 
