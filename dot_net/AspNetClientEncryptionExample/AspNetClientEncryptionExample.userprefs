@@ -1,0 +1,18 @@
+﻿<Properties StartupItem="AspNetClientEncryptionExample.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="clientsideencryption.aspx.cs">
+    <Files>
+      <File FileName="Default.aspx.cs" Line="13" Column="51" />
+      <File FileName="clientsideencryption.aspx.cs" Line="13" Column="3" />
+      <File FileName="clientsideencryption.aspx" Line="21" Column="102" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/rmodha/Documents/SampleAspDotNet/AspNetClientEncryptionExample/TestPage.cs" line="7" column="1" />
+      <Breakpoint file="/Users/rmodha/Documents/SampleAspDotNet/AspNetClientEncryptionExample/TestPage.cs" line="3" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <AuthorInfo Name="rmodha" Email="" Copyright="rmodha" Company="" Trademark="" />
+</Properties>
