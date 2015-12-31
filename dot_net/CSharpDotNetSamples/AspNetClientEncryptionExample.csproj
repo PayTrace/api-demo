@@ -35,9 +35,6 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Web.Services" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <ItemGroup>
@@ -46,7 +43,6 @@
     <Content Include="Default.aspx" />
     <Content Include="clientsideencryption.aspx" />
     <Content Include="AuthenticationToken.aspx" />
-    <Content Include="packages.config" />
     <Content Include="AuthenticationTokenTest.aspx" />
     <Content Include="KeyedSaleJson.aspx" />
     <Content Include="SwipedSaleJson.aspx" />
