@@ -38,7 +38,6 @@ namespace AspNetClientEncryptionExample
 
 		}
 
-
 		public PayTraceBasicSaleResponse DeserializeResponse(TempResponse TempResponse)
 		{
 			// Create objects to parse JSON data

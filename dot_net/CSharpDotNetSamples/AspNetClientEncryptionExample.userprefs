@@ -1,22 +1,15 @@
 ﻿<Properties StartupItem="AspNetClientEncryptionExample.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="PayTraceResponse.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SwipedSaleGenerator.cs">
     <Files>
-      <File FileName="KeyedSaleGenerator.cs" Line="1" Column="1" />
-      <File FileName="PayTraceResponse.cs" Line="151" Column="5" />
-      <File FileName="SwipedSaleGenerator.cs" Line="1" Column="1" />
-      <File FileName="SwipedSaleJson.aspx.cs" Line="1" Column="1" />
+      <File FileName="SwipedSaleGenerator.cs" Line="25" Column="66" />
+      <File FileName="PayTraceResponse.cs" Line="175" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/rmodha/Documents/SampleAspDotNet/AspNetClientEncryptionExample/TestPage.cs" line="7" column="1" />
       <Breakpoint file="/Users/rmodha/Documents/SampleAspDotNet/AspNetClientEncryptionExample/TestPage.cs" line="3" column="1" />
-      <Breakpoint file="/Users/rmodha/Documents/api-demo/dot_net/CSharpDotNetSamples/SwipedSaleGenerator.cs" line="50" column="1" />
-      <Breakpoint file="/Users/rmodha/Documents/api-demo/dot_net/CSharpDotNetSamples/SwipedSaleGenerator.cs" line="82" column="49" />
-      <Breakpoint file="/Users/rmodha/Documents/api-demo/dot_net/CSharpDotNetSamples/PayTraceResponse.cs" line="148" column="1" />
-      <Breakpoint file="/Users/rmodha/Documents/api-demo/dot_net/CSharpDotNetSamples/PayTraceResponse.cs" line="147" column="1" />
-      <Breakpoint file="/Users/rmodha/Documents/api-demo/dot_net/CSharpDotNetSamples/PayTraceResponse.cs" line="166" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
