@@ -61,14 +61,13 @@ namespace AspNetClientEncryptionExample
 				Response.Write (" API Error Message : " +  OAuthResult.Error.error_description+ "<br>");
 				Response.Write (" Token Request: " + "Failed!" + "<br>");
 			}
-
 		}
 
 		protected KeyedSaleRequest BuildRequestFromFields(KeyedSaleRequest requestKeyedSale)
 		{
 			// Build Keyed Sale Request fields from the input source
 
-			requestKeyedSale.amount = 1.0;
+			requestKeyedSale.amount = 2.0;
 
 			requestKeyedSale.credit_card = new CreditCard ();
 			requestKeyedSale.credit_card.number = "4111111111111111";
@@ -88,8 +87,7 @@ namespace AspNetClientEncryptionExample
 		
 		}
 
-
-		protected void WriteResults(TransactionResponse result) 
+		protected void WriteResults(KeyedSaleResponse result) 
 		{
 
 			if(null != result.ErrorMsg  && result.success == false )
@@ -101,8 +99,7 @@ namespace AspNetClientEncryptionExample
 				Response.Write ("status_message : " + result.status_message + "<br>"); 
 				Response.Write ("external_transaction_id : " + result.external_transaction_id + "<br>"); 
 				Response.Write ("masked_card_number : " + result.masked_card_number + "<br>"); 
-				Response.Write ("Keyed sale: " + "Failed!" + "<br>");	
-
+		
 				//Check the actual API errors with appropriate code
 				Response.Write (" API errors : "+ "<br>");
 				foreach (var item in result.errors) 
@@ -113,6 +110,7 @@ namespace AspNetClientEncryptionExample
 						Response.Write (item.Key  + "=" + errorMessage + "<BR>");
 					}
 				}
+				Response.Write ("Keyed sale: " + "Failed!" + "<br>");	
 					
 			} 
 			else
@@ -145,7 +143,7 @@ namespace AspNetClientEncryptionExample
 		}
 
 		//Display the Keyed Sale Response
-		protected void DisplaySaleResponse(TransactionResponse result)
+		protected void DisplaySaleResponse(KeyedSaleResponse result)
 		{
 			Response.Write ("Success : " + result.success + "<br>"); 
 			Response.Write ("response_code : " + result.response_code + "<br>");   

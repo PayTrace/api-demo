@@ -35,9 +35,9 @@ namespace AspNetClientEncryptionExample
 
 		protected void Application_Error (Object sender, EventArgs e)
 		{
+			// To display / handle any unexpected error.
 			// Get the exception object.
 			Exception exc = Server.GetLastError();
-	
 
 			// For other kinds of errors give the user some information
 			// but stay on the default page

@@ -80,7 +80,6 @@
       <DependentUpon>KeyedSaleJson.aspx</DependentUpon>
     </Compile>
     <Compile Include="KeyedSaleGenerator.cs" />
-    <Compile Include="CreditCardTransactionResponse.cs" />
     <Compile Include="SwipedSaleJson.aspx.cs">
       <DependentUpon>SwipedSaleJson.aspx</DependentUpon>
     </Compile>
@@ -89,6 +88,7 @@
     </Compile>
     <Compile Include="SwipedSaleGenerator.cs" />
     <Compile Include="TestClass.cs" />
+    <Compile Include="PayTraceResponse.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

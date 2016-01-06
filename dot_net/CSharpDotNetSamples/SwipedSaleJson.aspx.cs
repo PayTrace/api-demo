@@ -41,7 +41,7 @@ namespace AspNetClientEncryptionExample
 				//Swiped Sale Request and display the result
 				var result = swipedSaleGenerator.SwipedSaleTrans(OAuth,swipeSaleRequest);
 
-				//process the SwipedSale response
+				//process the Swiped Sale response
 				WriteResults(result);
 
 			} 
@@ -54,6 +54,7 @@ namespace AspNetClientEncryptionExample
 				Response.Write (" API Error : " +  OAuthResult.Error.error + "<br>");
 				Response.Write (" API Error Message : " +  OAuthResult.Error.error_description+ "<br>");
 				Response.Write (" Token Request: " + "Failed!" + "<br>");
+			
 			}
 
 		}
@@ -70,7 +71,7 @@ namespace AspNetClientEncryptionExample
 
 		}
 
-		protected void WriteResults(TransactionResponse result) 
+		protected void WriteResults(PayTraceBasicSaleResponse result) 
 		{
 
 			if(null != result.ErrorMsg  && result.success == false )
@@ -81,7 +82,6 @@ namespace AspNetClientEncryptionExample
 				Response.Write ("response_code : " + result.response_code + "<br>");   
 				Response.Write ("status_message : " + result.status_message + "<br>"); 
 				Response.Write ("external_transaction_id : " + result.external_transaction_id + "<br>"); 
-				Response.Write ("Swiped Sale : " + "Failed!" + "<br>");	
 
 				// Check the actual API errors with appropriate code
 				Response.Write (" API errors : "+ "<br>");
@@ -92,6 +92,7 @@ namespace AspNetClientEncryptionExample
 						Response.Write (item.Key  + "=" + errorMessage + "<BR>");
 					}
 				}
+				Response.Write ("Swiped Sale : " + "Failed!" + "<br>");	
 			} 
 			else
 			{
@@ -122,7 +123,7 @@ namespace AspNetClientEncryptionExample
 		}
 
 		// Display the Swiped Sale Response
-		protected void DisplaySaleResponse(TransactionResponse result)
+		protected void DisplaySaleResponse(PayTraceBasicSaleResponse result)
 		{
 
 			Response.Write ("Success : " + result.success + "<br>"); 
