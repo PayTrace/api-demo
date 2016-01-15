@@ -62,7 +62,7 @@ namespace AspNetClientEncryptionExample
 		protected SwipedSaleRequest BuildRequestFromFields(SwipedSaleRequest requestSwipedSale) 
 		{
 			// Build Keyed Sale Request fields from the input source
-			requestSwipedSale.amount = 5.00;
+			requestSwipedSale.amount = 4.00;
 
 			//Swipe value should be detected from Magnetic stripe reader(Credit Card reader Device) 
 			requestSwipedSale.swipe = "%B4012881888818888^Demo/Customer^2412101001020001000000701000000?;4012881888818888=24121010010270100001?";
@@ -76,7 +76,7 @@ namespace AspNetClientEncryptionExample
 
 			if(null != result.ErrorMsg  && result.success == false )
 			{
-				Response.Write (" Http Error Code & Error : " + result.ErrorMsg + "<br>");
+				Response.Write ("Http Error Code & Error : " + result.ErrorMsg + "<br>");
 
 				Response.Write ("Success : " + result.success + "<br>"); 
 				Response.Write ("response_code : " + result.response_code + "<br>");   

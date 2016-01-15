@@ -35,8 +35,16 @@ namespace AspNetClientEncryptionExample
 		public Dictionary<string,string[]> errors { get; set; } 
 
 	}
+	public class PayTraceBasicResponse1 : PayTraceBasicResponse
+	{
+		/// <summary>
+		///  following properties are Available on most of the Sale Responses with the API
+		/// </summary>
 
-	public class PayTraceBasicSaleResponse : PayTraceBasicResponse
+		public string external_transaction_id { get; set; }
+
+	}
+	public class PayTraceBasicSaleResponse : PayTraceBasicResponse1
 	{
 		/// <summary>
 		///  following properties are Available on most of the Sale Responses with the API
@@ -45,7 +53,6 @@ namespace AspNetClientEncryptionExample
 		public string approval_message { get; set; }
 		public string avs_response { get; set; }
 		public string csc_response { get; set; }
-		public string external_transaction_id { get; set; }
 
 	}
 
@@ -56,12 +63,22 @@ namespace AspNetClientEncryptionExample
 		/// </summary>
 		public string masked_card_number { get; set; }
 	}
-
+	public class KeyedRefundResponse: PayTraceBasicSaleResponse
+	{
+		/// <summary>
+		///  following properties are Specific to Keyed Refund Response
+		/// </summary>
+		public string masked_card_number { get; set; }
+	}
 	public class TempResponse
 	{
+		/// <summary>
+		/// class to hold temprory Json Response and Error message
+		/// </summary>
 		public string JsonResponse { get; set; }
 		public string ErrorMessage { get; set; }
 	}
+
 
 	public class PayTraceResponse
 	{
@@ -152,7 +169,8 @@ namespace AspNetClientEncryptionExample
 
 					//Retrive http Error 
 					HttpWebResponse err = (HttpWebResponse)e.Response;
-					objTempResponse.ErrorMessage = ((int)err.StatusCode) + " " + err.StatusDescription;
+					if(err != null)
+						objTempResponse.ErrorMessage = ((int)err.StatusCode) + " " + err.StatusDescription;
 				}	
 				//Do your own error logging in this case
 			}
@@ -175,9 +193,6 @@ namespace AspNetClientEncryptionExample
 		}
 
 	}
-
-
-
 
 
 

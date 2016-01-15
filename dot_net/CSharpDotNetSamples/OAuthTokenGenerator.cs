@@ -151,9 +151,9 @@ using System.Web.Script.Serialization ;
 			if (null != ResponseData) 
 			{
 				// parase JSON data into C# obj
-				//ObjOauthToken = JsonConvert.DeserializeObject<OAuthToken> (ResponseData);
 				ObjOauthToken = js.Deserialize<OAuthToken> (ResponseData);
-				ObjOauthToken.errorflag = false; //optional as by default it will be false 		
+				//optional as by default it will be false 		
+				ObjOauthToken.errorflag = false; 	
 			} 
 			return ObjOauthToken;
 		}

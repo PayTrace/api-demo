@@ -46,6 +46,7 @@
     <Content Include="AuthenticationTokenTest.aspx" />
     <Content Include="KeyedSaleJson.aspx" />
     <Content Include="SwipedSaleJson.aspx" />
+    <Content Include="KeyedRefundJson.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -89,6 +90,14 @@
     <Compile Include="SwipedSaleGenerator.cs" />
     <Compile Include="TestClass.cs" />
     <Compile Include="PayTraceResponse.cs" />
+    <Compile Include="KeyedRefundJson.aspx.cs">
+      <DependentUpon>KeyedRefundJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KeyedRefundJson.aspx.designer.cs">
+      <DependentUpon>KeyedRefundJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PayTraceRequest.cs" />
+    <Compile Include="KeyedRefundGenerator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
