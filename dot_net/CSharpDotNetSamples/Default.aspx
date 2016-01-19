@@ -8,7 +8,7 @@
 	<form id="form1" runat="server">
 		<!---<asp:Button id="button1" runat="server" Text="Click me!" OnClick="button1Clicked" /> -->
 		<br>
-		<a href="http://127.0.0.1:8080/KeyedRefundJson.aspx">ClientSide Encryption </a> 
+		<a href="http://127.0.0.1:8080/clientsideencryption.aspx">ClientSide Encryption </a> 
 		<br>
 		<a href="http://127.0.0.1:8080/AuthenticationTokenTest.aspx">Authentication Token</a> 
 		<br>
