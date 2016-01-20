@@ -3,10 +3,11 @@
 namespace AspNetClientEncryptionExample
 {
 	// class that holds basic Paytrace Sale/Refund request properties
+
 	// Class for credit card
 
 
-	// Class for keyed sale request	
+	// Class that holds basic Paytrace Sale/Refund request properties	
 	public class SaleRequest 
 	{
 		public double amount { get; set; }
@@ -16,11 +17,21 @@ namespace AspNetClientEncryptionExample
 		public BillingAddress billing_address { get; set; }
 	}
 
+	public class VoidTransactionRequest
+	{
+
+		/// <summary>
+		/// classr for void Transaction request
+		/// </summary>
+		public long transaction_id { get; set; }
+	
+	}
+
 	public class PayTraceRequest
 	{
-		public PayTraceRequest ()
-		{
-		}
+		
 	}
+
+
 }
 

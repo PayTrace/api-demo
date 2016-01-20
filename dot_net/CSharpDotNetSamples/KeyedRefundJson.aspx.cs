@@ -19,7 +19,7 @@ namespace AspNetClientEncryptionExample
 		/// Determines whether this instance is O auth token successful the specified OAuthResult.
 		/// </summary>
 		/// <returns><c>true</c> if this instance is O auth token successful the specified OAuthResult; otherwise, <c>false</c>.</returns>
-		/// <param name="OAuthResult">O auth result.</param>
+		/// <param name="OAuthResult">OAuthResult</param>
 		protected void IsOAuthTokenSuccessful(OAuthToken OAuthResult) 
 		{
 
@@ -31,19 +31,19 @@ namespace AspNetClientEncryptionExample
 				// For now OAuth2.0  is not caseinsesitive at PayTrace - ESC-141 so use 'Bearer'
 				string OAuth = String.Format ("Bearer {0}", OAuthResult.access_token);
 
-				// Key Sale Request
+				// Keyed Refund Request
 				KeyedRefundRequest requestKeyedRefund = new KeyedRefundRequest();
 
-				//TODO: Provide appropriate comment - KeySale Transaction
+				// for Keyed Refund Transaction
 				KeyedRefundGenerator keyedRefundGenerator = new KeyedRefundGenerator();
 
-				// Assign the values to the key Sale Request.
+				// Assign the values to the key Refund Request.
 				requestKeyedRefund = BuildRequestFromFields(requestKeyedRefund);
 
-				// To make Keyed Sale Request and store the response
+				// To make Keyed Refund Request and store the response
 				var result = keyedRefundGenerator.KeyedRefundTrans(OAuth,requestKeyedRefund);
 
-				//display the Keyed Sale Response
+				//display the Keyed Refund Response
 				WriteResults(result);
 
 			} 
@@ -62,7 +62,7 @@ namespace AspNetClientEncryptionExample
 
 		protected KeyedRefundRequest BuildRequestFromFields(KeyedRefundRequest requestKeyedRefund)
 		{
-			// Build Keyed Sale Request fields from the input source
+			// Build Keyed Refund Request fields from the input source
 
 			requestKeyedRefund.amount = 1.99;
 

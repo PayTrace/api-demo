@@ -47,6 +47,7 @@
     <Content Include="KeyedSaleJson.aspx" />
     <Content Include="SwipedSaleJson.aspx" />
     <Content Include="KeyedRefundJson.aspx" />
+    <Content Include="VoidTransactionJson.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -98,6 +99,13 @@
     </Compile>
     <Compile Include="PayTraceRequest.cs" />
     <Compile Include="KeyedRefundGenerator.cs" />
+    <Compile Include="VoidTransactionGenerator.cs" />
+    <Compile Include="VoidTransactionJson.aspx.cs">
+      <DependentUpon>VoidTransactionJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VoidTransactionJson.aspx.designer.cs">
+      <DependentUpon>VoidTransactionJson.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

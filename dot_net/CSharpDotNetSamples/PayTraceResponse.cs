@@ -26,7 +26,7 @@ namespace AspNetClientEncryptionExample
 		/// <summary>
 		/// transaction_id is not a part of Error Response
 		/// </summary>
-		public int transaction_id { get; set; }
+		public long transaction_id { get; set; }
 
 		// Optional : To hold http error or any unexpected error, this is not a part of PayTrace API Error Response.
 		public string ErrorMsg { get; set; } 

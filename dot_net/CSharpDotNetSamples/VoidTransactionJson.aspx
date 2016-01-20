@@ -6,7 +6,7 @@
 </head>
 <body>
 	<form id="form1" runat="server">
-	<asp:Button id="BtnTransactionVoid" runat="server" Text="Void Transaction!" OnClick="BtnTransactionVoidClicked" />
+	<asp:Button id="BtnVoidTransaction" runat="server" Text="Void Transaction!" OnClick="BtnVoidTransactionClicked" />
 	</form>
 	<br>
 	<a href="http://127.0.0.1:8080/Default.aspx">Back to Home </a> 

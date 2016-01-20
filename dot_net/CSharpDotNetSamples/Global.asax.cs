@@ -45,7 +45,7 @@ namespace AspNetClientEncryptionExample
 			Response.Write(
 				"<p>" + exc.Message + "</p>\n");
 			Response.Write("Return to the <a href='Default.aspx'>" +
-				"Default Page</a>\n");
+				"Back to Home</a>\n");
 
 			// Clear the error from the server
 			Server.ClearError();

@@ -8,7 +8,7 @@ namespace AspNetClientEncryptionExample
 	public partial class TransactionVoidJson : System.Web.UI.Page
 	{
 
-		public void BtnTransactionVoidClicked(object sender, EventArgs args)
+		public void BtnVoidTransactionClicked(object sender, EventArgs args)
 		{
 			if(this.IsPostBack) 
 			{
@@ -84,7 +84,7 @@ namespace AspNetClientEncryptionExample
 
 				Response.Write ("Success : " + result.success + "<br>"); 
 				Response.Write ("response_code : " + result.response_code + "<br>");   
-				Response.Write ("status_message : " + result.status_message + "<br>" + "<br>"); 
+				Response.Write ("status_message : " + result.status_message +  "<br>"); 
 
 				//Check the actual API errors with appropriate code
 				Response.Write (" API errors : "+ "<br>");

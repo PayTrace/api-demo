@@ -15,6 +15,6 @@ namespace AspNetClientEncryptionExample {
 		
 		protected System.Web.UI.HtmlControls.HtmlForm form1;
 		
-		protected System.Web.UI.WebControls.Button BtnTransactionVoid;
+		protected System.Web.UI.WebControls.Button BtnVoidTransaction;
 	}
 }
