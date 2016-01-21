@@ -8,23 +8,7 @@ using System.Web.Script.Serialization;
 
 namespace AspNetClientEncryptionExample
 {
-
-	/// <summary>
-	/// this class holds properties for the KeyedRefund request.
-	/// Please check the Account security settings before defining this class as there are some request fields are conditional and optional.
-	/// this class uses Billing Address class 
-	/// this class also uses Credit Card class
-	/// </summary>
-	public class KeyedRefundRequest 
-	{
-		public double amount { get; set; }
-		public CreditCard credit_card { get; set; } 
-		// Declare 'encrypted_csc' instead of 'csc' in case of using PayTrace Client-Side Encryption JavaScript Library.
-		public string csc { get; set; } 
-		public BillingAddress billing_address { get; set; }
-	}
-
-
+	
 	public class KeyedRefundGenerator
 	{
 		public KeyedRefundResponse KeyedRefundTrans(string token, KeyedRefundRequest keyedRefundRequest)

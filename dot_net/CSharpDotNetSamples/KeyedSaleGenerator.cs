@@ -7,35 +7,7 @@ using System.Web.Script.Serialization;
 
 namespace AspNetClientEncryptionExample
 {
-	// Class for credit card
-	public class CreditCard  
-	{
-		// Declare 'encrypted_number' instead of 'number' in case of using PayTrace Client-Side Encryption JavaScript Library.
-		public string number { get; set; } 
-		public string expiration_month { get; set; }
-		public string expiration_year { get; set; }
-	}
-
-	// Class for billing address
-	public class BillingAddress 
-	{
-		public string name { get; set; }
-		public string street_address { get; set; }
-		public string city { get; set; }
-		public string state { get; set; }
-		public string zip { get; set; }
-	}
-
-	// Class for keyed sale request	
-	public class KeyedSaleRequest 
-	{
-		public double amount { get; set; }
-		public CreditCard credit_card { get; set; } 
-		// Declare 'encrypted_csc' instead of 'csc' in case of using PayTrace Client-Side Encryption JavaScript Library.
-		public string csc { get; set; } 
-		public BillingAddress billing_address { get; set; }
-	}
-		
+	
 	public class KeyedSaleGenerator
 	{
 

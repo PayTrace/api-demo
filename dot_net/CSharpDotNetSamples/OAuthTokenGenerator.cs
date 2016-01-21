@@ -6,34 +6,12 @@ using System.IO;
 using System.Text;
 using System.Web.Script.Serialization ; 
 
-
-	// class for the holding oAuth Data 
+namespace AspNetClientEncryptionExample
+{
 	
-	public class OAuthToken
-	{
-		public string access_token { get; set; }
-		public string token_type { get; set; }
-		public int expires_in { get; set; }
-
-		//for Errors
-		public Boolean errorflag { get; set;}
-		public OAuthError Error { get; set; }
-	}
-
-	/// <summary>
-	/// O auth error.
-	/// </summary>
-	public class OAuthError
-	{
-		public string error { get; set; } // Json key - returned by PayTrace API for error
-		public string error_description { get; set; } // Json key - returned by PayTrace API for error
-		public string token_error_http{ get; set;} // http error 
-	}
-		
 	public class OAuthTokenGenerator
 	{
-		//Keep all your settings here
-
+		
 		public OAuthToken GetToken()
 		{
 			// Those URL are available at Authentication header page.
@@ -46,7 +24,7 @@ using System.Web.Script.Serialization ;
 			WebResponse response = null;
 
 			//object 
-			OAuthToken result =new OAuthToken();
+			OAuthToken result = new OAuthToken();
 
 			try
 			{
@@ -114,7 +92,6 @@ using System.Web.Script.Serialization ;
 						{
 							JavaScriptSerializer js = new JavaScriptSerializer ();
 							String temp = (new StreamReader(responseStream)).ReadToEnd();
-							//result.Error = JsonConvert.DeserializeObject<OAuthError> (temp); 
 							result.Error = js.Deserialize<OAuthError>(temp);
 						}
 					}
@@ -159,4 +136,4 @@ using System.Web.Script.Serialization ;
 		}
 	}
 
-
+}
