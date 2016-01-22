@@ -42,7 +42,6 @@
     <Content Include="web.config" />
     <Content Include="Default.aspx" />
     <Content Include="clientsideencryption.aspx" />
-    <Content Include="AuthenticationToken.aspx" />
     <Content Include="AuthenticationTokenTest.aspx" />
     <Content Include="KeyedSaleJson.aspx" />
     <Content Include="SwipedSaleJson.aspx" />
@@ -61,12 +60,6 @@
     </Compile>
     <Compile Include="clientsideencryption.aspx.cs">
       <DependentUpon>clientsideencryption.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AuthenticationToken.aspx.cs">
-      <DependentUpon>AuthenticationToken.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AuthenticationToken.aspx.designer.cs">
-      <DependentUpon>AuthenticationToken.aspx</DependentUpon>
     </Compile>
     <Compile Include="AuthenticationTokenTest.aspx.cs">
       <DependentUpon>AuthenticationTokenTest.aspx</DependentUpon>
