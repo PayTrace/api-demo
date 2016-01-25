@@ -20,6 +20,8 @@
 		<br>
 		<a href="http://127.0.0.1:8080/VoidTransactionJson.aspx">Void Transaction</a> 
 		<br>
+		<a href="http://127.0.0.1:8080/CreateCustomerJson.aspx">Create Customer Profile</a> 
+		<br>
 	</form>
 </body>
 </html>

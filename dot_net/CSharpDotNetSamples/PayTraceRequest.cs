@@ -4,18 +4,26 @@ namespace AspNetClientEncryptionExample
 {
 
 
-	// Class for credit card
+
+
 	public class CreditCard  
 	{
+		/// <summary>
+		///  Class for credit card
+		/// </summary>
 		// Declare 'encrypted_number' instead of 'number' in case of using PayTrace Client-Side Encryption JavaScript Library.
 		public string number { get; set; } 
 		public string expiration_month { get; set; }
 		public string expiration_year { get; set; }
 	}
 
-	// Class for billing address
+
 	public class BillingAddress 
 	{
+		/// <summary>
+		/// Class for billing address
+		/// </summary>
+
 		public string name { get; set; }
 		public string street_address { get; set; }
 		public string city { get; set; }
@@ -23,15 +31,20 @@ namespace AspNetClientEncryptionExample
 		public string zip { get; set; }
 	}
 
-	// Class that holds basic Paytrace Sale/Refund request properties	
-	public class SaleRequest 
+
+	/*public class SaleRequest 
 	{
+		/// <summary>
+		/// Class that holds basic Paytrace Sale/Refund request properties	
+		/// you can use this class instead of all the individaul class for request - however this depends on your security settings from PayTrace Terminal 
+		/// </summary>
+
 		public double amount { get; set; }
 		public CreditCard credit_card { get; set; } 
 		// Declare 'encrypted_csc' instead of 'csc' in case of using PayTrace Client-Side Encryption JavaScript Library.
 		public string csc { get; set; } 
 		public BillingAddress billing_address { get; set; }
-	}
+	}*/
 
 	public class KeyedSaleRequest 
 	{
@@ -58,7 +71,6 @@ namespace AspNetClientEncryptionExample
 		public string swipe { get; set; }  
 	}
 
-
 	public class KeyedRefundRequest 
 	{
 		/// <summary>
@@ -73,6 +85,7 @@ namespace AspNetClientEncryptionExample
 		public string csc { get; set; } 
 		public BillingAddress billing_address { get; set; }
 	}
+
 	public class VoidTransactionRequest
 	{
 
@@ -80,41 +93,38 @@ namespace AspNetClientEncryptionExample
 		/// classr for void Transaction request
 		/// </summary>
 		public long transaction_id { get; set; }
-	
+
 	}
 
-
-	// class for the holding oAuth Data 
-
-	public class OAuthToken
-	{
-		public string access_token { get; set; }
-		public string token_type { get; set; }
-		public int expires_in { get; set; }
-
-		//for Errors
-		// Optional - flag for error
-		public Boolean errorflag { get; set;}
-		// Object for PayTrace Error Json Key
-		public OAuthError Error { get; set; }
-	}
-
-
-	public class OAuthError
+	public class CreateCustomerProfileRequest 
 	{
 		/// <summary>
-		/// Class that holds Error for the OAuth token
+		/// Class for Create Customer Profile request 
+		/// Please refer the account security page on PayTrace virtual Terminal to determine the properties and Create Customer Profile Page.
 		/// </summary>
+		public string customer_id { get; set; }
+		public CreditCard credit_card { get; set; } 
+ 		public BillingAddress billing_address { get; set; }
+		/// <summary>
+		/// This Discretionary_data object is optionl - declare it in case you have discretionary data requiered for the customer
+		/// Those can be set from the PayTrace Virtual Terminal - Discretionary Data
+		/// </summary>
+		public CustomerDiscretionaryData discretionary_data { get; set; }
 
-		// Json key - returned by PayTrace API for error
-		public string error { get; set; } 
-
-		// Json key - returned by PayTrace API for error
-		public string error_description { get; set; }
-
-		// optional - for http error : 
-		public string token_error_http{ get; set;}  
 	}
+	public class CustomerDiscretionaryData
+	{
+		/// <summary>
+		/// This class holds properties for the Customer - Discretionary data 
+		/// Properties name should be same as Discretionary Data field names - as selected from the PayTrace Virtual Terminals
+		/// </summary>
+		public string TestingField { get; set; }
+		public string Testing_DisData { get; set; }
+
+	}
+
+
+
 
 
 }

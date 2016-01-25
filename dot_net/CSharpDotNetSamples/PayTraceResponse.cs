@@ -9,6 +9,50 @@ using System.Web ;
 
 namespace AspNetClientEncryptionExample
 {
+	public class TempResponse
+	{
+		/// <summary>
+		/// class to hold temprory Json Response and Error message for any response.
+		/// </summary>
+		public string JsonResponse { get; set; }
+		public string ErrorMessage { get; set; }
+	}
+
+
+
+	public class OAuthToken
+	{
+		/// <summary>
+		/// class for the holding oAuth Data 
+		/// </summary>
+
+		public string access_token { get; set; }
+		public string token_type { get; set; }
+		public int expires_in { get; set; }
+
+		//for Errors
+		// Optional - flag for error
+		public Boolean errorflag { get; set;}
+		// Object for PayTrace Error Json Key
+		public OAuthError Error { get; set; }
+	}
+
+	public class OAuthError
+	{
+		/// <summary>
+		/// Class that holds Error for the OAuth token
+		/// </summary>
+
+		// Json key - returned by PayTrace API for error
+		public string error { get; set; } 
+
+		// Json key - returned by PayTrace API for error
+		public string error_description { get; set; }
+
+		// optional - for http error : 
+		public string token_error_http{ get; set;}  
+	}
+
 	public class PayTraceBasicResponse
 	{
 		/// <summary>
@@ -24,7 +68,7 @@ namespace AspNetClientEncryptionExample
 		public string status_message { get; set; }
 
 		/// <summary>
-		/// transaction_id is not a part of Error Response
+		/// transaction_id is not a part of Error Response , Create Customer Profile Requests 
 		/// </summary>
 		public long transaction_id { get; set; }
 
@@ -44,6 +88,7 @@ namespace AspNetClientEncryptionExample
 		public string external_transaction_id { get; set; }
 
 	}
+
 	public class PayTraceBasicSaleResponse : PayTraceBasicResponse1
 	{
 		/// <summary>
@@ -59,24 +104,28 @@ namespace AspNetClientEncryptionExample
 	public class KeyedSaleResponse : PayTraceBasicSaleResponse
 	{
 		/// <summary>
-		///  following properties are Specific to Keyed Sale Response
+		/// following properties are Specific to Keyed Sale Response
 		/// </summary>
 		public string masked_card_number { get; set; }
 	}
+
 	public class KeyedRefundResponse: PayTraceBasicSaleResponse
 	{
 		/// <summary>
-		///  following properties are Specific to Keyed Refund Response
+		/// following properties are Specific to Keyed Refund Response
 		/// </summary>
 		public string masked_card_number { get; set; }
 	}
-	public class TempResponse
+
+	public class CreateCustomerProfileResponse : PayTraceBasicResponse
 	{
 		/// <summary>
-		/// class to hold temprory Json Response and Error message
+		/// following properties are Specific to the Create Customer Profile response.
+		/// Declare any other properties based on the Security checking page settings and DisCreationary Data Tab
 		/// </summary>
-		public string JsonResponse { get; set; }
-		public string ErrorMessage { get; set; }
+		public string customer_id { get; set; }
+		public string masked_card_number { get; set; }
+
 	}
 
 
