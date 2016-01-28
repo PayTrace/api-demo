@@ -18,8 +18,6 @@ namespace AspNetClientEncryptionExample
 		public string ErrorMessage { get; set; }
 	}
 
-
-
 	public class OAuthToken
 	{
 		/// <summary>
@@ -58,6 +56,7 @@ namespace AspNetClientEncryptionExample
 		/// <summary>
 		/// Properties Available on most of the transaction responses with the API
 		/// </summary>
+
 		public bool success { get; set; }
 	
 		public int response_code { get; set; }
@@ -79,17 +78,17 @@ namespace AspNetClientEncryptionExample
 		public Dictionary<string,string[]> errors { get; set; } 
 
 	}
-	public class PayTraceBasicResponse1 : PayTraceBasicResponse
+	public class PayTraceExternalTransResponse : PayTraceBasicResponse
 	{
 		/// <summary>
-		///  following properties are Available on most of the Sale Responses with the API
+		///  following properties are Available on some of the Responses with the API
 		/// </summary>
 
 		public string external_transaction_id { get; set; }
 
 	}
 
-	public class PayTraceBasicSaleResponse : PayTraceBasicResponse1
+	public class PayTraceBasicSaleResponse : PayTraceExternalTransResponse
 	{
 		/// <summary>
 		///  following properties are Available on most of the Sale Responses with the API
@@ -104,7 +103,7 @@ namespace AspNetClientEncryptionExample
 	public class KeyedSaleResponse : PayTraceBasicSaleResponse
 	{
 		/// <summary>
-		/// following properties are Specific to Keyed Sale Response
+		/// following properties are Specific to Keyed Sale Response and  Keyed Authorization Response
 		/// </summary>
 		public string masked_card_number { get; set; }
 	}
@@ -113,6 +112,8 @@ namespace AspNetClientEncryptionExample
 	{
 		/// <summary>
 		/// following properties are Specific to Keyed Refund Response
+		/// you could given generic name to above class KeyedSaleResposne and use it for the Keyed Refund  
+		/// To avoid any confusion - Created seperate class for most of the transaction
 		/// </summary>
 		public string masked_card_number { get; set; }
 	}

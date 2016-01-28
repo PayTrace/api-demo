@@ -48,6 +48,8 @@
     <Content Include="KeyedRefundJson.aspx" />
     <Content Include="VoidTransactionJson.aspx" />
     <Content Include="CreateCustomerJson.aspx" />
+    <Content Include="KeyedAuthorizationJson.aspx" />
+    <Content Include="CaptureJson.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -107,6 +109,19 @@
       <DependentUpon>CreateCustomerJson.aspx</DependentUpon>
     </Compile>
     <Compile Include="CreateCustomerProfileGenerator.cs" />
+    <Compile Include="KeyedAuthorizationJson.aspx.cs">
+      <DependentUpon>KeyedAuthorizationJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KeyedAuthorizationJson.aspx.designer.cs">
+      <DependentUpon>KeyedAuthorizationJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CaptureJson.aspx.cs">
+      <DependentUpon>CaptureJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CaptureJson.aspx.designer.cs">
+      <DependentUpon>CaptureJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CaptureTransactionGenerator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

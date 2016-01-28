@@ -5,23 +5,18 @@ using System.Web.UI;
 namespace AspNetClientEncryptionExample
 {
 	
-	public partial class TransactionVoidJson : System.Web.UI.Page
+	public partial class CaptureJson : System.Web.UI.Page
 	{
-
-		public void BtnVoidTransactionClicked(object sender, EventArgs args)
+		public void BtnCaptureClicked(object sender, EventArgs args)
 		{
 			if(this.IsPostBack) 
 			{
+				//this is for genrating OAuth Token request
 				OAuthTokenGenerator tokenGenerator = new OAuthTokenGenerator ();
 				IsOAuthTokenSuccessful(tokenGenerator.GetToken ());
 			}
 		}
 
-
-		/// <summary>
-		/// Determines whether this instance is O auth token successful the specified OAuthResult.
-		/// </summary>
-	
 		protected void IsOAuthTokenSuccessful(OAuthToken OAuthResult) 
 		{
 
@@ -33,17 +28,17 @@ namespace AspNetClientEncryptionExample
 				// For now OAuth2.0  is not caseinsesitive at PayTrace - ESC-141 so use 'Bearer'
 				string OAuth = String.Format ("Bearer {0}", OAuthResult.access_token);
 
-				// Void Transaction Request
-				VoidTransactionRequest  requestVoidTransaction = new VoidTransactionRequest ();
+				// Capture Transaction Request
+				CaptureTransactionRequest  requestCaptureTransaction = new CaptureTransactionRequest ();
 
-				// for void Transaction Request execuation 
-				VoidTransactionGenerator VoidTransactionGenerator = new VoidTransactionGenerator();
+				// for Cature Transaction Request execuation 
+				CaptureTransactionGenerator CaptureTransactionGenerator = new CaptureTransactionGenerator();
 
 				// Assign the values to the void Transaction Request.
-				requestVoidTransaction = BuildRequestFromFields(requestVoidTransaction);
+				requestCaptureTransaction = BuildRequestFromFields(requestCaptureTransaction);
 
 				// To make Void Transaction Request and store the response
-				var result = VoidTransactionGenerator.VoidTransactionTrans(OAuth,requestVoidTransaction);
+				var result = CaptureTransactionGenerator.CaptureTransactionTrans(OAuth,requestCaptureTransaction);
 
 				//display the void Transaction Response
 				WriteResults(result);
@@ -53,30 +48,38 @@ namespace AspNetClientEncryptionExample
 			{
 				// Do you code here to handle the OAuth error
 
-				// Display the OAuth Error - Optional
-				Response.Write (" Http Status Code & Description : " +  OAuthResult.Error.token_error_http  + "<br>");
-				Response.Write (" API Error : " +  OAuthResult.Error.error + "<br>");
-				Response.Write (" API Error Message : " +  OAuthResult.Error.error_description+ "<br>");
-				Response.Write (" Token Request: " + "Failed!" + "<br>");
-
+				// Optional - Display the OAuth Error 
+				DisplayOAuthError(OAuthResult);
 			}
 		}
 
-		protected VoidTransactionRequest BuildRequestFromFields(VoidTransactionRequest requestVoidTransaction)
+		public void DisplayOAuthError(OAuthToken OAuthResult)
 		{
-			// Build void Transaction fields from the input source
 
-			// Transaction_id value = Any unsettled Transaction ID.
-			// Transaction_id should be collected from any previous API response which contains Transaction ID of any unsettled Transaction 
-			requestVoidTransaction.transaction_id =  104541685;
-			// requestVoidTransaction.transaction_id =  104541685;
-			return requestVoidTransaction;
+			// Do you code here, in case of OAuth token failure
+			// Optional - Display the OAuth Error 
+			Response.Write (" Http Status Code & Description : " +  OAuthResult.Error.token_error_http  + "<br>");
+			Response.Write (" API Error : " +  OAuthResult.Error.error + "<br>");
+			Response.Write (" API Error Message : " +  OAuthResult.Error.error_description+ "<br>");
+			Response.Write (" Token Request: " + "Failed!" + "<br>");
+
+		}
+		protected CaptureTransactionRequest BuildRequestFromFields(CaptureTransactionRequest requestCaptureTransaction)
+		{
+			// Build Capture Transaction fields from the input sources.
+			// Transaction_id should be collected from previously Authorised API response - Transaction ID or if you have stored anywhere in DB or in any Variables. 
+			// Optional - it shows how to get value from the form text box.
+			// requestCaptureTransaction.amount= 1.0 ;
+			requestCaptureTransaction.transaction_id = Convert.ToInt64(Request.Form["TransactionNumber"]) ;
+
+
+			return requestCaptureTransaction;
 
 		}
 
 
 		//Based on the response display the result.
-		protected void WriteResults(PayTraceBasicResponse result) 
+		protected void WriteResults(PayTraceExternalTransResponse  result) 
 		{
 
 			if(null != result.ErrorMsg  && result.success == false )
@@ -98,14 +101,14 @@ namespace AspNetClientEncryptionExample
 					}
 				}
 				//Optional
-				Response.Write ("Void Transaction: " + "Failed!" + "<br>");	
+				Response.Write ("Capture Transaction: " + "Failed!" + "<br>");	
 
 			} 
 			else
 			{
 				// Do your code when Response is available based on the response_code. 
 				// Please refer PayTrace-HTTP Status and Error Codes page for possible errors and Response Codes
-				if (result.response_code == 109 && result.success == true ) //for transation successfully approved 
+				if (result.response_code == 112 && result.success == true ) //for transation successfully approved 
 				{
 					// Do you code for any additional verification
 
@@ -113,7 +116,7 @@ namespace AspNetClientEncryptionExample
 					DisplaySaleResponse(result);
 
 					//Optional
-					Response.Write ("Void Transaction : " + "Success!" + "<br>");		
+					Response.Write ("Capture Transaction : " + "Success!" + "<br>");		
 
 				}
 
@@ -143,7 +146,6 @@ namespace AspNetClientEncryptionExample
 			Response.Write ("transaction_id : " + result.transaction_id + "<br>"); 
 
 		}
-
 
 	}
 }

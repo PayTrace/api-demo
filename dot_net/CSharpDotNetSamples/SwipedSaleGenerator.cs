@@ -20,6 +20,8 @@ namespace AspNetClientEncryptionExample
 
 			//converting request into JSON string
 			var requestJSON = jsSerializer.Serialize(swipedSaleRequest);
+			//Optional - Display Json Request 
+			System.Web.HttpContext.Current.Response.Write ("<br>" + "Json Request: " + requestJSON + "<br>");
 
 			//call for actual request and response
 			var objPayTraceResponse = new PayTraceResponse();
@@ -34,6 +36,9 @@ namespace AspNetClientEncryptionExample
 			// Create objects to parse JSON data
 			PayTraceBasicSaleResponse BasicSaleResponse= new PayTraceBasicSaleResponse();
 			var jsSerializer = new JavaScriptSerializer ();
+
+			//Optional - Display Json Response before parsing into Object.
+			System.Web.HttpContext.Current.Response.Write ("<br>" + "Json Response: " + TempResponse.JsonResponse + "<br>");
 
 			if (null != TempResponse.JsonResponse) 
 			{

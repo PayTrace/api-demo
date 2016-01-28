@@ -1,25 +1,21 @@
 ﻿using System;
-using System.Net;
-using System.IO;
-using System.Text;
 using System.Collections.Generic ;
 using System.Web.Script.Serialization;
 
-
 namespace AspNetClientEncryptionExample
 {
-	
-	public class KeyedRefundGenerator
+	public class CaptureTransactionGenerator
 	{
-		public KeyedRefundResponse KeyedRefundTrans(string token, KeyedRefundRequest keyedRefundRequest)
+		public PayTraceExternalTransResponse CaptureTransactionTrans(string token, CaptureTransactionRequest captureTransactionRequest)
 		{
+
 			// Header details are available at Authentication header page.
-			string methodUrl = "/v1/transactions/refund/keyed";
-							
+			string methodUrl = "/v1/transactions/authorization/capture";
+
 			var jsSerializer = new JavaScriptSerializer();
 
 			//converting request into JSON string
-			var requestJSON = jsSerializer.Serialize(keyedRefundRequest);
+			var requestJSON = jsSerializer.Serialize(captureTransactionRequest);
 			//Optional - Display Json Request 
 			System.Web.HttpContext.Current.Response.Write ("<br>" + "Json Request: " + requestJSON + "<br>");
 
@@ -30,25 +26,24 @@ namespace AspNetClientEncryptionExample
 			return DeserializeResponse(TempResponse);
 		}
 
-		protected KeyedRefundResponse DeserializeResponse(TempResponse TempResponse)
+		protected PayTraceExternalTransResponse DeserializeResponse(TempResponse TempResponse)
 		{
 			// Create an object to parse JSON data
 
-			KeyedRefundResponse ObjKeyedRefundResponse= new KeyedRefundResponse();
+			PayTraceExternalTransResponse ObjPayTraceExternalTransResponse= new PayTraceExternalTransResponse();
 			var jsSerializer= new JavaScriptSerializer ();
 
-			//Optional - Display the Json Response 
+			//optional - Display the Json Response
 			System.Web.HttpContext.Current.Response.Write ("<br>" + "Json Response: " + TempResponse.JsonResponse + "<br>");
 
 			if (null != TempResponse.JsonResponse) 
 			{
 				// parse JSON data into C# obj
-				ObjKeyedRefundResponse = jsSerializer.Deserialize<KeyedRefundResponse>(TempResponse.JsonResponse);
+				ObjPayTraceExternalTransResponse = jsSerializer.Deserialize<PayTraceExternalTransResponse>(TempResponse.JsonResponse);
 			}
-			ObjKeyedRefundResponse.ErrorMsg = TempResponse.ErrorMessage;
-			return ObjKeyedRefundResponse;
+			ObjPayTraceExternalTransResponse.ErrorMsg = TempResponse.ErrorMessage;
+			return ObjPayTraceExternalTransResponse;
 		}
 	}
-
 }
 

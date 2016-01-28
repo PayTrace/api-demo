@@ -1,28 +1,22 @@
 ﻿using System;
 using System.Web;
 using System.Web.UI;
-using System.Web.Script.Serialization ; 
 
 namespace AspNetClientEncryptionExample
 {
 	
-	public partial class KeyedSaleJson : System.Web.UI.Page
+	public partial class KeyedAuthorizationJson : System.Web.UI.Page
 	{
-		public void BtnKeyedSaleClicked(object sender, EventArgs args)
+		public void BtnKeyedAuthorizationClicked(object sender, EventArgs args)
 		{
 			if(this.IsPostBack) 
 			{
+				//this is for genrating OAuth Token request
 				OAuthTokenGenerator tokenGenerator = new OAuthTokenGenerator ();
 				IsOAuthTokenSuccessful(tokenGenerator.GetToken ());
 
-				/* Ideal code for a merchant's website:
-				PayTraceSession session = new PayTraceSession ();
-				KeyedSaleRequest request = buildRequestFromFields ();
-				PayTraceTransaction result = session.processTransaction (request);
-				*/
 			}
 		}
-			
 
 		protected void IsOAuthTokenSuccessful(OAuthToken OAuthResult) 
 		{
@@ -35,57 +29,67 @@ namespace AspNetClientEncryptionExample
 				// For now OAuth2.0  is not caseinsesitive at PayTrace - ESC-141
 				string OAuth = String.Format ("Bearer {0}", OAuthResult.access_token);
 
-				// Key Sale Request
-				KeyedSaleRequest requestKeyedSale = new KeyedSaleRequest ();
+				// Keyed Authorization Request
+				KeyedSaleRequest requestKeyedAuthorization = new KeyedSaleRequest ();
 
-				//TODO: Provide appropriate comment - KeySale Transaction
+				// Keyed Authorization Transaction
+				// TODO Keyed sale and Keyed Authorization are pretty similar to make a request so using same generator class with added Method
 				KeyedSaleGenerator keyedSaleGenerator = new KeyedSaleGenerator();
-			
-				// Assign the values to the key Sale Request.
-				requestKeyedSale = BuildRequestFromFields(requestKeyedSale);
 
-				// To make Keyed Sale Request and store the response
-				var result = keyedSaleGenerator.KeyedSaleTrans(OAuth,requestKeyedSale);
+				// Assign the values to the keyed Authorization Request.
+				requestKeyedAuthorization = BuildRequestFromFields(requestKeyedAuthorization);
 
-				//display the Keyed Sale Response
+				// To make Keyed Authorization Request and store the response
+				var result = keyedSaleGenerator.KeyedAuthorizationTrans(OAuth,requestKeyedAuthorization);
+
+				//display the Keyed Authorization Response
 				WriteResults(result);
 
 			} 
 			else // Error for OAuth
 			{
-				// do you code here to handle the OAuth error
+				// Do you code here to handle the token failure
 
-				// Display the OAuth Error - Optional
-				Response.Write (" Http Status Code & Description : " +  OAuthResult.Error.token_error_http  + "<br>");
-				Response.Write (" API Error : " +  OAuthResult.Error.error + "<br>");
-				Response.Write (" API Error Message : " +  OAuthResult.Error.error_description+ "<br>");
-				Response.Write (" Token Request: " + "Failed!" + "<br>");
+				// Optional - Display the OAuth Error 
+				DisplayOAuthError(OAuthResult);
 			}
+		}
+
+		public void DisplayOAuthError(OAuthToken OAuthResult)
+		{
+
+			// Do you code here, in case of OAuth token failure
+			// Optional - Display the OAuth Error 
+			Response.Write (" Http Status Code & Description : " +  OAuthResult.Error.token_error_http  + "<br>");
+			Response.Write (" API Error : " +  OAuthResult.Error.error + "<br>");
+			Response.Write (" API Error Message : " +  OAuthResult.Error.error_description+ "<br>");
+			Response.Write (" Token Request: " + "Failed!" + "<br>");
+
 		}
 
 		protected KeyedSaleRequest BuildRequestFromFields(KeyedSaleRequest requestKeyedSale)
 		{
 			// Build Keyed Sale Request fields from the input source
 
-			requestKeyedSale.amount = 2.50;
+			requestKeyedSale.amount = 3.50;
 
 			requestKeyedSale.credit_card = new CreditCard ();
 			requestKeyedSale.credit_card.number = "4111111111111111";
 			requestKeyedSale.credit_card.expiration_month = "12";
-			requestKeyedSale.credit_card.expiration_year = "2020";
+			requestKeyedSale.credit_card.expiration_year = "2019";
 			//requestKeyedSale.credit_card.expiration_month = "13";
 			//requestKeyedSale.credit_card.expiration_year = "2011";
-			 requestKeyedSale.csc = "999";
+			requestKeyedSale.csc = "999";
 
 			requestKeyedSale.billing_address = new BillingAddress ();
-			requestKeyedSale.billing_address.name = "Steve Smith";
+			requestKeyedSale.billing_address.name = "Mike Smith";
 			requestKeyedSale.billing_address.street_address = "8320 E. West St.";
 			requestKeyedSale.billing_address.city = "Spokane";
 			requestKeyedSale.billing_address.state = "WA";
 			requestKeyedSale.billing_address.zip = "85284";
 
 			return requestKeyedSale;
-		
+
 		}
 
 		protected void WriteResults(KeyedSaleResponse result) 
@@ -94,13 +98,13 @@ namespace AspNetClientEncryptionExample
 			if(null != result.ErrorMsg  && result.success == false )
 			{
 				Response.Write ( "<br>" + "Http Error Code & Error : " + result.ErrorMsg + "<br>");
-						
+
 				Response.Write ("Success : " + result.success + "<br>"); 
 				Response.Write ("response_code : " + result.response_code + "<br>");   
 				Response.Write ("status_message : " + result.status_message + "<br>"); 
 				Response.Write ("external_transaction_id : " + result.external_transaction_id + "<br>"); 
 				Response.Write ("masked_card_number : " + result.masked_card_number + "<br>"); 
-		
+
 				//Check the actual API errors with appropriate code
 				Response.Write (" API errors : "+ "<br>");
 				foreach (var item in result.errors) 
@@ -111,24 +115,23 @@ namespace AspNetClientEncryptionExample
 						Response.Write (item.Key  + "=" + errorMessage + "<BR>");
 					}
 				}
-				Response.Write ("Keyed sale: " + "Failed!" + "<br>");	
-					
+				Response.Write ("Keyed Authorization: " + "Failed!" + "<br>");	
+
 			} 
 			else
 			{
 				// Do your code when Response is available based on the response_code. 
 				// Please refer PayTrace-HTTP Status and Error Codes page for possible errors and Response Codes
-				// For transation successfully approved 
-				if (result.response_code == 101 && result.success == true ) 
+				if (result.response_code == 101 && result.success == true ) //for transation successfully approved 
 				{
 					// Do you code for any additional verification
 
 					// Display Response - optional
 					DisplaySaleResponse(result);
-					Response.Write ("Keyed sale: " + "Success!" + "<br>");		
-				
+					Response.Write ("Keyed Authorization: " + "Success!" + "<br>");		
+
 				}
-					
+
 				else
 				{
 					// Do your code here based on the response_code - use the PayTrace http status and error page for reference
@@ -144,7 +147,7 @@ namespace AspNetClientEncryptionExample
 			}
 		}
 
-		//Display the Keyed Sale Response
+		//Display the Keyed Authorization Response
 		protected void DisplaySaleResponse(KeyedSaleResponse result)
 		{
 			Response.Write ( "<br>" + "Success : " + result.success + "<br>"); 
@@ -158,7 +161,6 @@ namespace AspNetClientEncryptionExample
 			Response.Write ("external_transaction_id : " + result.external_transaction_id + "<br>"); 
 			Response.Write ("masked_card_number : " + result.masked_card_number + "<br>"); 
 		}
-
 	}
 }
 

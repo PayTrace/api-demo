@@ -2,10 +2,7 @@
 
 namespace AspNetClientEncryptionExample
 {
-
-
-
-
+	
 	public class CreditCard  
 	{
 		/// <summary>
@@ -16,7 +13,6 @@ namespace AspNetClientEncryptionExample
 		public string expiration_month { get; set; }
 		public string expiration_year { get; set; }
 	}
-
 
 	public class BillingAddress 
 	{
@@ -49,7 +45,7 @@ namespace AspNetClientEncryptionExample
 	public class KeyedSaleRequest 
 	{
 		/// <summary>
-		/// Class for keyed sale request - 
+		/// Class for keyed sale request and Keyed Authorization.
 		/// Please refer the account security page on PayTrace virtual Terminal to determine the property.
 		/// </summary>
 		public double amount { get; set; }
@@ -62,7 +58,7 @@ namespace AspNetClientEncryptionExample
 	public class SwipedSaleRequest
 	{
 		/// <summary>
-		/// Class for swiped Sale Request 
+		/// Class for swiped Sale Request. 
 		/// Please refer the account security page on PayTrace virtual Terminal to determine the property.
 		/// </summary>
 
@@ -74,10 +70,10 @@ namespace AspNetClientEncryptionExample
 	public class KeyedRefundRequest 
 	{
 		/// <summary>
-		/// this class holds properties for the KeyedRefund request.
+		/// This class holds properties for the KeyedRefund request.
 		/// Please check the Account security settings before defining this class as there are some request fields are conditional and optional.
-		/// this class uses Billing Address class 
-		/// this class also uses Credit Card class
+		/// This class uses Billing Address class .
+		/// This class also uses Credit Card class.
 		/// </summary>
 		public double amount { get; set; }
 		public CreditCard credit_card { get; set; } 
@@ -90,8 +86,18 @@ namespace AspNetClientEncryptionExample
 	{
 
 		/// <summary>
-		/// classr for void Transaction request
+		/// class for void Transaction request
 		/// </summary>
+		public long transaction_id { get; set; }
+
+	}
+	public class CaptureTransactionRequest
+	{
+
+		/// <summary>
+		/// classr for Capture Transaction request - include other optional inputs from the PayTrace Capture page as needed.
+		/// </summary>
+		//public double amount {get; set; }
 		public long transaction_id { get; set; }
 
 	}

@@ -66,6 +66,8 @@ namespace AspNetClientEncryptionExample
 
 			//Swipe value should be detected from Magnetic stripe reader(Credit Card reader Device) 
 			requestSwipedSale.swipe = "%B4012881888818888^Demo/Customer^2412101001020001000000701000000?;4012881888818888=24121010010270100001?";
+			// Following value will give an error 
+			// requestSwipedSale.swipe = "012881888818888^Demo/Customer^2412101001020001000000701000000?;4012881888818888=24121010010270100001?";
 
 			return requestSwipedSale;
 

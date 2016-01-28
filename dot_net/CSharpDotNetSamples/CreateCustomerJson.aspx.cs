@@ -75,7 +75,7 @@ namespace AspNetClientEncryptionExample
 		{
 			// Build Keyed Sale Request fields from the input source
 
-			CreateCustomerProfileRequest.customer_id = "customerTest126";
+			CreateCustomerProfileRequest.customer_id = "customerTest130";
 
 			CreateCustomerProfileRequest.credit_card = new CreditCard ();
 			CreateCustomerProfileRequest.credit_card.number = "5454545454545454";
@@ -83,7 +83,7 @@ namespace AspNetClientEncryptionExample
 			CreateCustomerProfileRequest.credit_card.expiration_year = "2020";
 
 			CreateCustomerProfileRequest.billing_address = new BillingAddress ();
-			CreateCustomerProfileRequest.billing_address.name = "Tom Smith";
+			CreateCustomerProfileRequest.billing_address.name = "Mike Smith";
 			CreateCustomerProfileRequest.billing_address.street_address = "8230 E. West St.";
 			CreateCustomerProfileRequest.billing_address.city = "Spokane";
 			CreateCustomerProfileRequest.billing_address.state = "WA";

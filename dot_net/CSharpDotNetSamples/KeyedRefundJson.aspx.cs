@@ -90,7 +90,7 @@ namespace AspNetClientEncryptionExample
 
 			if(null != result.ErrorMsg  && result.success == false )
 			{
-				Response.Write ("Http Error Code & Error : " + result.ErrorMsg + "<br>");
+				Response.Write ("<br>" + "Http Error Code & Error : " + result.ErrorMsg + "<br>");
 
 				Response.Write ("Success : " + result.success + "<br>"); 
 				Response.Write ("response_code : " + result.response_code + "<br>");   
@@ -144,7 +144,7 @@ namespace AspNetClientEncryptionExample
 		//Display the Keyed Refund Response
 		protected void DisplaySaleResponse(KeyedRefundResponse result)
 		{
-			Response.Write ("Success : " + result.success + "<br>"); 
+			Response.Write ( "<br>" + "Success : " + result.success + "<br>"); 
 			Response.Write ("response_code : " + result.response_code + "<br>");   
 			Response.Write ("status_message : " + result.status_message + "<br>"); 
 			Response.Write ("transaction_id : " + result.transaction_id + "<br>"); 
