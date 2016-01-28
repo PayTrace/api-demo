@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head runat="server">
-	<title>CaptureJson</title>
+	<title>Capture Transaction Json Void</title>
 </head>
 <body>
 	<form id="form1" runat="server">

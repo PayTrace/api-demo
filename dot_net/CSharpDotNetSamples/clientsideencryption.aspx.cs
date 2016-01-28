@@ -23,8 +23,8 @@ public partial class clientsideencryption : System.Web.UI.Page
 		string encrypted_ccCSC = Request.Form["ccCSC"];
 	
 		// to see the encrypted data in the response,prepending encrypted_ to the name of the property. 
-		Response.Write("encypted_ccNumber :"+ encrypted_ccNumber + "<br>");
-		Response.Write("encrypted_ccCSC :"+ encrypted_ccCSC + "<br>");
+		Response.Write("encypted_ccNumber :"+ encrypted_ccNumber + "<br>" + "<br>");
+		Response.Write("encrypted_ccCSC :"+ encrypted_ccCSC + "<br>" + "<br>");
 	
 		// pass the encrypted data onto the API here
 		// return true if the call to the API succeeds
@@ -36,11 +36,11 @@ public partial class clientsideencryption : System.Web.UI.Page
 	{
 		if (results == true) 
 		{
-			Response.Write ("Success");
+			Response.Write ("Success"+ "<br>" );
 		} 
 		else 
 		{
-			Response.Write ("Failed");    	
+			Response.Write ("Failed" + "<br>" );    	
      	}
    }
 

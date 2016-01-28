@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head runat="server">
-	<title>CreateCustomerJson</title>
+	<title>Create Customer Json API</title>
 </head>
 <body>
 	<form id="form1" runat="server">

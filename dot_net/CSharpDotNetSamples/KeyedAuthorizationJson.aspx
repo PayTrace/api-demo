@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head runat="server">
-	<title>KeyedAuthorizationJson</title>
+	<title>Keyed Authorization Json API</title>
 </head>
 <body>
 	<form id="form1" runat="server">

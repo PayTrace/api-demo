@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head runat="server">
-	<title>TransactionVoidJson</title>
+	<title>Void Transaction Json API</title>
 </head>
 <body>
 	<form id="form1" runat="server">
