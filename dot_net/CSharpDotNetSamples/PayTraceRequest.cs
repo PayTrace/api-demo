@@ -97,8 +97,21 @@ namespace AspNetClientEncryptionExample
 		/// <summary>
 		/// classr for Capture Transaction request - include other optional inputs from the PayTrace Capture page as needed.
 		/// </summary>
-		//public double amount {get; set; }
+		// uncomment amount if your requirement is to send the amount with capture and make relavant changes
+		// public double amount {get; set; } 
 		public long transaction_id { get; set; }
+
+	}
+
+	public class VaultSaleByCustomerIdRequest
+	{
+
+		/// <summary>
+		/// Class for Vault Sale by Customer ID request
+		/// Include other optional inputs from the PayTrace Capture page as needed.
+		/// </summary>
+		public double amount {get; set; }
+		public string customer_id { get; set; }
 
 	}
 

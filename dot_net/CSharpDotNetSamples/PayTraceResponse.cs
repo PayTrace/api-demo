@@ -81,7 +81,9 @@ namespace AspNetClientEncryptionExample
 	public class PayTraceExternalTransResponse : PayTraceBasicResponse
 	{
 		/// <summary>
-		///  following properties are Available on some of the Responses with the API
+		/// Following properties are Available on some of the Responses with the API
+		/// This class is used by some of the child classes on this page 
+		/// As well as for the Capture Transaction 
 		/// </summary>
 
 		public string external_transaction_id { get; set; }
@@ -165,6 +167,7 @@ namespace AspNetClientEncryptionExample
 
 				//Set the ContentType property of the WebRequest.
 				request.ContentType = "application/json";
+				//set the Authorization token
 				((HttpWebRequest)request).Headers[HttpRequestHeader.Authorization] = token ;
 
 				byte[] byteArray = Encoding.UTF8.GetBytes(requestData);

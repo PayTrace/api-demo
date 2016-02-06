@@ -52,6 +52,9 @@
 		<tr>
 			<td><a href="http://127.0.0.1:8080/CreateCustomerJson.aspx">Create Customer Profile</a> </td>
  		</tr>
+ 		<tr>
+    		<td><a href="http://127.0.0.1:8080/VaultSaleByCustomerIDJson.aspx">Vault Sale By Customer ID</a> </td>
+  		</tr>
 	
 </table>
 	</form>

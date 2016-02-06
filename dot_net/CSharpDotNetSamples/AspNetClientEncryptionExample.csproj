@@ -50,6 +50,7 @@
     <Content Include="CreateCustomerJson.aspx" />
     <Content Include="KeyedAuthorizationJson.aspx" />
     <Content Include="CaptureJson.aspx" />
+    <Content Include="VaultSaleByCustomerIDJson.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -122,6 +123,13 @@
       <DependentUpon>CaptureJson.aspx</DependentUpon>
     </Compile>
     <Compile Include="CaptureTransactionGenerator.cs" />
+    <Compile Include="VaultSaleByCustomerIDJson.aspx.cs">
+      <DependentUpon>VaultSaleByCustomerIDJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VaultSaleByCustomerIDJson.aspx.designer.cs">
+      <DependentUpon>VaultSaleByCustomerIDJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VaultSaleByCustomerIDGenerator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

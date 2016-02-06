@@ -16,15 +16,13 @@ namespace AspNetClientEncryptionExample
 				IsOAuthTokenSuccessful(tokenGenerator.GetToken ());
 			}
 		}
-
-
-		/// <summary>
-		/// Determines whether this instance is O auth token successful the specified OAuthResult.
-		/// </summary>
 	
 		protected void IsOAuthTokenSuccessful(OAuthToken OAuthResult) 
 		{
 
+			/// <summary>
+			/// Determines whether Oauth token is successful with the specified OAuthResult or not.
+			/// </summary>
 			if(OAuthResult.errorflag == false)
 			{
 				// In case of not using any OAuth2.0 Library
@@ -68,7 +66,7 @@ namespace AspNetClientEncryptionExample
 
 			// Transaction_id value = Any unsettled Transaction ID.
 			// Transaction_id should be collected from any previous API response which contains Transaction ID of any unsettled Transaction 
-			requestVoidTransaction.transaction_id =  104541685;
+			requestVoidTransaction.transaction_id =  105067320;
 			// requestVoidTransaction.transaction_id =  104541685;
 			return requestVoidTransaction;
 
