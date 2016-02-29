@@ -14,7 +14,7 @@ namespace AspNetClientEncryptionExample
 		public KeyedRefundResponse KeyedRefundTrans(string token, KeyedRefundRequest keyedRefundRequest)
 		{
 			// Header details are available at Authentication header page.
-			string methodUrl = "/v1/transactions/refund/keyed";
+			string methodUrl = ApiEndPointConfiguration.UrlKeyedRefund ;
 							
 			var jsSerializer = new JavaScriptSerializer();
 

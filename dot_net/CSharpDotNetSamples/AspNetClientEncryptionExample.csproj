@@ -36,6 +36,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -51,6 +52,7 @@
     <Content Include="KeyedAuthorizationJson.aspx" />
     <Content Include="CaptureJson.aspx" />
     <Content Include="VaultSaleByCustomerIDJson.aspx" />
+    <Content Include="TestJson.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -86,7 +88,6 @@
       <DependentUpon>SwipedSaleJson.aspx</DependentUpon>
     </Compile>
     <Compile Include="SwipedSaleGenerator.cs" />
-    <Compile Include="TestClass.cs" />
     <Compile Include="PayTraceResponse.cs" />
     <Compile Include="KeyedRefundJson.aspx.cs">
       <DependentUpon>KeyedRefundJson.aspx</DependentUpon>
@@ -94,7 +95,6 @@
     <Compile Include="KeyedRefundJson.aspx.designer.cs">
       <DependentUpon>KeyedRefundJson.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PayTraceRequest.cs" />
     <Compile Include="KeyedRefundGenerator.cs" />
     <Compile Include="VoidTransactionGenerator.cs" />
     <Compile Include="VoidTransactionJson.aspx.cs">
@@ -130,6 +130,15 @@
       <DependentUpon>VaultSaleByCustomerIDJson.aspx</DependentUpon>
     </Compile>
     <Compile Include="VaultSaleByCustomerIDGenerator.cs" />
+    <Compile Include="TestJson.aspx.cs">
+      <DependentUpon>TestJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestJson.aspx.designer.cs">
+      <DependentUpon>TestJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestJsonGenerator.cs" />
+    <Compile Include="PayTraceRequest.cs" />
+    <Compile Include="JsonSerializer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

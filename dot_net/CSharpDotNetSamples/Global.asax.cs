@@ -35,17 +35,15 @@ namespace AspNetClientEncryptionExample
 
 		protected void Application_Error (Object sender, EventArgs e)
 		{
-			// To display / handle any unexpected error.
+			// To display/handle any unexpected error.
 			// Get the exception object.
 			Exception exc = Server.GetLastError();
 
 			// For other kinds of errors give the user some information
 			// but stay on the default page
 			Response.Write("<h2>Global Page Error</h2>\n");
-			Response.Write(
-				"<p>" + exc.Message + "</p>\n");
-			Response.Write("Return to the <a href='Default.aspx'>" +
-				"Back to Home</a>\n");
+			Response.Write(	"<p>" + exc.Message + "</p>\n");
+			Response.Write("Return to the <a href='Default.aspx'>" +"Back to Home</a>\n");
 
 			// Clear the error from the server
 			Server.ClearError();

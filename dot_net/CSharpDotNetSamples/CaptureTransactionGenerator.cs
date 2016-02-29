@@ -10,7 +10,7 @@ namespace AspNetClientEncryptionExample
 		{
 
 			// Header details are available at Authentication header page.
-			string methodUrl = "/v1/transactions/authorization/capture";
+			string methodUrl = ApiEndPointConfiguration.UrlCapture ;
 
 			var jsSerializer = new JavaScriptSerializer();
 

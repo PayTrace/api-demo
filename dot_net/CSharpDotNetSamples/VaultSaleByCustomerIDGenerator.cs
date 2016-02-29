@@ -24,8 +24,8 @@ namespace AspNetClientEncryptionExample
 			System.Web.HttpContext.Current.Response.Write ("<br>" + "Json Request: " + requestJSON + "<br>");
 
 			//call for actual request and response
-			var objPayTraceResponse = new PayTraceResponse();
-			var TempResponse = objPayTraceResponse.ProcessTransaction(methodUrl, token, requestJSON);
+			var payTraceResponse = new PayTraceResponse();
+			var TempResponse = payTraceResponse.ProcessTransaction(methodUrl, token, requestJSON);
 
 			return DeserializeResponse(TempResponse);
 		}
@@ -34,7 +34,7 @@ namespace AspNetClientEncryptionExample
 		{
 			// Create an object to parse JSON data
 
-			PayTraceBasicSaleResponse ObjPayTraceBasicSaleResponse = new PayTraceBasicSaleResponse();
+			PayTraceBasicSaleResponse payTraceBasicSaleResponse = new PayTraceBasicSaleResponse();
 			var jsSerializer= new JavaScriptSerializer ();
 
 			//optional - Display the Json Response
@@ -43,10 +43,11 @@ namespace AspNetClientEncryptionExample
 			if (null != TempResponse.JsonResponse) 
 			{
 				// parse JSON data into C# obj
-				ObjPayTraceBasicSaleResponse = jsSerializer.Deserialize<PayTraceBasicSaleResponse>(TempResponse.JsonResponse);
+				payTraceBasicSaleResponse = jsSerializer.Deserialize<PayTraceBasicSaleResponse>(TempResponse.JsonResponse);
 			}
-			ObjPayTraceBasicSaleResponse.ErrorMsg = TempResponse.ErrorMessage;
-			return ObjPayTraceBasicSaleResponse;
+			payTraceBasicSaleResponse.ErrorMsg = TempResponse.ErrorMessage;
+
+			return payTraceBasicSaleResponse;
 		}
 	}
 

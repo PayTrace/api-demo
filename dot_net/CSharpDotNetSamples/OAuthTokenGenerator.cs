@@ -15,8 +15,9 @@ namespace AspNetClientEncryptionExample
 		public OAuthToken GetToken()
 		{
 			// Those URL are available at Authentication header page.
-			String Baseurl = "https://api.paytrace.com";
-			String AuthURL = "/oauth/token";
+			string Baseurl = ApiEndPointConfiguration.BaseUrl ; 
+			string OAuthUrl= ApiEndPointConfiguration.UrlOAuth;
+				
 
 			// variables for request stream and Respone reader 
 			Stream dataStream = null;
@@ -29,7 +30,7 @@ namespace AspNetClientEncryptionExample
 			try
 			{
 				// Create a request using a URL that can receive a post. 
-				WebRequest request = WebRequest.Create(Baseurl + AuthURL );
+				WebRequest request = WebRequest.Create(ApiEndPointConfiguration.BaseUrl+ ApiEndPointConfiguration.UrlOAuth);
 
 				// Set the Method property of the request to POST.
 				request.Method = "POST";
@@ -91,7 +92,7 @@ namespace AspNetClientEncryptionExample
 						if (responseStream != null)
 						{
 							JavaScriptSerializer js = new JavaScriptSerializer ();
-							String temp = (new StreamReader(responseStream)).ReadToEnd();
+							string temp = (new StreamReader(responseStream)).ReadToEnd();
 							result.Error = js.Deserialize<OAuthError>(temp);
 						}
 					}

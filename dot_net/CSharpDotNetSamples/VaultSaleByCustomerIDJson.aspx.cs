@@ -13,11 +13,11 @@ namespace AspNetClientEncryptionExample
 			if(this.IsPostBack) 
 			{
 				OAuthTokenGenerator tokenGenerator = new OAuthTokenGenerator ();
-				IsOAuthTokenSuccessful(tokenGenerator.GetToken ());
+				VerifyOAuthToken(tokenGenerator.GetToken ());
 			}
 		}
 
-		protected void IsOAuthTokenSuccessful(OAuthToken OAuthResult) 
+		protected void VerifyOAuthToken(OAuthToken OAuthResult) 
 		{
 
 			if(OAuthResult.errorflag == false)
@@ -28,20 +28,9 @@ namespace AspNetClientEncryptionExample
 				// For now OAuth2.0  is not caseinsesitive at PayTrace - ESC-141 so use 'Bearer'
 				string OAuth = String.Format ("Bearer {0}", OAuthResult.access_token);
 
-				// Vault Sale by Customer ID  Request
-				VaultSaleByCustomerIdRequest  requestVaultSaleByCustomerId = new VaultSaleByCustomerIdRequest ();
+				//Build Transaction
+				BuildTransaction(OAuth);
 
-				// for Cture Transaction Request execuation 
-				VaultSaleByCustomerIDGenerator  VaultSaleByCustomerIDGenerator  = new  VaultSaleByCustomerIDGenerator();
-
-				// Assign the values to the void Transaction Request.
-				requestVaultSaleByCustomerId = BuildRequestFromFields(requestVaultSaleByCustomerId);
-
-				// To make Void Transaction Request and store the response
-				var result = VaultSaleByCustomerIDGenerator.VaultSaleByCustomerIdTrans(OAuth,requestVaultSaleByCustomerId);
-
-				//display the void Transaction Response
-				WriteResults(result);
 
 			} 
 			else // Error for OAuth
@@ -53,6 +42,24 @@ namespace AspNetClientEncryptionExample
 			}
 		}
 
+		public void BuildTransaction(string oAuth)
+		{
+			// Vault Sale by Customer Id Request
+			VaultSaleByCustomerIdRequest  requestVaultSaleByCustomerId = new VaultSaleByCustomerIdRequest ();
+
+			// for Vault Sale by Customer Id Transaction Request execuation 
+			VaultSaleByCustomerIDGenerator  vaultSaleByCustomerIDGenerator  = new  VaultSaleByCustomerIDGenerator();
+
+			// Assign the values to the void Transaction Request.
+			requestVaultSaleByCustomerId = BuildRequestFromFields(requestVaultSaleByCustomerId);
+
+			// To make Void Transaction Request and store the response
+			var result = vaultSaleByCustomerIDGenerator.VaultSaleByCustomerIdTrans(oAuth,requestVaultSaleByCustomerId);
+
+			//display the void Transaction Response
+			WriteResults(result);
+		}
+
 		public void DisplayOAuthError(OAuthToken OAuthResult)
 		{
 			// Optional - Display the OAuth Error 
@@ -62,6 +69,7 @@ namespace AspNetClientEncryptionExample
 			Response.Write (" Token Request: " + "Failed!" + "<br>");
 
 		}
+
 		protected VaultSaleByCustomerIdRequest BuildRequestFromFields(VaultSaleByCustomerIdRequest requestVaultSaleByCustomerId)
 		{
 			// Build the Vault Sale by customerId fields from the input sources.
@@ -75,10 +83,12 @@ namespace AspNetClientEncryptionExample
 
 		}
 
+	
 
-		//Based on the response display the result.
 		protected void WriteResults(PayTraceBasicSaleResponse  result) 
 		{
+			
+			// Based on the response display the result.
 
 			if(null != result.ErrorMsg  && result.success == false )
 			{
@@ -136,13 +146,16 @@ namespace AspNetClientEncryptionExample
 
 				}
 
-				// Do your code for Any additional task !
+				// Do your code for Any additional task!
 			}
 		}
 
-		//Display the void Transaction Response
+
 		protected void DisplaySaleResponse(PayTraceBasicSaleResponse result)
 		{
+
+			//Display the Vault Sale by Customer ID Response
+
 			Response.Write ("<br>"+ "Success : " + result.success + "<br>"); 
 			Response.Write ("response_code : " + result.response_code + "<br>");   
 			Response.Write ("status_message : " + result.status_message + "<br>"); 

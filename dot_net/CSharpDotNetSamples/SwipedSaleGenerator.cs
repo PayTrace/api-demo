@@ -14,7 +14,7 @@ namespace AspNetClientEncryptionExample
 		public PayTraceBasicSaleResponse SwipedSaleTrans(string token, SwipedSaleRequest swipedSaleRequest)
 		{
 			// Header details are available at Authentication header page.
-			string methodUrl = "/v1/transactions/sale/swiped";
+			string methodUrl = ApiEndPointConfiguration.UrlSwipedSale ;
 
 			var jsSerializer = new JavaScriptSerializer();
 
@@ -24,8 +24,8 @@ namespace AspNetClientEncryptionExample
 			System.Web.HttpContext.Current.Response.Write ("<br>" + "Json Request: " + requestJSON + "<br>");
 
 			//call for actual request and response
-			var objPayTraceResponse = new PayTraceResponse();
-			var TempResponse = objPayTraceResponse.ProcessTransaction(methodUrl, token, requestJSON);
+			var payTraceResponse = new PayTraceResponse();
+			var TempResponse = payTraceResponse.ProcessTransaction(methodUrl, token, requestJSON);
 
 			return DeserializeResponse(TempResponse);
 
@@ -34,7 +34,7 @@ namespace AspNetClientEncryptionExample
 		public PayTraceBasicSaleResponse DeserializeResponse(TempResponse TempResponse)
 		{
 			// Create objects to parse JSON data
-			PayTraceBasicSaleResponse BasicSaleResponse= new PayTraceBasicSaleResponse();
+			PayTraceBasicSaleResponse payTraceBasicSaleResponse = new PayTraceBasicSaleResponse();
 			var jsSerializer = new JavaScriptSerializer ();
 
 			//Optional - Display Json Response before parsing into Object.
@@ -43,11 +43,12 @@ namespace AspNetClientEncryptionExample
 			if (null != TempResponse.JsonResponse) 
 			{
 				// parse JSON data into C# obj
-				BasicSaleResponse = jsSerializer.Deserialize<PayTraceBasicSaleResponse>(TempResponse.JsonResponse);
+				payTraceBasicSaleResponse = jsSerializer.Deserialize<PayTraceBasicSaleResponse>(TempResponse.JsonResponse);
 
 			} 
-			BasicSaleResponse.ErrorMsg = TempResponse.ErrorMessage;
-			return BasicSaleResponse;
+			payTraceBasicSaleResponse.ErrorMsg = TempResponse.ErrorMessage;
+
+			return payTraceBasicSaleResponse;
 
 		}
 

@@ -9,22 +9,22 @@ namespace AspNetClientEncryptionExample
 {
 	public class VoidTransactionGenerator
 	{
-		public PayTraceBasicResponse VoidTransactionTrans(string token, VoidTransactionRequest voidTrnasactionRequest)
+		public PayTraceBasicResponse VoidTransactionTrans(string token, VoidTransactionRequest voidTranasactionRequest)
 		{
 
 			// Header details are available at Authentication header page.
-			string methodUrl = "/v1/transactions/void";
+			string methodUrl =ApiEndPointConfiguration.UrlVoidTransaction ;
 
 			var jsSerializer = new JavaScriptSerializer();
 
 			//converting request into JSON string
-			var requestJSON = jsSerializer.Serialize(voidTrnasactionRequest);
+			var requestJSON = jsSerializer.Serialize(voidTranasactionRequest);
 			//Optional - Display Json Request 
 			System.Web.HttpContext.Current.Response.Write ("<br>" + "Json Request: " + requestJSON + "<br>");
 
 			//call for actual request and response
-			var objPayTraceResponse = new PayTraceResponse();
-			var TempResponse = objPayTraceResponse.ProcessTransaction(methodUrl, token, requestJSON);
+			var payTraceResponse = new PayTraceResponse();
+			var TempResponse = payTraceResponse.ProcessTransaction(methodUrl, token, requestJSON);
 
 			return DeserializeResponse(TempResponse);
 		}
@@ -33,7 +33,7 @@ namespace AspNetClientEncryptionExample
 		{
 			// Create an object to parse JSON data
 
-			PayTraceBasicResponse ObjPayTraceBasicResponse= new PayTraceBasicResponse();
+			PayTraceBasicResponse payTraceBasicResponse = new PayTraceBasicResponse();
 			var jsSerializer= new JavaScriptSerializer ();
 
 			//optional - Display the Json Response
@@ -42,10 +42,10 @@ namespace AspNetClientEncryptionExample
 			if (null != TempResponse.JsonResponse) 
 			{
 				// parse JSON data into C# obj
-				ObjPayTraceBasicResponse = jsSerializer.Deserialize<PayTraceBasicResponse>(TempResponse.JsonResponse);
+				payTraceBasicResponse  = jsSerializer.Deserialize<PayTraceBasicResponse>(TempResponse.JsonResponse);
 			}
-			ObjPayTraceBasicResponse.ErrorMsg = TempResponse.ErrorMessage;
-			return ObjPayTraceBasicResponse;
+			payTraceBasicResponse .ErrorMsg = TempResponse.ErrorMessage;
+			return payTraceBasicResponse ;
 		}
 	}
 }

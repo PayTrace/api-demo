@@ -13,39 +13,27 @@ namespace AspNetClientEncryptionExample
 			{
 				// To make a request for the OAuth Token
 				OAuthTokenGenerator tokenGenerator = new OAuthTokenGenerator ();
-				IsOAuthTokenSuccessful(tokenGenerator.GetToken ());
+				VerifyOAuthToken(tokenGenerator.GetToken ());
 			}
 		}
 
 
-		protected void IsOAuthTokenSuccessful(OAuthToken OAuthResult) 
+		protected void VerifyOAuthToken(OAuthToken oAuthResult) 
 		{
 			/// <summary>
-			/// Determines whether OAuthToken is successful and make a request
+			/// Determines whether OAuthToken is successful and build transaction
 			/// </summary>
 
-			if(OAuthResult.errorflag == false)
+			if(oAuthResult.errorflag == false)
 			{
 				// In case of not using any OAuth2.0 Library
 				// Use following when OAuth2.0 is caseinsesitive at Paytrace. 
 				// string OAuth = String.Format ("{0} {1}", OAuthResult.token_type, OAuthResult.access_token);
 				// For now OAuth2.0  is not caseinsesitive at PayTrace - ESC-141 so use 'Bearer'
-				string OAuth = String.Format ("Bearer {0}", OAuthResult.access_token);
+				string OAuth = String.Format ("Bearer {0}", oAuthResult.access_token);
 
-				// Create Customer Profile Request
-				CreateCustomerProfileRequest  requestCreateCustomer = new CreateCustomerProfileRequest ();
-
-				// for Create customer Request execuation 
-				CreateCustomerProfileGenerator CreateCustomerProfileGenerator= new CreateCustomerProfileGenerator();
-
-				// Assign the values to the Create Customer Request.
-				requestCreateCustomer = BuildRequestFromFields(requestCreateCustomer);
-
-				// To make a Create Customer Profile Request and store the response
-				var result = CreateCustomerProfileGenerator.CreateCustomerProfileTrans(OAuth,requestCreateCustomer);
-
-				//display the Create Customer Profile Response
-				WriteResults(result);
+				//Build Transaction
+				BuildTransaction(OAuth);
 
 			} 
 			else // Error for OAuth
@@ -53,9 +41,28 @@ namespace AspNetClientEncryptionExample
 				// Do you code here to handle the token failure
 
 				// Optional - Display the OAuth Error 
-				DisplayOAuthError(OAuthResult);
+				DisplayOAuthError(oAuthResult);
 
 			}
+
+		}
+
+		public void BuildTransaction(string oAuth)
+		{
+			// Create Customer Profile Request
+			CreateCustomerProfileRequest  requestCreateCustomer = new CreateCustomerProfileRequest ();
+
+			// for Create customer Request execuation 
+			CreateCustomerProfileGenerator CreateCustomerProfileGenerator= new CreateCustomerProfileGenerator();
+
+			// Assign the values to the Create Customer Request.
+			requestCreateCustomer = BuildRequestFromFields(requestCreateCustomer);
+
+			// To make a Create Customer Profile Request and store the response
+			var result = CreateCustomerProfileGenerator.CreateCustomerProfileTrans(oAuth,requestCreateCustomer);
+
+			//display the Create Customer Profile Response
+			WriteResults(result);
 
 		}
 
@@ -75,7 +82,7 @@ namespace AspNetClientEncryptionExample
 		{
 			// Build Keyed Sale Request fields from the input source
 
-			CreateCustomerProfileRequest.customer_id = "customerTest132";
+			CreateCustomerProfileRequest.customer_id = "customerTest1001";
 
 			CreateCustomerProfileRequest.credit_card = new CreditCard ();
 			CreateCustomerProfileRequest.credit_card.number = "5454545454545454";

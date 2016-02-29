@@ -12,16 +12,15 @@ namespace AspNetClientEncryptionExample
 			if(this.IsPostBack) 
 			{
 				OAuthTokenGenerator tokenGenerator = new OAuthTokenGenerator ();
-				IsOAuthTokenSuccessful(tokenGenerator.GetToken ());
+				VerifyOAuthToken(tokenGenerator.GetToken ());
 			}
 		}
-		/// <summary>
-		/// Determines whether this instance is O auth token successful the specified OAuthResult.
-		/// </summary>
-		/// <returns><c>true</c> if this instance is O auth token successful the specified OAuthResult; otherwise, <c>false</c>.</returns>
-		/// <param name="OAuthResult">OAuthResult</param>
-		protected void IsOAuthTokenSuccessful(OAuthToken OAuthResult) 
+
+		protected void VerifyOAuthToken(OAuthToken OAuthResult) 
 		{
+			/// <summary>
+			/// Determines whether OAuthToken is successful and make a request
+			/// </summary>
 
 			if(OAuthResult.errorflag == false)
 			{
@@ -31,20 +30,8 @@ namespace AspNetClientEncryptionExample
 				// For now OAuth2.0  is not caseinsesitive at PayTrace - ESC-141 so use 'Bearer'
 				string OAuth = String.Format ("Bearer {0}", OAuthResult.access_token);
 
-				// Keyed Refund Request
-				KeyedRefundRequest requestKeyedRefund = new KeyedRefundRequest();
-
-				// for Keyed Refund Transaction
-				KeyedRefundGenerator keyedRefundGenerator = new KeyedRefundGenerator();
-
-				// Assign the values to the key Refund Request.
-				requestKeyedRefund = BuildRequestFromFields(requestKeyedRefund);
-
-				// To make Keyed Refund Request and store the response
-				var result = keyedRefundGenerator.KeyedRefundTrans(OAuth,requestKeyedRefund);
-
-				//display the Keyed Refund Response
-				WriteResults(result);
+				// Build a Transaction 
+				BuildTransaction (OAuth);
 
 			} 
 			else // Error for OAuth
@@ -52,12 +39,39 @@ namespace AspNetClientEncryptionExample
 				// do you code here to handle the OAuth error
 
 				// Display the OAuth Error - Optional
-				Response.Write (" Http Status Code & Description : " +  OAuthResult.Error.token_error_http  + "<br>");
-				Response.Write (" API Error : " +  OAuthResult.Error.error + "<br>");
-				Response.Write (" API Error Message : " +  OAuthResult.Error.error_description+ "<br>");
-				Response.Write (" Token Request: " + "Failed!" + "<br>");
-
+				DisplayOAuthError(OAuthResult);
 			}
+
+		}
+
+		public void BuildTransaction(string oAuth)
+		{
+			// Keyed Refund Request
+			KeyedRefundRequest requestKeyedRefund = new KeyedRefundRequest();
+
+			// for Keyed Refund Transaction
+			KeyedRefundGenerator keyedRefundGenerator = new KeyedRefundGenerator();
+
+			// Assign the values to the key Refund Request.
+			requestKeyedRefund = BuildRequestFromFields(requestKeyedRefund);
+
+			// To make Keyed Refund Request and store the response
+			var result = keyedRefundGenerator.KeyedRefundTrans(oAuth,requestKeyedRefund);
+
+			//display the Keyed Refund Response
+			WriteResults(result);
+
+		}
+
+
+		public void DisplayOAuthError(OAuthToken OAuthResult)
+		{
+			// Optional - Display the OAuth Error 
+			Response.Write (" Http Status Code & Description : " +  OAuthResult.Error.token_error_http  + "<br>");
+			Response.Write (" API Error : " +  OAuthResult.Error.error + "<br>");
+			Response.Write (" API Error Message : " +  OAuthResult.Error.error_description+ "<br>");
+			Response.Write (" Token Request: " + "Failed!" + "<br>");
+
 		}
 
 		protected KeyedRefundRequest BuildRequestFromFields(KeyedRefundRequest requestKeyedRefund)

@@ -9,6 +9,9 @@ using System.Text;
 namespace AspNetClientEncryptionExample
 {
 	
+	/// <summary>
+	/// Authentication token test demo.  
+	/// </summary>
 	public partial class AuthenticationTokenTest : System.Web.UI.Page
 	{
 		public void BtnAuthClicked (object sender, EventArgs args)
@@ -16,16 +19,18 @@ namespace AspNetClientEncryptionExample
 			if(this.IsPostBack)
 			{
 				OAuthTokenGenerator tokenGenerator = new OAuthTokenGenerator ();
-				WriteResults(tokenGenerator.GetToken ());
+				var result = tokenGenerator.GetToken ();
+				DisplayResults(result);
 			}
 		}
 
-		protected void WriteResults(OAuthToken result) 
+		protected void DisplayResults(OAuthToken result) 
 		{
 			
 			if(result.errorflag == false)
 			{
 				//Display the result - optional
+
 				Response.Write ("access_token  : " + result.access_token + "<br>");    		
 				Response.Write ("token_type  : " + result.token_type + "<br>");    		
 				Response.Write ("expires_in  : " + result.expires_in + "<br>");    		

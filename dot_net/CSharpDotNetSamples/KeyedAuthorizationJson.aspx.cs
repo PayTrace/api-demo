@@ -13,13 +13,17 @@ namespace AspNetClientEncryptionExample
 			{
 				//this is for genrating OAuth Token request
 				OAuthTokenGenerator tokenGenerator = new OAuthTokenGenerator ();
-				IsOAuthTokenSuccessful(tokenGenerator.GetToken ());
+				VerifyOAuthToken(tokenGenerator.GetToken ());
 
 			}
 		}
 
-		protected void IsOAuthTokenSuccessful(OAuthToken OAuthResult) 
+		protected void VerifyOAuthToken(OAuthToken OAuthResult) 
 		{
+			/// <summary>
+			/// Determines whether OAuthToken is successful and make a request
+			/// </summary>
+
 
 			if(OAuthResult.errorflag == false)
 			{
@@ -29,21 +33,9 @@ namespace AspNetClientEncryptionExample
 				// For now OAuth2.0  is not caseinsesitive at PayTrace - ESC-141
 				string OAuth = String.Format ("Bearer {0}", OAuthResult.access_token);
 
-				// Keyed Authorization Request
-				KeyedSaleRequest requestKeyedAuthorization = new KeyedSaleRequest ();
+				//Build Transaction
+				BuildTransaction(OAuth);
 
-				// Keyed Authorization Transaction
-				// TODO Keyed sale and Keyed Authorization are pretty similar to make a request so using same generator class with added Method
-				KeyedSaleGenerator keyedSaleGenerator = new KeyedSaleGenerator();
-
-				// Assign the values to the keyed Authorization Request.
-				requestKeyedAuthorization = BuildRequestFromFields(requestKeyedAuthorization);
-
-				// To make Keyed Authorization Request and store the response
-				var result = keyedSaleGenerator.KeyedAuthorizationTrans(OAuth,requestKeyedAuthorization);
-
-				//display the Keyed Authorization Response
-				WriteResults(result);
 
 			} 
 			else // Error for OAuth
@@ -55,6 +47,25 @@ namespace AspNetClientEncryptionExample
 			}
 		}
 
+		public void BuildTransaction(string oAuth)
+		{
+			// Keyed Authorization Request
+			KeyedSaleRequest requestKeyedAuthorization = new KeyedSaleRequest ();
+
+			// Keyed Authorization Transaction
+			// TODO Keyed sale and Keyed Authorization are pretty similar to make a request so using same generator class with added Method
+			KeyedSaleGenerator keyedSaleGenerator = new KeyedSaleGenerator();
+
+			// Assign the values to the keyed Authorization Request.
+			requestKeyedAuthorization = BuildRequestFromFields(requestKeyedAuthorization);
+
+			// To make Keyed Authorization Request and store the response
+			var result = keyedSaleGenerator.KeyedAuthorizationTrans(oAuth,requestKeyedAuthorization);
+
+			//display the Keyed Authorization Response
+			WriteResults(result);
+
+		}
 		public void DisplayOAuthError(OAuthToken OAuthResult)
 		{
 

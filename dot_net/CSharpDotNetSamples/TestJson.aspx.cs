@@ -5,13 +5,12 @@ using System.Web.UI;
 namespace AspNetClientEncryptionExample
 {
 	
-	public partial class CaptureJson : System.Web.UI.Page
+	public partial class TestJson : System.Web.UI.Page
 	{
-		public void BtnCaptureClicked(object sender, EventArgs args)
+		public void BtnTestClicked(object sender, EventArgs args)
 		{
 			if(this.IsPostBack) 
 			{
-				//this is for genrating OAuth Token request
 				OAuthTokenGenerator tokenGenerator = new OAuthTokenGenerator ();
 				VerifyOAuthToken(tokenGenerator.GetToken ());
 			}
@@ -19,9 +18,6 @@ namespace AspNetClientEncryptionExample
 
 		protected void VerifyOAuthToken(OAuthToken oAuthResult) 
 		{
-			/// <summary>
-			/// Determines whether OAuthToken is successful and make a request
-			/// </summary>
 
 			if(oAuthResult.errorflag == false)
 			{
@@ -46,59 +42,59 @@ namespace AspNetClientEncryptionExample
 
 		public void BuildTransaction(string oAuth)
 		{
-			// Capture Transaction Request
-			CaptureTransactionRequest  requestCaptureTransaction = new CaptureTransactionRequest ();
+			// Vault Sale by Customer Id Request
+			VaultSaleByCustomerIdRequest  requestVaultSaleByCustomerId = new VaultSaleByCustomerIdRequest ();
 
-			// for Cature Transaction Request execuation 
-			CaptureTransactionGenerator CaptureTransactionGenerator = new CaptureTransactionGenerator();
+			// for Vault Sale by Customer Id Transaction Request execuation 
+			TestJsonGenerator  vaultSaleByCustomerIDGenerator  = new  TestJsonGenerator();
 
 			// Assign the values to the void Transaction Request.
-			requestCaptureTransaction = BuildRequestFromFields(requestCaptureTransaction);
+			requestVaultSaleByCustomerId = BuildRequestFromFields(requestVaultSaleByCustomerId);
 
 			// To make Void Transaction Request and store the response
-			var result = CaptureTransactionGenerator.CaptureTransactionTrans(oAuth,requestCaptureTransaction);
+			var result = vaultSaleByCustomerIDGenerator.TestVaultSaleByCustomerIdTrans(oAuth,requestVaultSaleByCustomerId);
 
 			//display the void Transaction Response
 			WriteResults(result);
-
 		}
-
 
 		public void DisplayOAuthError(OAuthToken OAuthResult)
 		{
-
-			// Do you code here, in case of OAuth token failure
 			// Optional - Display the OAuth Error 
+			//System.Web.HttpContext.Current.Response.Write ("<br>" + "Http Status Code & Description : " +  OAuthResult.Error.token_error_http  + "<br>");
 			Response.Write (" Http Status Code & Description : " +  OAuthResult.Error.token_error_http  + "<br>");
 			Response.Write (" API Error : " +  OAuthResult.Error.error + "<br>");
 			Response.Write (" API Error Message : " +  OAuthResult.Error.error_description+ "<br>");
 			Response.Write (" Token Request: " + "Failed!" + "<br>");
 
 		}
-		protected CaptureTransactionRequest BuildRequestFromFields(CaptureTransactionRequest requestCaptureTransaction)
-		{
-			// Build Capture Transaction fields from the input sources.
-			// Transaction_id should be collected from previously Authorised API response - Transaction ID or if you have stored anywhere in DB or in any Variables. 
-			// Optional - it shows how to get value from the form text box.
-			// requestCaptureTransaction.amount= 1.0 ;
-			requestCaptureTransaction.transaction_id = Convert.ToInt64(Request.Form["TransactionNumber"]) ;
 
-			return requestCaptureTransaction;
+
+		protected VaultSaleByCustomerIdRequest BuildRequestFromFields(VaultSaleByCustomerIdRequest requestVaultSaleByCustomerId)
+		{
+			// Build the Vault Sale by customerId fields from the input sources.
+			// Customer ID can be obtained from any sources where it is stored previously. 
+			// Strorage source could be at the PayTrace repository(if used create customer profile earlier) or at the client repository.  
+
+			requestVaultSaleByCustomerId.amount = 0.501;
+			requestVaultSaleByCustomerId.customer_id = "customerTest12";
+
+			return requestVaultSaleByCustomerId;
 
 		}
-			
-		//Based on the response display the result.
-		protected void WriteResults(PayTraceExternalTransResponse  result) 
+
+		protected void WriteResults( PayTraceBasicSaleResponse result) 
 		{
 
 			if(null != result.ErrorMsg  && result.success == false )
 			{
-				Response.Write ("<br>" + "Http Error Code & Error : " + result.ErrorMsg + "<br>");
+				Response.Write ( "<br>" + "Http Error Code & Error : " + result.ErrorMsg + "<br>");
 
 				Response.Write ("Success : " + result.success + "<br>"); 
 				Response.Write ("response_code : " + result.response_code + "<br>");   
-				Response.Write ("status_message : " + result.status_message +  "<br>"); 
-				Response.Write ("external_transaction_id : " + result.external_transaction_id + "<br>");
+				Response.Write ("status_message : " + result.status_message + "<br>"); 
+				Response.Write ("external_transaction_id : " + result.external_transaction_id + "<br>"); 
+				//Response.Write ("masked_card_number : " + result.masked_card_number + "<br>"); 
 
 				//Check the actual API errors with appropriate code
 				Response.Write (" API errors : "+ "<br>");
@@ -107,29 +103,24 @@ namespace AspNetClientEncryptionExample
 					// to read Error message with each error code in array.
 					foreach (var errorMessage in (string[])item.Value) 
 					{
-						//Do your code here to handle an specific error based on the error key code 
-
-						//Optional - display
-						Response.Write (item.Key  + "=" + errorMessage + "<br>");
+						Response.Write (item.Key  + "=" + errorMessage + "<BR>");
 					}
 				}
-				//Optional
-				Response.Write ("<br>" + "Capture Transaction: " + "Failed!" + "<br>");	
+				Response.Write ("Keyed sale: " + "Failed!" + "<br>");	
 
 			} 
 			else
 			{
 				// Do your code when Response is available based on the response_code. 
 				// Please refer PayTrace-HTTP Status and Error Codes page for possible errors and Response Codes
-				if (result.response_code == 112 && result.success == true ) //for transation successfully approved 
+				// For transation successfully approved 
+				if (result.response_code == 101 && result.success == true ) 
 				{
 					// Do you code for any additional verification
 
 					// Display Response - optional
 					DisplaySaleResponse(result);
-
-					//Optional
-					Response.Write ("Capture Transaction : " + "Success!" + "<br>");		
+					Response.Write ("sale: " + "Success!" + "<br>");		
 
 				}
 
@@ -140,8 +131,6 @@ namespace AspNetClientEncryptionExample
 
 					//Display Response
 					DisplaySaleResponse(result);
-
-					//Optional : Provide Appropriate message/action
 					Response.Write ("Error : " + result.ErrorMsg + "<br>");
 
 				}
@@ -150,16 +139,24 @@ namespace AspNetClientEncryptionExample
 			}
 		}
 
-		//Display the void Transaction Response
-		protected void DisplaySaleResponse(PayTraceExternalTransResponse result)
+		//Display the Keyed Sale Response
+		protected void DisplaySaleResponse(PayTraceBasicSaleResponse result)
 		{
-			Response.Write ("<br>"+ "Success : " + result.success + "<br>"); 
+			Response.Write ( "<br>" + "Success : " + result.success + "<br>"); 
 			Response.Write ("response_code : " + result.response_code + "<br>");   
 			Response.Write ("status_message : " + result.status_message + "<br>"); 
 			Response.Write ("transaction_id : " + result.transaction_id + "<br>"); 
-			Response.Write ("external_transaction_id : " + result.external_transaction_id + "<br>");
+			Response.Write ("approval_code : " + result.approval_code + "<br>"); 
+			Response.Write ("approval_message : " + result.approval_message + "<br>"); 
+			Response.Write ("avs_response : " + result.avs_response + "<br>"); 
+			Response.Write ("csc_response : " + result.csc_response + "<br>"); 
+			Response.Write ("external_transaction_id : " + result.external_transaction_id + "<br>"); 
+			//Response.Write ("masked_card_number : " + result.masked_card_number + "<br>"); 
 		}
 
+
 	}
+
+
 }
 

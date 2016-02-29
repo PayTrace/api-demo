@@ -3,8 +3,8 @@ using System.Net;
 using System.IO;
 using System.Text;
 using System.Collections.Generic ;
+using System.Runtime.Serialization ;
 using System.Web ;
-
 
 
 namespace AspNetClientEncryptionExample
@@ -131,6 +131,57 @@ namespace AspNetClientEncryptionExample
 
 	}
 
+	[DataContract]
+	public class PayTraceBasicSaleResponseTest
+	{
+		/// <summary>
+		///  following properties are Available on most of the Sale Responses with the API
+		/// </summary>
+		[DataMember(Name = "success")]
+		public bool Success { get; set; }
+
+		[DataMember(Name = "response_code")]
+		public int ResponseCode { get; set; }
+
+		/// <summary>
+		/// Gets or sets the status message.
+		/// </summary>
+		[DataMember(Name = "status_message")]
+		public string StatusMessage { get; set; }
+
+		/// <summary>
+		/// transaction_id is not a part of Error Response , Create Customer Profile Requests 
+		/// </summary>
+		[DataMember(Name = "transaction_id")]
+		public long TransactionId { get; set; }
+
+		// Optional : To hold http error or any unexpected error, this is not a part of PayTrace API Error Response.
+		public string ErrorMsg { get; set; } 
+
+		/// <summary>
+		/// to store the error Key with PayTrace API Response
+		/// </summary>
+		[DataMember(Name = "errors")]
+		//public Dictionary<string,string[]> ApiErrors { get; set; } 
+		public Dictionary< string, object > ApiErrors { get; set; } 
+
+		[DataMember(Name = "approval_code")]
+		public string ApprovalCode { get; set; }
+
+		[DataMember(Name = "approval_message")]
+		public string ApprovalMessage { get; set; }
+
+		[DataMember(Name = "avs_response")]
+		public string AvsResponse { get; set; }
+
+		[DataMember(Name = "csc_response")]
+		public string CscResponse { get; set; }
+
+		[DataMember(Name = "external_transaction_id")]
+		public string ExternalTransactionId { get; set; }
+
+	}
+
 
 	public class PayTraceResponse
 	{
@@ -140,8 +191,7 @@ namespace AspNetClientEncryptionExample
 
 			// Header details are available at Authentication header page.
 
-			String Baseurl = "https://api.paytrace.com"; //Production.
-			//String Baseurl = "https://apitest2.paytrace.com"; // test
+			string Baseurl = "https://api.paytrace.com"; //Production.
 
 			// variables for request stream and Respone reader 
 			Stream dataStream = null;
@@ -153,7 +203,8 @@ namespace AspNetClientEncryptionExample
 			try
 			{
 				//Set the request header
-				// Create a request using a URL that can receive a post. 
+
+				//Create a request using a URL that can receive a post. 
 				WebRequest request = WebRequest.Create(Baseurl + MethodUrl);
 
 				// Set the Method property of the request to POST.

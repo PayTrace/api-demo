@@ -19,7 +19,7 @@ namespace AspNetClientEncryptionExample
 			/// </summary>
 
 			// Header details are available at Authentication header page.
-			string methodUrl = "/v1/transactions/sale/keyed";
+			string methodUrl = ApiEndPointConfiguration.UrlKeyedSale ;
 
 			var jsSerializer = new JavaScriptSerializer();
 
@@ -47,7 +47,7 @@ namespace AspNetClientEncryptionExample
 
 
 			// Header details are available at Authentication header page.
-			string methodUrl = "/v1/transactions/authorization/keyed";
+			string methodUrl = ApiEndPointConfiguration.UrlKeyedAuthorization;
 
 			var jsSerializer = new JavaScriptSerializer();
 
