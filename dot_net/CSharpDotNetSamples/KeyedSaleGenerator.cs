@@ -14,6 +14,39 @@ namespace AspNetClientEncryptionExample
 		public KeyedSaleResponse KeyedSaleTrans(string token, KeyedSaleRequest keyedSaleRequest)
 		{
 			/// <summary>
+			/// Method for builiding Transaction with Json Request,call the actual transaction execution method and call for Deseralize Json 
+			/// and Return the object.
+			/// Returns the KeyedSaleResponse Type 
+			/// </summary>
+
+			// Header details are available at Authentication header page.
+			string methodUrl = ApiEndPointConfiguration.UrlKeyedSale ;
+
+			//converting request into JSON string
+			var requestJSON = JsonSerializer.GetSeralizedString(keyedSaleRequest);
+
+			//Optional - Display Json Request 
+			//System.Web.HttpContext.Current.Response.Write ("<br>" + "Json Request: " + requestJSON + "<br>");
+
+			//call for actual request and response
+			var PayTraceResponse = new PayTraceResponse();
+			var tempResponse = PayTraceResponse.ProcessTransaction(methodUrl, token, requestJSON);
+
+			//Create and assign the deseralized object to appropriate response type
+			var keyedSaleResponse = new KeyedSaleResponse();
+			keyedSaleResponse = JsonSerializer.DeserializeResponse<KeyedSaleResponse>(tempResponse);
+
+			//Assign the http error 
+			JsonSerializer.AssignError(tempResponse,(PayTraceBasicResponse)keyedSaleResponse); 
+
+			//Return the Desearlized object
+			return keyedSaleResponse;
+		}
+
+
+		/*public KeyedSaleResponse KeyedSaleTrans(string token, KeyedSaleRequest keyedSaleRequest)
+		{
+			/// <summary>
 			/// Method for builiding json request before making actual web request
 			/// Returns the KeyedSaleResponse Type 
 			/// </summary>
@@ -36,15 +69,14 @@ namespace AspNetClientEncryptionExample
 
 			//Return the Desearlized object
 			return DeserializeResponse(TempResponse);
-		}
+		} */
 
-		public KeyedSaleResponse KeyedAuthorizationTrans(string token, KeyedSaleRequest keyedSaleRequest)
+		/*public KeyedSaleResponse KeyedAuthorizationTrans(string token, KeyedSaleRequest keyedSaleRequest)
 		{
 			/// <summary>
 			/// Method for builiding json request before making actual web request
 			/// Returns the KeyedSaleResponse Type as it is exactly same as Keyed Authorization.
 			/// </summary>
-
 
 			// Header details are available at Authentication header page.
 			string methodUrl = ApiEndPointConfiguration.UrlKeyedAuthorization;
@@ -84,7 +116,7 @@ namespace AspNetClientEncryptionExample
 			}
 			ObjKeyedSaleResponse.ErrorMsg = TempResponse.ErrorMessage;
 			return ObjKeyedSaleResponse;
-		}
+		}*/
 
 
 			

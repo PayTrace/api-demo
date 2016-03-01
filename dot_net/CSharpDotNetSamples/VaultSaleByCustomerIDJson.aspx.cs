@@ -48,15 +48,15 @@ namespace AspNetClientEncryptionExample
 			VaultSaleByCustomerIdRequest  requestVaultSaleByCustomerId = new VaultSaleByCustomerIdRequest ();
 
 			// for Vault Sale by Customer Id Transaction Request execuation 
-			VaultSaleByCustomerIDGenerator  vaultSaleByCustomerIDGenerator  = new  VaultSaleByCustomerIDGenerator();
+			VaultSaleByCustomerIdGenerator  vaultSaleByCustomerIdGenerator  = new  VaultSaleByCustomerIdGenerator();
 
 			// Assign the values to the void Transaction Request.
 			requestVaultSaleByCustomerId = BuildRequestFromFields(requestVaultSaleByCustomerId);
 
 			// To make Void Transaction Request and store the response
-			var result = vaultSaleByCustomerIDGenerator.VaultSaleByCustomerIdTrans(oAuth,requestVaultSaleByCustomerId);
+			var result = vaultSaleByCustomerIdGenerator.VaultSaleByCustomerIdTrans(oAuth,requestVaultSaleByCustomerId);
 
-			//display the void Transaction Response
+			// To Display the void Transaction Response
 			WriteResults(result);
 		}
 
@@ -76,7 +76,7 @@ namespace AspNetClientEncryptionExample
 			// Customer ID can be obtained from any sources where it is stored previously. 
 			// Strorage source could be at the PayTrace repository(if used create customer profile earlier) or at the client repository.  
 
-			requestVaultSaleByCustomerId.amount = 0.501;
+			requestVaultSaleByCustomerId.amount = 0.99;
 			requestVaultSaleByCustomerId.customer_id = "customerTest123";
 
 			return requestVaultSaleByCustomerId;

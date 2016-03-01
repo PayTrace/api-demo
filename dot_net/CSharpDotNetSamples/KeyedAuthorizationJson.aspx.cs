@@ -36,7 +36,6 @@ namespace AspNetClientEncryptionExample
 				//Build Transaction
 				BuildTransaction(OAuth);
 
-
 			} 
 			else // Error for OAuth
 			{
@@ -52,15 +51,14 @@ namespace AspNetClientEncryptionExample
 			// Keyed Authorization Request
 			KeyedSaleRequest requestKeyedAuthorization = new KeyedSaleRequest ();
 
-			// Keyed Authorization Transaction
-			// TODO Keyed sale and Keyed Authorization are pretty similar to make a request so using same generator class with added Method
-			KeyedSaleGenerator keyedSaleGenerator = new KeyedSaleGenerator();
+			// For Keyed Authorization Transaction request
+			KeyedAuthorizationGenerator keyedAuthorizationGenerator = new KeyedAuthorizationGenerator();
 
 			// Assign the values to the keyed Authorization Request.
 			requestKeyedAuthorization = BuildRequestFromFields(requestKeyedAuthorization);
 
 			// To make Keyed Authorization Request and store the response
-			var result = keyedSaleGenerator.KeyedAuthorizationTrans(oAuth,requestKeyedAuthorization);
+			var result = keyedAuthorizationGenerator.KeyedAuthorizationTrans(oAuth,requestKeyedAuthorization);
 
 			//display the Keyed Authorization Response
 			WriteResults(result);
@@ -82,12 +80,14 @@ namespace AspNetClientEncryptionExample
 		{
 			// Build Keyed Sale Request fields from the input source
 
-			requestKeyedSale.amount = 3.50;
+			requestKeyedSale.amount = 4.50;
 
 			requestKeyedSale.credit_card = new CreditCard ();
 			requestKeyedSale.credit_card.number = "4111111111111111";
 			requestKeyedSale.credit_card.expiration_month = "12";
 			requestKeyedSale.credit_card.expiration_year = "2019";
+
+			// Commented assignments lines will give an error response
 			//requestKeyedSale.credit_card.expiration_month = "13";
 			//requestKeyedSale.credit_card.expiration_year = "2011";
 			requestKeyedSale.csc = "999";

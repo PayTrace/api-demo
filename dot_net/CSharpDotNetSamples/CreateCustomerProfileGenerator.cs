@@ -10,7 +10,41 @@ namespace AspNetClientEncryptionExample
 {
 	public class CreateCustomerProfileGenerator
 	{
-		public CreateCustomerProfileResponse CreateCustomerProfileTrans(string token, CreateCustomerProfileRequest CreateCustomerProfileRequest)
+
+
+		public CreateCustomerProfileResponse CreateCustomerProfileTrans(string token, CreateCustomerProfileRequest createCustomerProfileRequest)
+		{
+			/// <summary>
+			/// Method for builiding Transaction with Json Request,call the actual transaction execution method and call for Deseralize Json 
+			/// and Return the object.
+			/// Returns the KeyedSaleResponse Type 
+			/// </summary>
+
+			// Header details are available at Authentication header page.
+			string methodUrl = ApiEndPointConfiguration.UrlCreateCustomer ;
+
+			//converting request into JSON string
+			var requestJSON = JsonSerializer.GetSeralizedString(createCustomerProfileRequest);
+
+			//Optional - Display Json Request 
+			//System.Web.HttpContext.Current.Response.Write ("<br>" + "Json Request: " + requestJSON + "<br>");
+
+			//call for actual request and response
+			var payTraceResponse = new PayTraceResponse();
+			var tempResponse = payTraceResponse.ProcessTransaction(methodUrl, token, requestJSON);
+
+			//Create and assign the deseralized object to appropriate response type
+			var createCustomerProfileResponse = new CreateCustomerProfileResponse();
+			createCustomerProfileResponse = JsonSerializer.DeserializeResponse<CreateCustomerProfileResponse>(tempResponse);
+
+			//Assign the http error if any
+			JsonSerializer.AssignError(tempResponse,(PayTraceBasicResponse)createCustomerProfileResponse);
+
+			//Return the Desearlized object
+			return createCustomerProfileResponse;
+		}
+
+		/*public CreateCustomerProfileResponse CreateCustomerProfileTrans(string token, CreateCustomerProfileRequest CreateCustomerProfileRequest)
 		{
 
 			// Header details are available at Authentication header page.
@@ -47,7 +81,7 @@ namespace AspNetClientEncryptionExample
 			}
 			ObjCreateCustomerProfileResponse.ErrorMsg = TempResponse.ErrorMessage;
 			return ObjCreateCustomerProfileResponse;
-		}
+		}*/
 	}
 
 }

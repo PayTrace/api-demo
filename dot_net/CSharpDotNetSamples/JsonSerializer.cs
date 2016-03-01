@@ -44,6 +44,18 @@ namespace AspNetClientEncryptionExample
 
 			return returnObject; 
 		}
+
+		public static void DisplayJsonRequest(string result)
+		{
+			//Optional - Display Json Request 
+			System.Web.HttpContext.Current.Response.Write ("<br>" + "Json Request: " + result + "<br>");
+		}
+
+		public static void DisplayJsonResponse(string result)
+		{
+			//optional - Display the Json Response
+			System.Web.HttpContext.Current.Response.Write ("<br>" + "Json Response: " + result + "<br>");
+		}
 	}
 
 }

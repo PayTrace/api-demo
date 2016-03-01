@@ -15,10 +15,9 @@ namespace AspNetClientEncryptionExample
 		public OAuthToken GetToken()
 		{
 			// Those URL are available at Authentication header page.
-			string Baseurl = ApiEndPointConfiguration.BaseUrl ; 
-			string OAuthUrl= ApiEndPointConfiguration.UrlOAuth;
+			//string Baseurl = ApiEndPointConfiguration.BaseUrl ; 
+			//string OAuthUrl= ApiEndPointConfiguration.UrlOAuth;
 				
-
 			// variables for request stream and Respone reader 
 			Stream dataStream = null;
 			StreamReader reader = null;
@@ -30,7 +29,7 @@ namespace AspNetClientEncryptionExample
 			try
 			{
 				// Create a request using a URL that can receive a post. 
-				WebRequest request = WebRequest.Create(ApiEndPointConfiguration.BaseUrl+ ApiEndPointConfiguration.UrlOAuth);
+				WebRequest request = WebRequest.Create(ApiEndPointConfiguration.BaseUrl + ApiEndPointConfiguration.UrlOAuth);
 
 				// Set the Method property of the request to POST.
 				request.Method = "POST";
@@ -45,8 +44,8 @@ namespace AspNetClientEncryptionExample
 				request.ContentType = "application/x-www-form-urlencoded";
 
 				// Create Request data and convert it to a byte array.
-				//String requestData = "grant_type=password&username=demo123&password=demo123";
-				String requestData = "grant_type=password&username=RupaApi&password=Rup@D3m0";
+				//string requestData = "grant_type=password&username=demo123&password=demo123";
+				string requestData = "grant_type=password&username=RupaApi&password=Rup@D3m0";
 				byte[] byteArray = Encoding.UTF8.GetBytes (requestData);
 
 				// Set the ContentLength property of the WebRequest.
@@ -71,7 +70,7 @@ namespace AspNetClientEncryptionExample
 				reader = new StreamReader (dataStream);
 
 				// Read the content.
-				String responseFromServer = reader.ReadToEnd ();
+				string responseFromServer = reader.ReadToEnd ();
 
 				// Display the Response content
 				result = AuthTokenData(responseFromServer);
@@ -81,6 +80,7 @@ namespace AspNetClientEncryptionExample
 			{
 
 				// This exception will be raised if the server didn't return 200 - OK within response.
+
 				// Retrieve more information about the error 
 
 				result.errorflag = true;
@@ -120,7 +120,7 @@ namespace AspNetClientEncryptionExample
 			return result;
 		}
 
-		protected OAuthToken AuthTokenData(String ResponseData)
+		protected OAuthToken AuthTokenData(string ResponseData)
 		{
 			// Create an object to parse JSON data
 			OAuthToken ObjOauthToken = null;

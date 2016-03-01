@@ -186,12 +186,12 @@ namespace AspNetClientEncryptionExample
 	public class PayTraceResponse
 	{
 
-		public TempResponse ProcessTransaction(string MethodUrl,string token, string requestData)
+		public TempResponse ProcessTransaction(string methodUrl,string token, string requestData)
 		{
 
 			// Header details are available at Authentication header page.
 
-			string Baseurl = "https://api.paytrace.com"; //Production.
+			string Baseurl = ApiEndPointConfiguration.BaseUrl; //Production.
 
 			// variables for request stream and Respone reader 
 			Stream dataStream = null;
@@ -205,7 +205,7 @@ namespace AspNetClientEncryptionExample
 				//Set the request header
 
 				//Create a request using a URL that can receive a post. 
-				WebRequest request = WebRequest.Create(Baseurl + MethodUrl);
+				WebRequest request = WebRequest.Create(Baseurl + methodUrl);
 
 				// Set the Method property of the request to POST.
 				request.Method = "POST";

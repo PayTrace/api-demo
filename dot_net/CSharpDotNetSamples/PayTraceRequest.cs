@@ -112,7 +112,9 @@ namespace AspNetClientEncryptionExample
 		/// </summary>
 
 		public double amount { get; set; }
+
 		//declare 'encrypted_swipe' instead of 'swipe' in case of using PayTrace client side encryption
+		//this will include both track1 and track2 data
 		public string swipe { get; set; }  
 	}
 

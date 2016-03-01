@@ -139,6 +139,7 @@
     <Compile Include="TestJsonGenerator.cs" />
     <Compile Include="PayTraceRequest.cs" />
     <Compile Include="JsonSerializer.cs" />
+    <Compile Include="KeyedAuthorizationGenerator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
