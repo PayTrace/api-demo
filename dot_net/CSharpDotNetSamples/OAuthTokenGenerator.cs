@@ -5,6 +5,7 @@ using System.Net;
 using System.IO;
 using System.Text;
 using System.Web.Script.Serialization ; 
+using Newtonsoft.Json;
 
 namespace AspNetClientEncryptionExample
 {
@@ -15,8 +16,8 @@ namespace AspNetClientEncryptionExample
 		public OAuthToken GetToken()
 		{
 			// Those URL are available at Authentication header page.
-			//string Baseurl = ApiEndPointConfiguration.BaseUrl ; 
-			//string OAuthUrl= ApiEndPointConfiguration.UrlOAuth;
+			string BaseUrl = ApiEndPointConfiguration.BaseUrl ; 
+			string OAuthUrl= ApiEndPointConfiguration.UrlOAuth;
 				
 			// variables for request stream and Respone reader 
 			Stream dataStream = null;
@@ -24,12 +25,12 @@ namespace AspNetClientEncryptionExample
 			WebResponse response = null;
 
 			//object 
-			OAuthToken result = new OAuthToken();
+			OAuthToken OAuthTokenResult = new OAuthToken();
 
 			try
 			{
 				// Create a request using a URL that can receive a post. 
-				WebRequest request = WebRequest.Create(ApiEndPointConfiguration.BaseUrl + ApiEndPointConfiguration.UrlOAuth);
+				WebRequest request = WebRequest.Create(BaseUrl + OAuthUrl);
 
 				// Set the Method property of the request to POST.
 				request.Method = "POST";
@@ -73,7 +74,7 @@ namespace AspNetClientEncryptionExample
 				string responseFromServer = reader.ReadToEnd ();
 
 				// Display the Response content
-				result = AuthTokenData(responseFromServer);
+				OAuthTokenResult = AuthTokenData(responseFromServer);
 
 			}
 			catch(WebException e) 
@@ -83,7 +84,7 @@ namespace AspNetClientEncryptionExample
 
 				// Retrieve more information about the error 
 
-				result.errorflag = true;
+				OAuthTokenResult.errorflag = true;
 
 				if (e.Response != null)
 				{
@@ -91,15 +92,14 @@ namespace AspNetClientEncryptionExample
 					{
 						if (responseStream != null)
 						{
-							JavaScriptSerializer js = new JavaScriptSerializer ();
 							string temp = (new StreamReader(responseStream)).ReadToEnd();
-							result.Error = js.Deserialize<OAuthError>(temp);
+							OAuthTokenResult.Error = JsonConvert.DeserializeObject<OAuthError>(temp);
 						}
 					}
 
 					//Retrive http Error 
 					HttpWebResponse err = (HttpWebResponse)e.Response;
-					result.Error.token_error_http = ((int)err.StatusCode) + " " + err.StatusDescription;
+					OAuthTokenResult.Error.token_error_http = ((int)err.StatusCode) + " " + err.StatusDescription;
 				}	
 				//Do your own error logging in this case
 			}
@@ -117,23 +117,23 @@ namespace AspNetClientEncryptionExample
 			}
 
 			//Do your code here
-			return result;
+			return OAuthTokenResult;
 		}
 
-		protected OAuthToken AuthTokenData(string ResponseData)
+		protected OAuthToken AuthTokenData(string responseData)
 		{
 			// Create an object to parse JSON data
-			OAuthToken ObjOauthToken = null;
-			JavaScriptSerializer js = new JavaScriptSerializer ();
-			
-			if (null != ResponseData) 
+			OAuthToken objOauthToken = null;
+		
+			if (null != responseData) 
 			{
 				// parase JSON data into C# obj
-				ObjOauthToken = js.Deserialize<OAuthToken> (ResponseData);
+				objOauthToken = JsonConvert.DeserializeObject<OAuthToken>(responseData);
+
 				//optional as by default it will be false 		
-				ObjOauthToken.errorflag = false; 	
+				objOauthToken.errorflag = false; 	
 			} 
-			return ObjOauthToken;
+			return objOauthToken;
 		}
 	}
 

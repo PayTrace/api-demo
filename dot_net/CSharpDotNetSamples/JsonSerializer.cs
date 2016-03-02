@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using System.Collections.Generic ;
 using System.Web.Script.Serialization;
+using Newtonsoft.Json ;
 
 namespace AspNetClientEncryptionExample
 {
@@ -11,13 +12,15 @@ namespace AspNetClientEncryptionExample
 	{
 		public static string GetSeralizedString<T>(T obj) 
 		{ 
-			var jsSerializer = new JavaScriptSerializer();
+			//var jsSerializer = new JavaScriptSerializer();
 
 			//converting request into JSON string
-			var requestJSON = jsSerializer.Serialize(obj);
-				
+			//var requestJSON = jsSerializer.Serialize(obj);
+
+			var requestJSON = JsonConvert.SerializeObject(obj);	
+
 			//Optional - Display Json Request 
-			System.Web.HttpContext.Current.Response.Write ("<br>" + "Json Request: " + requestJSON + "<br>");
+			DisplayJsonRequest(requestJSON);
 
 			return requestJSON; 
 		}
@@ -31,15 +34,18 @@ namespace AspNetClientEncryptionExample
 		{ 
 			T returnObject = default(T);
 
-			var jsSerializer= new JavaScriptSerializer ();
+			//var jsSerializer= new JavaScriptSerializer ();
 
 			//optional - Display the Json Response
-			System.Web.HttpContext.Current.Response.Write ("<br>" + "Json Response: " + tempResponse.JsonResponse + "<br>");
+			DisplayJsonResponse (tempResponse.JsonResponse);
+		
 
 			if (null != tempResponse.JsonResponse) 
 			{
 				// parse JSON data into C# obj
-				returnObject = jsSerializer.Deserialize<T>(tempResponse.JsonResponse);
+				//returnObject = jsSerializer.Deserialize<T>(tempResponse.JsonResponse);
+				returnObject = JsonConvert.DeserializeObject<T>(tempResponse.JsonResponse);
+
 			}
 
 			return returnObject; 

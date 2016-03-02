@@ -8,39 +8,39 @@ using System.Web ;
 
 
 namespace AspNetClientEncryptionExample
-{
+{	
+	/// <summary>
+	/// class to hold temprory Json Response and Error message for any response.
+	/// </summary>
 	public class TempResponse
 	{
-		/// <summary>
-		/// class to hold temprory Json Response and Error message for any response.
-		/// </summary>
 		public string JsonResponse { get; set; }
 		public string ErrorMessage { get; set; }
 	}
 
+	/// <summary>
+	/// class for the holding  oAuth Data 
+	/// </summary>
 	public class OAuthToken
 	{
-		/// <summary>
-		/// class for the holding oAuth Data 
-		/// </summary>
-
 		public string access_token { get; set; }
 		public string token_type { get; set; }
 		public int expires_in { get; set; }
 
 		//for Errors
-		// Optional - flag for error
-		public Boolean errorflag { get; set;}
 		// Object for PayTrace Error Json Key
 		public OAuthError Error { get; set; }
+
+		// Optional - flag for error
+		public Boolean errorflag { get; set;}
+
 	}
 
+	/// <summary>
+	/// Class that holds Error for the OAuth token
+	/// </summary>
 	public class OAuthError
 	{
-		/// <summary>
-		/// Class that holds Error for the OAuth token
-		/// </summary>
-
 		// Json key - returned by PayTrace API for error
 		public string error { get; set; } 
 
@@ -51,14 +51,13 @@ namespace AspNetClientEncryptionExample
 		public string token_error_http{ get; set;}  
 	}
 
+	/// <summary>
+	/// /// Properties Available on most of the transaction responses with the API
+	/// </summary>
 	public class PayTraceBasicResponse
 	{
-		/// <summary>
-		/// Properties Available on most of the transaction responses with the API
-		/// </summary>
 
 		public bool success { get; set; }
-	
 		public int response_code { get; set; }
 
 		/// <summary>
@@ -78,23 +77,23 @@ namespace AspNetClientEncryptionExample
 		public Dictionary<string,string[]> errors { get; set; } 
 
 	}
+
+	/// <summary>
+	/// Following properties are Available on some of the Responses with the API
+	/// This class is used by some of the child classes on this page 
+	/// As well as for the Capture Transaction 
+	/// </summary>
 	public class PayTraceExternalTransResponse : PayTraceBasicResponse
 	{
-		/// <summary>
-		/// Following properties are Available on some of the Responses with the API
-		/// This class is used by some of the child classes on this page 
-		/// As well as for the Capture Transaction 
-		/// </summary>
-
 		public string external_transaction_id { get; set; }
-
 	}
 
+
+	/// <summary>
+	/// following properties are Available on most of the Sale Responses with the API
+	/// </summary>
 	public class PayTraceBasicSaleResponse : PayTraceExternalTransResponse
 	{
-		/// <summary>
-		///  following properties are Available on most of the Sale Responses with the API
-		/// </summary>
 		public string approval_code { get; set; }
 		public string approval_message { get; set; }
 		public string avs_response { get; set; }
@@ -102,30 +101,32 @@ namespace AspNetClientEncryptionExample
 
 	}
 
+	/// <summary>
+	/// following properties are Specific to Keyed Sale Response and  Keyed Authorization Response
+	/// </summary>
 	public class KeyedSaleResponse : PayTraceBasicSaleResponse
 	{
-		/// <summary>
-		/// following properties are Specific to Keyed Sale Response and  Keyed Authorization Response
-		/// </summary>
 		public string masked_card_number { get; set; }
 	}
 
+
+	/// <summary>
+	/// following properties are Specific to Keyed Refund Response
+	/// you could given generic name to above class KeyedSaleResposne and use it for the Keyed Refund  
+	/// To avoid any confusion - Created seperate class for most of the transaction
+	/// </summary>
 	public class KeyedRefundResponse: PayTraceBasicSaleResponse
 	{
-		/// <summary>
-		/// following properties are Specific to Keyed Refund Response
-		/// you could given generic name to above class KeyedSaleResposne and use it for the Keyed Refund  
-		/// To avoid any confusion - Created seperate class for most of the transaction
-		/// </summary>
 		public string masked_card_number { get; set; }
 	}
 
+
+	/// <summary>
+	/// following properties are Specific to the Create Customer Profile response.
+	/// Declare any other properties based on the Security checking page settings and DisCreationary Data Tab
+	/// </summary>
 	public class CreateCustomerProfileResponse : PayTraceBasicResponse
 	{
-		/// <summary>
-		/// following properties are Specific to the Create Customer Profile response.
-		/// Declare any other properties based on the Security checking page settings and DisCreationary Data Tab
-		/// </summary>
 		public string customer_id { get; set; }
 		public string masked_card_number { get; set; }
 
