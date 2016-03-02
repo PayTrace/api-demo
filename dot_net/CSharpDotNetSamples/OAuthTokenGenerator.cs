@@ -84,7 +84,7 @@ namespace AspNetClientEncryptionExample
 
 				// Retrieve more information about the error 
 
-				OAuthTokenResult.errorflag = true;
+				OAuthTokenResult.ErrorFlag = true;
 
 				if (e.Response != null)
 				{
@@ -93,13 +93,13 @@ namespace AspNetClientEncryptionExample
 						if (responseStream != null)
 						{
 							string temp = (new StreamReader(responseStream)).ReadToEnd();
-							OAuthTokenResult.Error = JsonConvert.DeserializeObject<OAuthError>(temp);
+							OAuthTokenResult.ObjError = JsonConvert.DeserializeObject<OAuthError>(temp);
 						}
 					}
 
 					//Retrive http Error 
 					HttpWebResponse err = (HttpWebResponse)e.Response;
-					OAuthTokenResult.Error.token_error_http = ((int)err.StatusCode) + " " + err.StatusDescription;
+					OAuthTokenResult.ObjError.HttpTokenError = ((int)err.StatusCode) + " " + err.StatusDescription;
 				}	
 				//Do your own error logging in this case
 			}
@@ -131,7 +131,7 @@ namespace AspNetClientEncryptionExample
 				objOauthToken = JsonConvert.DeserializeObject<OAuthToken>(responseData);
 
 				//optional as by default it will be false 		
-				objOauthToken.errorflag = false; 	
+				objOauthToken.ErrorFlag = false; 	
 			} 
 			return objOauthToken;
 		}

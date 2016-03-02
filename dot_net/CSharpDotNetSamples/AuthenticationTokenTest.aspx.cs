@@ -27,24 +27,25 @@ namespace AspNetClientEncryptionExample
 		protected void DisplayResults(OAuthToken result) 
 		{
 			
-			if(result.errorflag == false)
+			if(result.ErrorFlag == false)
 			{
-				//Display the result - optional
+                //Display the result - optional
 
-				Response.Write ("access_token  : " + result.access_token + "<br>");    		
-				Response.Write ("token_type  : " + result.token_type + "<br>");    		
-				Response.Write ("expires_in  : " + result.expires_in + "<br>");    		
-				Response.Write ("Token Request: " + "Success!" + "<br>");			
+                Response.Write("OAuth Token Request: " + "Success!" + "<br>");
+                Response.Write ("access_token  : " + result.AccessToken + "<br>");    		
+				Response.Write ("token_type  : " + result.TokenType  + "<br>");    		
+				Response.Write ("expires_in  : " + result.ExpiresIn + "<br>");    		
+							
 			} 
 			else
 			{
-				// Do you code here to handle the error for the OAuth token
+                // Do you code here to handle the error for the OAuth token
 
-				// display the error - optional
-				Response.Write (" Http Status Code & Description : " +  result.Error.token_error_http  + "<br>");
-				Response.Write (" API Error : " +  result.Error.error + "<br>");
-				Response.Write (" API Error Message : " +  result.Error.error_description+ "<br>");
-				Response.Write (" Token Request: " + "Failed!" + "<br>");
+                // display the error - optional
+                Response.Write (" OAuth Token Request: " + "Failed!" + "<br>");
+                Response.Write (" Http Status Code & Description : " +  result.ObjError.HttpTokenError  + "<br>");
+				Response.Write (" API Error : " +  result.ObjError.Error + "<br>");
+				Response.Write (" API Error Message : " +  result.ObjError.ErrorDescription+ "<br>");
 			}
 		}
 

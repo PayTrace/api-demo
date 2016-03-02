@@ -23,13 +23,13 @@ namespace AspNetClientEncryptionExample
 			/// <summary>
 			/// Determines whether Oauth token is successful with the specified OAuthResult or not.
 			/// </summary>
-			if(oAuthResult.errorflag == false)
+			if(oAuthResult.ErrorFlag == false)
 			{
 				// In case of not using any OAuth2.0 Library
 				// Use following when OAuth2.0 is caseinsesitive at Paytrace. 
 				// string OAuth = String.Format ("{0} {1}", OAuthResult.token_type, OAuthResult.access_token);
 				// For now OAuth2.0  is not caseinsesitive at PayTrace - ESC-141 so use 'Bearer'
-				string OAuth = String.Format ("Bearer {0}", oAuthResult.access_token);
+				string OAuth = String.Format ("Bearer {0}", oAuthResult.AccessToken);
 
 				//Build Transaction
 				BuildTransaction(OAuth);
@@ -40,9 +40,9 @@ namespace AspNetClientEncryptionExample
 				// Do you code here to handle the OAuth error
 
 				// Display the OAuth Error - Optional
-				Response.Write (" Http Status Code & Description : " +  oAuthResult.Error.token_error_http  + "<br>");
-				Response.Write (" API Error : " +  oAuthResult.Error.error + "<br>");
-				Response.Write (" API Error Message : " +  oAuthResult.Error.error_description+ "<br>");
+				Response.Write (" Http Status Code & Description : " +  oAuthResult.ObjError.HttpTokenError  + "<br>");
+				Response.Write (" API Error : " +  oAuthResult.ObjError.Error + "<br>");
+				Response.Write (" API Error Message : " +  oAuthResult.ObjError.ErrorDescription+ "<br>");
 				Response.Write (" Token Request: " + "Failed!" + "<br>");
 
 			}

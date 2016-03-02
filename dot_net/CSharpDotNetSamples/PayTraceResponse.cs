@@ -5,6 +5,7 @@ using System.Text;
 using System.Collections.Generic ;
 using System.Runtime.Serialization ;
 using System.Web ;
+using Newtonsoft.Json;
 
 
 namespace AspNetClientEncryptionExample
@@ -23,16 +24,21 @@ namespace AspNetClientEncryptionExample
 	/// </summary>
 	public class OAuthToken
 	{
-		public string access_token { get; set; }
-		public string token_type { get; set; }
-		public int expires_in { get; set; }
+        [JsonProperty("access_token")]
+        public string AccessToken { get; set; }
 
-		//for Errors
+        [JsonProperty("token_type")]
+        public string TokenType { get; set; }
+
+        [JsonProperty("expires_in")]
+        public int ExpiresIn { get; set; }
+
+		// for Errors
 		// Object for PayTrace Error Json Key
-		public OAuthError Error { get; set; }
+		public OAuthError ObjError { get; set; }
 
-		// Optional - flag for error
-		public Boolean errorflag { get; set;}
+		// Optional - flag for error 
+		public Boolean ErrorFlag { get; set;}
 
 	}
 
@@ -41,14 +47,17 @@ namespace AspNetClientEncryptionExample
 	/// </summary>
 	public class OAuthError
 	{
-		// Json key - returned by PayTrace API for error
-		public string error { get; set; } 
+        // Json key - returned by PayTrace API for error
+        [JsonProperty("error")]
+        public string Error { get; set; }
 
-		// Json key - returned by PayTrace API for error
-		public string error_description { get; set; }
+        // Json key - returned by PayTrace API for error
+        [JsonProperty("error_description")]
+        public string ErrorDescription { get; set; }
 
 		// optional - for http error : 
-		public string token_error_http{ get; set;}  
+        // this proeprty is userdefined and it has been used to store a http error 
+		public string HttpTokenError{ get; set;}  
 	}
 
 	/// <summary>
