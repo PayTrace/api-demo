@@ -48,6 +48,9 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -64,6 +67,7 @@
     <Content Include="CaptureJson.aspx" />
     <Content Include="VaultSaleByCustomerIDJson.aspx" />
     <Content Include="TestJson.aspx" />
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">

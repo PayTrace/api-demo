@@ -14,3 +14,4 @@
 /Users/rmodha/Documents/api-demo/dot_net/CSharpDotNetSamples/bin/AspNetClientEncryptionExample.dll
 /Users/rmodha/Documents/api-demo/dot_net/CSharpDotNetSamples/obj/Debug/AspNetClientEncryptionExample.dll
 /Users/rmodha/Documents/api-demo/dot_net/CSharpDotNetSamples/obj/Debug/AspNetClientEncryptionExample.dll.mdb
+/Users/rmodha/Documents/api-demo/dot_net/CSharpDotNetSamples/bin/Newtonsoft.Json.dll
