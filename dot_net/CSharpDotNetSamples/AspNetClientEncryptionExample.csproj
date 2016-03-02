@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -11,6 +11,17 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -60,15 +71,18 @@
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="clientsideencryption.aspx.cs">
       <DependentUpon>clientsideencryption.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AuthenticationTokenTest.aspx.cs">
       <DependentUpon>AuthenticationTokenTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AuthenticationTokenTest.aspx.designer.cs">
       <DependentUpon>AuthenticationTokenTest.aspx</DependentUpon>
@@ -79,10 +93,12 @@
     </Compile>
     <Compile Include="KeyedSaleJson.aspx.cs">
       <DependentUpon>KeyedSaleJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="KeyedSaleGenerator.cs" />
     <Compile Include="SwipedSaleJson.aspx.cs">
       <DependentUpon>SwipedSaleJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SwipedSaleJson.aspx.designer.cs">
       <DependentUpon>SwipedSaleJson.aspx</DependentUpon>
@@ -91,6 +107,7 @@
     <Compile Include="PayTraceResponse.cs" />
     <Compile Include="KeyedRefundJson.aspx.cs">
       <DependentUpon>KeyedRefundJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="KeyedRefundJson.aspx.designer.cs">
       <DependentUpon>KeyedRefundJson.aspx</DependentUpon>
@@ -99,12 +116,14 @@
     <Compile Include="VoidTransactionGenerator.cs" />
     <Compile Include="VoidTransactionJson.aspx.cs">
       <DependentUpon>VoidTransactionJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="VoidTransactionJson.aspx.designer.cs">
       <DependentUpon>VoidTransactionJson.aspx</DependentUpon>
     </Compile>
     <Compile Include="CreateCustomerJson.aspx.cs">
       <DependentUpon>CreateCustomerJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CreateCustomerJson.aspx.designer.cs">
       <DependentUpon>CreateCustomerJson.aspx</DependentUpon>
@@ -112,12 +131,14 @@
     <Compile Include="CreateCustomerProfileGenerator.cs" />
     <Compile Include="KeyedAuthorizationJson.aspx.cs">
       <DependentUpon>KeyedAuthorizationJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="KeyedAuthorizationJson.aspx.designer.cs">
       <DependentUpon>KeyedAuthorizationJson.aspx</DependentUpon>
     </Compile>
     <Compile Include="CaptureJson.aspx.cs">
       <DependentUpon>CaptureJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CaptureJson.aspx.designer.cs">
       <DependentUpon>CaptureJson.aspx</DependentUpon>
@@ -125,6 +146,7 @@
     <Compile Include="CaptureTransactionGenerator.cs" />
     <Compile Include="VaultSaleByCustomerIDJson.aspx.cs">
       <DependentUpon>VaultSaleByCustomerIDJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="VaultSaleByCustomerIDJson.aspx.designer.cs">
       <DependentUpon>VaultSaleByCustomerIDJson.aspx</DependentUpon>
@@ -132,6 +154,7 @@
     <Compile Include="VaultSaleByCustomerIDGenerator.cs" />
     <Compile Include="TestJson.aspx.cs">
       <DependentUpon>TestJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="TestJson.aspx.designer.cs">
       <DependentUpon>TestJson.aspx</DependentUpon>
@@ -148,5 +171,22 @@
         <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
       </Properties>
     </MonoDevelop>
+    <VisualStudio>
+      <FlavorProperties GUID="{349C5851-65DF-11DA-9384-00065B846F21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49541/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v14.0\WebApplications\Microsoft.WebApplication.targets" />
 </Project>

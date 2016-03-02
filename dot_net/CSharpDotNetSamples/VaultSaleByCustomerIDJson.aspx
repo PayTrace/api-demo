@@ -9,7 +9,7 @@
 		<asp:Button id="BtnVaultSale" runat="server" Text="Vault Sale By Customer ID!" OnClick="BtnVaultSaleClicked" />
 	</form>
 	<br>
-	<a href="http://127.0.0.1:8080/Default.aspx">Back to Home </a> 
+	<a href="Default.aspx">Back to Home </a> 
 	<br>
 </body>
 </html>

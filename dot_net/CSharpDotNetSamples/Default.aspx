@@ -26,34 +26,34 @@
 	<table style="width:40%">
 		<tr><th>Select any option </th></tr>
 		<tr> 
-			<td><a href="http://127.0.0.1:8080/clientsideencryption.aspx">ClientSide Encryption </a> </td>
+			<td><a href="clientsideencryption.aspx">ClientSide Encryption </a> </td>
 		</tr>   
 		<tr>
-    		<td><a href="http://127.0.0.1:8080/AuthenticationTokenTest.aspx">Authentication Token</a> </td>
+    		<td><a href="AuthenticationTokenTest.aspx">Authentication Token</a> </td>
   		</tr>
 		<tr>
-			<td><a href="http://127.0.0.1:8080/KeyedSaleJson.aspx">Keyed Sale (Card not present)</a> </td>
+			<td><a href="KeyedSaleJson.aspx">Keyed Sale (Card not present)</a> </td>
   		</tr>
 		<tr>
-			<td><a href="http://127.0.0.1:8080/SwipedSaleJson.aspx">Swiped Sale (Card present)</a> </td>
+			<td><a href="SwipedSaleJson.aspx">Swiped Sale (Card present)</a> </td>
  		 </tr>
 		<tr>
-			<td><a href="http://127.0.0.1:8080/KeyedAuthorizationJson.aspx">Keyed Authorization(Card-Not Present)</a> </td>
+			<td><a href="KeyedAuthorizationJson.aspx">Keyed Authorization(Card-Not Present)</a> </td>
   		</tr>
 		<tr>
-			<td><a href="http://127.0.0.1:8080/CaptureJson.aspx">Capture Authorized Transaction</a> </td>
+			<td><a href="CaptureJson.aspx">Capture Authorized Transaction</a> </td>
   		</tr>
 		<tr>
-			<td><a href="http://127.0.0.1:8080/KeyedRefundJson.aspx">Keyed Refund</a> </td>
+			<td><a href="KeyedRefundJson.aspx">Keyed Refund</a> </td>
  		 </tr>
 		<tr>
-			<td><a href="http://127.0.0.1:8080/VoidTransactionJson.aspx">Void Transaction</a> </td>
+			<td><a href="VoidTransactionJson.aspx">Void Transaction</a> </td>
   		</tr>
 		<tr>
-			<td><a href="http://127.0.0.1:8080/CreateCustomerJson.aspx">Create Customer Profile</a> </td>
+			<td><a href="CreateCustomerJson.aspx">Create Customer Profile</a> </td>
  		</tr>
  		<tr>
-    		<td><a href="http://127.0.0.1:8080/VaultSaleByCustomerIDJson.aspx">Vault Sale By Customer ID</a> </td>
+    		<td><a href="VaultSaleByCustomerIDJson.aspx">Vault Sale By Customer ID</a> </td>
   		</tr>
 	
 </table>
