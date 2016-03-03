@@ -66,11 +66,12 @@ namespace AspNetClientEncryptionExample
 
 		public void DisplayOAuthError(OAuthToken OAuthResult)
 		{
-			// Optional - Display the OAuth Error 
-			Response.Write (" Http Status Code & Description : " +  OAuthResult.ObjError.HttpTokenError  + "<br>");
+            // Optional - Display the OAuth Error 
+            Response.Write (" OAuth Token Request: " + "Failed!" + "<br>");
+            Response.Write (" Http Status Code & Description : " +  OAuthResult.ObjError.HttpTokenError  + "<br>");
 			Response.Write (" API Error : " +  OAuthResult.ObjError.Error + "<br>");
 			Response.Write (" API Error Message : " +  OAuthResult.ObjError.ErrorDescription+ "<br>");
-			Response.Write (" Token Request: " + "Failed!" + "<br>");
+			
 
 		}
 
@@ -102,18 +103,18 @@ namespace AspNetClientEncryptionExample
 		protected void WriteResults(KeyedRefundResponse result) 
 		{
 
-			if(null != result.ErrorMsg  && result.success == false )
+			if(null != result.HttpErrorMessage  && result.Success == false )
 			{
-				Response.Write ("<br>" + "Http Error Code & Error : " + result.ErrorMsg + "<br>");
+				Response.Write ("<br>" + "Http Error Code & Error : " + result.HttpErrorMessage + "<br>");
 
-				Response.Write ("Success : " + result.success + "<br>"); 
-				Response.Write ("response_code : " + result.response_code + "<br>");   
-				Response.Write ("status_message : " + result.status_message + "<br>"); 
-				Response.Write ("external_transaction_id : " + result.external_transaction_id + "<br>"); 
-				Response.Write("Masked_card_number : " + result.masked_card_number + "<br>");
+				Response.Write ("Success : " + result.Success + "<br>"); 
+				Response.Write ("response_code : " + result.ResponseCode + "<br>");   
+				Response.Write ("status_message : " + result.StatusMessage + "<br>"); 
+				Response.Write ("external_transaction_id : " + result.ExternalTransactionId + "<br>"); 
+				Response.Write("Masked_card_number : " + result.MaskedCardNumber + "<br>");
 				//Check the actual API errors with appropriate code
 				Response.Write (" API errors : "+ "<br>");
-				foreach (var item in result.errors) 
+				foreach (var item in result.TransactionErrors) 
 				{	
 					// to read Error message with each error code in array.
 					foreach (var errorMessage in (string[])item.Value) 
@@ -128,7 +129,7 @@ namespace AspNetClientEncryptionExample
 			{
 				// Do your code when Response is available based on the response_code. 
 				// Please refer PayTrace-HTTP Status and Error Codes page for possible errors and Response Codes
-				if (result.response_code == 106 && result.success == true ) //for transation successfully approved 
+				if (result.ResponseCode == 106 && result.Success == true ) //for transation successfully approved 
 				{
 					// Do you code for any additional verification
 
@@ -147,7 +148,7 @@ namespace AspNetClientEncryptionExample
 					DisplaySaleResponse(result);
 
 					//optional : Provide Appropriate message/action
-					Response.Write ("Error : " + result.ErrorMsg + "<br>");
+					Response.Write ("Error : " + result.HttpErrorMessage + "<br>");
 
 				}
 
@@ -158,12 +159,12 @@ namespace AspNetClientEncryptionExample
 		//Display the Keyed Refund Response
 		protected void DisplaySaleResponse(KeyedRefundResponse result)
 		{
-			Response.Write ( "<br>" + "Success : " + result.success + "<br>"); 
-			Response.Write ("response_code : " + result.response_code + "<br>");   
-			Response.Write ("status_message : " + result.status_message + "<br>"); 
-			Response.Write ("transaction_id : " + result.transaction_id + "<br>"); 
-			Response.Write ("external_transaction_id : " + result.external_transaction_id + "<br>"); 
-			Response.Write("Masked_card_number : " + result.masked_card_number + "<br>");
+			Response.Write ( "<br>" + "Success : " + result.Success + "<br>"); 
+			Response.Write ("response_code : " + result.ResponseCode + "<br>");   
+			Response.Write ("status_message : " + result.StatusMessage + "<br>"); 
+			Response.Write ("transaction_id : " + result.TransactionId + "<br>"); 
+			Response.Write ("external_transaction_id : " + result.ExternalTransactionId + "<br>"); 
+			Response.Write("Masked_card_number : " + result.MaskedCardNumber + "<br>");
 		}
 
 	}

@@ -27,7 +27,7 @@ namespace AspNetClientEncryptionExample
 
 		public static void AssignError(TempResponse tempResponse, PayTraceBasicResponse basicResponse)
 		{
-			basicResponse.ErrorMsg = tempResponse.ErrorMessage;
+			basicResponse.HttpErrorMessage = tempResponse.ErrorMessage;
 		}
 
 		public static T DeserializeResponse<T>(TempResponse tempResponse)

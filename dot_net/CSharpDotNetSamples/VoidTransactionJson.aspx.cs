@@ -37,13 +37,13 @@ namespace AspNetClientEncryptionExample
 			} 
 			else // Error for OAuth
 			{
-				// Do you code here to handle the OAuth error
+                // Do you code here to handle the OAuth error
 
-				// Display the OAuth Error - Optional
-				Response.Write (" Http Status Code & Description : " +  oAuthResult.ObjError.HttpTokenError  + "<br>");
+                // Display the OAuth Error - Optional
+                Response.Write(" OAuth Token Request: " + "Failed!" + "<br>");
+                Response.Write (" Http Status Code & Description : " +  oAuthResult.ObjError.HttpTokenError  + "<br>");
 				Response.Write (" API Error : " +  oAuthResult.ObjError.Error + "<br>");
 				Response.Write (" API Error Message : " +  oAuthResult.ObjError.ErrorDescription+ "<br>");
-				Response.Write (" Token Request: " + "Failed!" + "<br>");
 
 			}
 		}
@@ -85,17 +85,17 @@ namespace AspNetClientEncryptionExample
 		protected void WriteResults(PayTraceBasicResponse result) 
 		{
 
-			if(null != result.ErrorMsg  && result.success == false )
+			if(null != result.HttpErrorMessage  && result.Success == false )
 			{
-				Response.Write ("<br>" + "Http Error Code & Error : " + result.ErrorMsg + "<br>");
+				Response.Write ("<br>" + "Http Error Code & Error : " + result.HttpErrorMessage + "<br>");
 
-				Response.Write ("Success : " + result.success + "<br>"); 
-				Response.Write ("response_code : " + result.response_code + "<br>");   
-				Response.Write ("status_message : " + result.status_message +  "<br>"); 
+				Response.Write ("Success : " + result.Success + "<br>"); 
+				Response.Write ("response_code : " + result.ResponseCode + "<br>");   
+				Response.Write ("status_message : " + result.StatusMessage +  "<br>"); 
 
 				//Check the actual API errors with appropriate code
 				Response.Write (" API errors : "+ "<br>");
-				foreach (var item in result.errors) 
+				foreach (var item in result.TransactionErrors) 
 				{	
 					// to read Error message with each error code in array.
 					foreach (var errorMessage in (string[])item.Value) 
@@ -111,7 +111,7 @@ namespace AspNetClientEncryptionExample
 			{
 				// Do your code when Response is available based on the response_code. 
 				// Please refer PayTrace-HTTP Status and Error Codes page for possible errors and Response Codes
-				if (result.response_code == 109 && result.success == true ) //for transation successfully approved 
+				if (result.ResponseCode == 109 && result.Success == true ) //for transation successfully approved 
 				{
 					// Do you code for any additional verification
 
@@ -132,7 +132,7 @@ namespace AspNetClientEncryptionExample
 					DisplaySaleResponse(result);
 
 					//Optional : Provide Appropriate message/action
-					Response.Write ("Error : " + result.ErrorMsg + "<br>");
+					Response.Write ("Error : " + result.HttpErrorMessage + "<br>");
 
 				}
 
@@ -143,10 +143,10 @@ namespace AspNetClientEncryptionExample
 		//Display the void Transaction Response
 		protected void DisplaySaleResponse(PayTraceBasicResponse result)
 		{
-			Response.Write ("<br>"+ "Success : " + result.success + "<br>"); 
-			Response.Write ("response_code : " + result.response_code + "<br>");   
-			Response.Write ("status_message : " + result.status_message + "<br>"); 
-			Response.Write ("transaction_id : " + result.transaction_id + "<br>"); 
+			Response.Write ("<br>"+ "Success : " + result.Success + "<br>"); 
+			Response.Write ("response_code : " + result.ResponseCode + "<br>");   
+			Response.Write ("status_message : " + result.StatusMessage + "<br>"); 
+			Response.Write ("transaction_id : " + result.TransactionId + "<br>"); 
 
 		}
 

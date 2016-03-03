@@ -66,24 +66,30 @@ namespace AspNetClientEncryptionExample
 	public class PayTraceBasicResponse
 	{
 
-		public bool success { get; set; }
-		public int response_code { get; set; }
+        [JsonProperty("success")]
+		public bool Success { get; set; }
 
-		/// <summary>
-		/// Gets or sets the status message.
-		/// </summary>
-		public string status_message { get; set; }
+        [JsonProperty("response_code")]
+        public int ResponseCode { get; set; }
 
-		/// <summary>
-		/// transaction_id is not a part of Error Response , Create Customer Profile Requests 
-		/// </summary>
-		public long transaction_id { get; set; }
+        /// <summary>
+        /// Gets or sets the status message.
+        /// </summary>
+        [JsonProperty("status_message")]
+        public string StatusMessage { get; set; }
+
+        /// <summary>
+        /// transaction_id is not a part of Error Response , Create Customer Profile Requests 
+        /// </summary>
+        [JsonProperty("transaction_id")]
+        public long TransactionId { get; set; }
 
 		// Optional : To hold http error or any unexpected error, this is not a part of PayTrace API Error Response.
-		public string ErrorMsg { get; set; } 
+		public string HttpErrorMessage { get; set; }
 
-		// to store the error Key with PayTrace API Response
-		public Dictionary<string,string[]> errors { get; set; } 
+        // to store the error Key with PayTrace API Response
+        [JsonProperty("errors")]
+        public Dictionary<string,string[]> TransactionErrors { get; set; } 
 
 	}
 
@@ -94,39 +100,53 @@ namespace AspNetClientEncryptionExample
 	/// </summary>
 	public class PayTraceExternalTransResponse : PayTraceBasicResponse
 	{
-		public string external_transaction_id { get; set; }
+        [JsonProperty("external_transaction_id")]
+        public string ExternalTransactionId { get; set; }
 	}
 
 
 	/// <summary>
-	/// following properties are Available on most of the Sale Responses with the API
+	/// PayTraceBasicSaleResponse Class 
+    /// following properties are Available on most of the Sale Responses with the API
 	/// </summary>
 	public class PayTraceBasicSaleResponse : PayTraceExternalTransResponse
 	{
-		public string approval_code { get; set; }
-		public string approval_message { get; set; }
-		public string avs_response { get; set; }
-		public string csc_response { get; set; }
+
+        [JsonProperty("approval_code")]
+        public string ApprovalCode { get; set; }
+
+        [JsonProperty("approval_message")]
+        public string ApprovalMessage { get; set; }
+
+        [JsonProperty("avs_response")]
+        public string AvsResponse { get; set; }
+
+        [JsonProperty("csc_response")]
+        public string CscResponse { get; set; }
 
 	}
 
-	/// <summary>
-	/// following properties are Specific to Keyed Sale Response and  Keyed Authorization Response
-	/// </summary>
-	public class KeyedSaleResponse : PayTraceBasicSaleResponse
+    /// <summary>
+    /// KeyedSaleResponse Class 
+    /// following properties are Specific to Keyed Sale Response and Keyed Authorization Response
+    /// </summary>
+    public class KeyedSaleResponse : PayTraceBasicSaleResponse
 	{
-		public string masked_card_number { get; set; }
+        [JsonProperty("masked_card_number")]
+        public string MaskedCardNumber { get; set; }
 	}
 
 
-	/// <summary>
-	/// following properties are Specific to Keyed Refund Response
-	/// you could given generic name to above class KeyedSaleResposne and use it for the Keyed Refund  
-	/// To avoid any confusion - Created seperate class for most of the transaction
-	/// </summary>
-	public class KeyedRefundResponse: PayTraceBasicSaleResponse
+    /// <summary>
+    /// KeyedRefundResponse Class 
+    /// following properties are Specific to Keyed Refund Response
+    /// you could given generic name to above class KeyedSaleResposne and use it for the Keyed Refund  
+    /// To avoid any confusion - Created seperate class for most of the transaction
+    /// </summary>
+    public class KeyedRefundResponse: PayTraceBasicSaleResponse
 	{
-		public string masked_card_number { get; set; }
+        [JsonProperty("masked_card_number")]
+        public string MaskedCardNumber { get; set; }
 	}
 
 
@@ -136,62 +156,13 @@ namespace AspNetClientEncryptionExample
 	/// </summary>
 	public class CreateCustomerProfileResponse : PayTraceBasicResponse
 	{
-		public string customer_id { get; set; }
-		public string masked_card_number { get; set; }
+        [JsonProperty("customer_id")]
+        public string CustomerId { get; set; }
+
+        [JsonProperty("masked_card_number")]
+        public string MaskedCardNumber { get; set; }
 
 	}
-
-	[DataContract]
-	public class PayTraceBasicSaleResponseTest
-	{
-		/// <summary>
-		///  following properties are Available on most of the Sale Responses with the API
-		/// </summary>
-		[DataMember(Name = "success")]
-		public bool Success { get; set; }
-
-		[DataMember(Name = "response_code")]
-		public int ResponseCode { get; set; }
-
-		/// <summary>
-		/// Gets or sets the status message.
-		/// </summary>
-		[DataMember(Name = "status_message")]
-		public string StatusMessage { get; set; }
-
-		/// <summary>
-		/// transaction_id is not a part of Error Response , Create Customer Profile Requests 
-		/// </summary>
-		[DataMember(Name = "transaction_id")]
-		public long TransactionId { get; set; }
-
-		// Optional : To hold http error or any unexpected error, this is not a part of PayTrace API Error Response.
-		public string ErrorMsg { get; set; } 
-
-		/// <summary>
-		/// to store the error Key with PayTrace API Response
-		/// </summary>
-		[DataMember(Name = "errors")]
-		//public Dictionary<string,string[]> ApiErrors { get; set; } 
-		public Dictionary< string, object > ApiErrors { get; set; } 
-
-		[DataMember(Name = "approval_code")]
-		public string ApprovalCode { get; set; }
-
-		[DataMember(Name = "approval_message")]
-		public string ApprovalMessage { get; set; }
-
-		[DataMember(Name = "avs_response")]
-		public string AvsResponse { get; set; }
-
-		[DataMember(Name = "csc_response")]
-		public string CscResponse { get; set; }
-
-		[DataMember(Name = "external_transaction_id")]
-		public string ExternalTransactionId { get; set; }
-
-	}
-
 
 	public class PayTraceResponse
 	{
@@ -257,7 +228,7 @@ namespace AspNetClientEncryptionExample
 				// Read the content.
 				string responseFromServer = reader.ReadToEnd();
 
-				// Convert Json Response into Process Response Object.
+				// Assign/store Transaction Json Response to TempResposne Object 
 				objTempResponse.JsonResponse = responseFromServer;
 
 				return objTempResponse ;
@@ -270,8 +241,7 @@ namespace AspNetClientEncryptionExample
 
 				if (e.Response != null)
 				{
-
-					//to retrieve the actual JSON response when any error occurs.
+                    //to retrieve the actual JSON response when any error occurs.
 					using (var responseStream = e.Response.GetResponseStream())
 					{
 						if (responseStream != null)
