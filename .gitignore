@@ -14,6 +14,13 @@
 # Ignore all logfiles and tempfiles.
 /log/*.logfiles
 /tmp
+dot_net/CSharpDotNetSamples/Backup/
+dot_net/CSharpDotNetSamples/Backup1/
+dot_net/CSharpDotNetSamples/Backup2
+dot_net/CSharpDotNetSamples/UpgradeLog.htm
+dot_net/CSharpDotNetSamples/UpgradeLog2.htm
+dot_net/CSharpDotNetSamples/UpgradeLog3.htm
+dot_net/CSharpDotNetSamples/UpgradeLog4.htm
 
 # Ignore MAC System files
 .DS_Store
