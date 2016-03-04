@@ -29,7 +29,7 @@
 			<td><a href="ClientSideEncryptionDemo.aspx">ClientSide Encryption </a> </td>
 		</tr>   
 		<tr>
-    		<td><a href="AuthenticationTokenTest.aspx">Authentication Token</a> </td>
+    		<td><a href="AuthenticationTokenJson.aspx">Authentication Token</a> </td>
   		</tr>
 		<tr>
 			<td><a href="KeyedSaleJson.aspx">Keyed Sale (Card not present)</a> </td>

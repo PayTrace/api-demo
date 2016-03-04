@@ -77,7 +77,8 @@ namespace AspNetClientEncryptionExample
 			// Strorage source could be at the PayTrace repository(if used create customer profile earlier) or at the client repository.  
 
 			requestVaultSaleByCustomerId.amount = 0.99;
-			requestVaultSaleByCustomerId.customer_id = "customerTest123";
+            //Providing valid existing Customer ID is one of the key for the succssful transaction.
+            requestVaultSaleByCustomerId.customer_id = "customerTest2Demo";
 
 			return requestVaultSaleByCustomerId;
 

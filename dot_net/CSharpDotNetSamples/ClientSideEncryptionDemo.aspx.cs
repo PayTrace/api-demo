@@ -9,7 +9,7 @@ namespace AspNetClientEncryptionExample
 {
     public partial class ClientSideEncryptionDemo : System.Web.UI.Page
     {
-       
+       //Please make sure to add Publickey file '.Pem' file as a MIME type by launching IIS as an administrator 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (this.IsPostBack)

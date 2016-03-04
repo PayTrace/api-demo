@@ -10,17 +10,16 @@ namespace AspNetClientEncryptionExample
 {
 	public class VaultSaleByCustomerIdGenerator
 	{
-
-		public PayTraceBasicSaleResponse VaultSaleByCustomerIdTrans(string token, VaultSaleByCustomerIdRequest vaultSaleByCustomerIdRequest)
+        /// <summary>
+        /// Method for builiding Transaction with Json Request,call the actual transaction execution method and call for Deseralize Json 
+        /// and Return the object.
+        /// Returns the PayTraceBasicSaleResponse  Type 
+        /// </summary>
+        public PayTraceBasicSaleResponse VaultSaleByCustomerIdTrans(string token, VaultSaleByCustomerIdRequest vaultSaleByCustomerIdRequest)
 		{
-			/// <summary>
-			/// Method for builiding Transaction with Json Request,call the actual transaction execution method and call for Deseralize Json 
-			/// and Return the object.
-			/// Returns the KeyedSaleResponse Type 
-			/// </summary>
 
-			// Header details are available at Authentication header page.
-			string methodUrl = ApiEndPointConfiguration.UrlVaultSaleByCustomerId ;
+            // Header details are available at Authentication header page.
+            string methodUrl = ApiEndPointConfiguration.UrlVaultSaleByCustomerId ;
 
 			//converting request into JSON string
 			var requestJSON = JsonSerializer.GetSeralizedString(vaultSaleByCustomerIdRequest);
@@ -41,48 +40,8 @@ namespace AspNetClientEncryptionExample
 
 			//Return the Desearlized object
 			return payTraceBasicSaleResponse;
+
 		}
-
-
-		/*public PayTraceBasicSaleResponse VaultSaleByCustomerIdTrans(string token, VaultSaleByCustomerIdRequest vaultSaleByCustomerIdRequest)
-		{
-
-			// Header details are available at Authentication header page.
-			string methodUrl = ApiEndPointConfiguration.UrlVaultSaleByCustomerId ;
-
-			var jsSerializer = new JavaScriptSerializer();
-
-			//converting request into JSON string
-			var requestJSON = jsSerializer.Serialize(vaultSaleByCustomerIdRequest);
-			//Optional - Display Json Request 
-			System.Web.HttpContext.Current.Response.Write ("<br>" + "Json Request: " + requestJSON + "<br>");
-
-			//call for actual request and response
-			var payTraceResponse = new PayTraceResponse();
-			var TempResponse = payTraceResponse.ProcessTransaction(methodUrl, token, requestJSON);
-
-			return DeserializeResponse(TempResponse);
-		}
-
-		protected PayTraceBasicSaleResponse DeserializeResponse(TempResponse TempResponse)
-		{
-			// Create an object to parse JSON data
-
-			PayTraceBasicSaleResponse payTraceBasicSaleResponse = new PayTraceBasicSaleResponse();
-			var jsSerializer= new JavaScriptSerializer ();
-
-			//optional - Display the Json Response
-			System.Web.HttpContext.Current.Response.Write ("<br>" + "Json Response: " + TempResponse.JsonResponse + "<br>");
-
-			if (null != TempResponse.JsonResponse) 
-			{
-				// parse JSON data into C# obj
-				payTraceBasicSaleResponse = jsSerializer.Deserialize<PayTraceBasicSaleResponse>(TempResponse.JsonResponse);
-			}
-			payTraceBasicSaleResponse.ErrorMsg = TempResponse.ErrorMessage;
-
-			return payTraceBasicSaleResponse;
-		}*/
 	}
 
 }

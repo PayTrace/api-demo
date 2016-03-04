@@ -22,6 +22,7 @@ namespace AspNetClientEncryptionExample
     /// <summary>
 	/// Class contains base url and all request URLs 
 	/// Please Refer PayTrace API Methods for the request url detail
+    /// Add the new ones as you add new methods 
 	/// </summary>
 	public class ApiEndPointConfiguration
 	{
@@ -82,22 +83,23 @@ namespace AspNetClientEncryptionExample
 
 	}
 
-	public class CreditCard  
+    /// <summary>
+    /// Class for credit card
+    /// </summary>
+    public class CreditCard  
 	{
-		/// <summary>
-		///  Class for credit card
-		/// </summary>
+		
 		// Declare 'encrypted_number' instead of 'number' in case of using PayTrace Client-Side Encryption JavaScript Library.
 		public string number { get; set; } 
 		public string expiration_month { get; set; }
 		public string expiration_year { get; set; }
 	}
 
-	public class BillingAddress 
+    /// <summary>
+    /// Class for billing address
+    /// </summary>
+    public class BillingAddress 
 	{
-		/// <summary>
-		/// Class for billing address
-		/// </summary>
 
 		public string name { get; set; }
 		public string street_address { get; set; }
@@ -120,13 +122,12 @@ namespace AspNetClientEncryptionExample
 		public BillingAddress billing_address { get; set; }
 	}
 
-	public class SwipedSaleRequest
+    /// <summary>
+    /// Class for swiped Sale Request. 
+    /// Please refer the account security page on PayTrace virtual Terminal to determine the property.
+    /// </summary>
+    public class SwipedSaleRequest
 	{
-		/// <summary>
-		/// Class for swiped Sale Request. 
-		/// Please refer the account security page on PayTrace virtual Terminal to determine the property.
-		/// </summary>
-
 		public double amount { get; set; }
 
 		//declare 'encrypted_swipe' instead of 'swipe' in case of using PayTrace client side encryption
@@ -134,14 +135,14 @@ namespace AspNetClientEncryptionExample
 		public string swipe { get; set; }  
 	}
 
-	public class KeyedRefundRequest 
+    /// <summary>
+    /// This class holds properties for the KeyedRefund request.
+    /// Please check the Account security settings before defining this class as there are some request fields are conditional and optional.
+    /// This class uses Billing Address class.
+    /// This class also uses Credit Card class.
+    /// </summary>
+    public class KeyedRefundRequest 
 	{
-		/// <summary>
-		/// This class holds properties for the KeyedRefund request.
-		/// Please check the Account security settings before defining this class as there are some request fields are conditional and optional.
-		/// This class uses Billing Address class.
-		/// This class also uses Credit Card class.
-		/// </summary>
 		public double amount { get; set; }
 		public CreditCard credit_card { get; set; } 
 		// Declare 'encrypted_csc' instead of 'csc' in case of using PayTrace Client-Side Encryption JavaScript Library.
@@ -150,52 +151,47 @@ namespace AspNetClientEncryptionExample
 	}
 
 	public class VoidTransactionRequest
-	{
-
-		/// <summary>
-		/// class for void Transaction request
-		/// </summary>
+    { 
 		public long transaction_id { get; set; }
 
 	}
-	public class CaptureTransactionRequest
+    /// <summary>
+    /// classr for Capture Transaction request - include other optional inputs from the PayTrace Capture page as needed.
+    /// </summary>
+    public class CaptureTransactionRequest
 	{
-
-		/// <summary>
-		/// classr for Capture Transaction request - include other optional inputs from the PayTrace Capture page as needed.
-		/// </summary>
 		// uncomment amount if your requirement is to send the amount with capture and make relavant changes
 		// public double amount {get; set; } 
 		public long transaction_id { get; set; }
 
 	}
 
-	public class VaultSaleByCustomerIdRequest
-	{
-
-		/// <summary>
-		/// Class for Vault Sale by Customer ID request
-		/// Include other optional inputs from the PayTrace Capture page as needed.
-		/// </summary>
+    /// <summary>
+    /// Class for Vault Sale by Customer ID request
+    /// Include other optional inputs from the PayTrace Capture page as needed.
+    /// </summary>
+    public class VaultSaleByCustomerIdRequest
+    { 
 		public double amount {get; set; }
 		public string customer_id { get; set; }
 
 	}
-		
-	public class CreateCustomerProfileRequest 
+    /// <summary>
+    /// Class for Create Customer Profile request 
+    /// Please refer the account security page on PayTrace virtual Terminal to determine the properties and Create Customer Profile Page.
+    /// </summary>	
+    public class CreateCustomerProfileRequest 
 	{
-		/// <summary>
-		/// Class for Create Customer Profile request 
-		/// Please refer the account security page on PayTrace virtual Terminal to determine the properties and Create Customer Profile Page.
-		/// </summary>
+	
 		public string customer_id { get; set; }
 		public CreditCard credit_card { get; set; } 
  		public BillingAddress billing_address { get; set; }
-		/// <summary>
+		
+        /// <summary>
 		/// This Discretionary_data object is optionl - declare it in case you have discretionary data requiered for the customer
-		/// Those can be set from the PayTrace Virtual Terminal - Discretionary Data
+		/// Those can be set from the PayTrace Virtual Terminal - Discretionary Data 
 		/// </summary>
-		public CustomerDiscretionaryData discretionary_data { get; set; }
+		//public CustomerDiscretionaryData discretionary_data { get; set; }
 
 	}
 

@@ -70,6 +70,7 @@ namespace AspNetClientEncryptionExample
 		{
 
             // Do you code here, in case of OAuth token failure
+           
             // Optional - Display the OAuth Error 
             Response.Write (" OAuth Token Request " + "Failed!" + "<br>");
             Response.Write (" Http Status Code & Description : " +  OAuthResult.ObjError.HttpTokenError  + "<br>");
@@ -81,9 +82,10 @@ namespace AspNetClientEncryptionExample
 
 		protected CreateCustomerProfileRequest BuildRequestFromFields(CreateCustomerProfileRequest CreateCustomerProfileRequest)
 		{
-			// Build Keyed Sale Request fields from the input source
+            // Build Keyed Sale Request fields from the input source
 
-			CreateCustomerProfileRequest.customer_id = "customerTest1001";
+            //Provide unique customer ID everytime for successful request
+            CreateCustomerProfileRequest.customer_id = "customerTest2Demo";
 
 			CreateCustomerProfileRequest.credit_card = new CreditCard ();
 			CreateCustomerProfileRequest.credit_card.number = "5454545454545454";
@@ -98,9 +100,9 @@ namespace AspNetClientEncryptionExample
 			CreateCustomerProfileRequest.billing_address.zip = "85284";
 
 			// optionl unless you have Discretionary data required.
-			CreateCustomerProfileRequest.discretionary_data = new CustomerDiscretionaryData ();
-			CreateCustomerProfileRequest.discretionary_data.TestingField = " Testing Discretionary Data 123";
-			CreateCustomerProfileRequest.discretionary_data.Testing_DisData = "Testing_DisData 123";
+			//CreateCustomerProfileRequest.discretionary_data = new CustomerDiscretionaryData ();
+			//CreateCustomerProfileRequest.discretionary_data.TestingField = " Testing Discretionary Data 123";
+			//CreateCustomerProfileRequest.discretionary_data.Testing_DisData = "Testing_DisData 123";
 
 			return CreateCustomerProfileRequest;
 

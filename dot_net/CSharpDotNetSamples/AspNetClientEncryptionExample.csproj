@@ -60,7 +60,7 @@
     <Content Include="Global.asax" />
     <Content Include="web.config" />
     <Content Include="Default.aspx" />
-    <Content Include="AuthenticationTokenTest.aspx" />
+    <Content Include="AuthenticationTokenJson.aspx" />
     <Content Include="KeyedSaleJson.aspx" />
     <Content Include="SwipedSaleJson.aspx" />
     <Content Include="KeyedRefundJson.aspx" />
@@ -90,12 +90,12 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AuthenticationTokenTest.aspx.cs">
-      <DependentUpon>AuthenticationTokenTest.aspx</DependentUpon>
+    <Compile Include="AuthenticationTokenJson.aspx.cs">
+      <DependentUpon>AuthenticationTokenJson.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AuthenticationTokenTest.aspx.designer.cs">
-      <DependentUpon>AuthenticationTokenTest.aspx</DependentUpon>
+    <Compile Include="AuthenticationTokenJson.aspx.designer.cs">
+      <DependentUpon>AuthenticationTokenJson.aspx</DependentUpon>
     </Compile>
     <Compile Include="OAuthTokenGenerator.cs" />
     <Compile Include="KeyedSaleJson.aspx.designer.cs">
