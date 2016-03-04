@@ -26,7 +26,7 @@
 	<table style="width:40%">
 		<tr><th>Select any option </th></tr>
 		<tr> 
-			<td><a href="clientsideencryption.aspx">ClientSide Encryption </a> </td>
+			<td><a href="ClientSideEncryptionDemo.aspx">ClientSide Encryption </a> </td>
 		</tr>   
 		<tr>
     		<td><a href="AuthenticationTokenTest.aspx">Authentication Token</a> </td>
