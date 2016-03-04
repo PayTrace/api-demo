@@ -12,7 +12,6 @@ namespace AspNetClientEncryptionExample
 	
 	public class OAuthTokenGenerator
 	{
-		
 		public OAuthToken GetToken()
 		{
 			// Those URL are available at Authentication header page.
@@ -44,9 +43,9 @@ namespace AspNetClientEncryptionExample
 				//Set the ContentType property of the WebRequest.
 				request.ContentType = "application/x-www-form-urlencoded";
 
-				// Create Request data and convert it to a byte array.
-				//string requestData = "grant_type=password&username=demo123&password=demo123";
-				string requestData = "grant_type=password&username=RupaApi&password=Rup@D3m0";
+                // Create Request data and convert it to a byte array.
+                var requestData = ApiAccessCredentials.GetFormattedRequest();
+
 				byte[] byteArray = Encoding.UTF8.GetBytes (requestData);
 
 				// Set the ContentLength property of the WebRequest.

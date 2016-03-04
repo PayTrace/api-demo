@@ -3,7 +3,23 @@
 
 namespace AspNetClientEncryptionExample
 {
-	/// <summary>
+    /// <summary>
+    /// class that contains API username and password for requesting OAuthToken
+    /// Replace the username and password with your assigned API user credentials.
+    /// </summary>
+    public class ApiAccessCredentials
+    {
+        public static string GrantType = "password";
+        public static string UserName = "demo123";
+        public static string Password = "demo123";
+
+        public static string GetFormattedRequest()
+        {
+            return string.Format("grant_type={0}&username={1}&password={2}", GrantType, UserName,Password);
+        }
+    }
+    
+    /// <summary>
 	/// Class contains base url and all request URLs 
 	/// Please Refer PayTrace API Methods for the request url detail
 	/// </summary>
