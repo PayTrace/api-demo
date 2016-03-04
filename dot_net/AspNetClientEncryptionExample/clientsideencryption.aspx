@@ -17,7 +17,7 @@
      <script>
          $(document).ready(function () {
          	paytrace.hookFormSubmit('#enterPayment1');
-         	paytrace.setKeyAjax('DemoPublic_Key.pem');
+         	paytrace.setKeyAjax('DemoPublic_Key.pem.txt');
          });// set the key from an AJAX call (in this case via a relative URL of the public key file)
      </script>
 

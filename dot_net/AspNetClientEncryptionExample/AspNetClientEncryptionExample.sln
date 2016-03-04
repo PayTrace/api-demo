@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetClientEncryptionExample", "AspNetClientEncryptionExample.csproj", "{B10916FB-C186-4F1F-818C-329B6795A0DC}"
 EndProject
 Global
@@ -13,6 +15,9 @@ Global
 		{B10916FB-C186-4F1F-818C-329B6795A0DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B10916FB-C186-4F1F-818C-329B6795A0DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B10916FB-C186-4F1F-818C-329B6795A0DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
