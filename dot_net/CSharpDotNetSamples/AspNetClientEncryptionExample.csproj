@@ -69,7 +69,6 @@
     <Content Include="KeyedAuthorizationJson.aspx" />
     <Content Include="CaptureJson.aspx" />
     <Content Include="VaultSaleByCustomerIDJson.aspx" />
-    <Content Include="TestJson.aspx" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -162,14 +161,6 @@
       <DependentUpon>VaultSaleByCustomerIDJson.aspx</DependentUpon>
     </Compile>
     <Compile Include="VaultSaleByCustomerIDGenerator.cs" />
-    <Compile Include="TestJson.aspx.cs">
-      <DependentUpon>TestJson.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestJson.aspx.designer.cs">
-      <DependentUpon>TestJson.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TestJsonGenerator.cs" />
     <Compile Include="PayTraceRequest.cs" />
     <Compile Include="JsonSerializer.cs" />
     <Compile Include="KeyedAuthorizationGenerator.cs" />
