@@ -79,21 +79,21 @@ namespace AspNetClientEncryptionExample
 		{
 			// Build Keyed Refund Request fields from the input source
 
-			requestKeyedRefund.amount = 1.99;
+			requestKeyedRefund.Amount = 1.99;
 
-			requestKeyedRefund.credit_card = new CreditCard ();
-			requestKeyedRefund.credit_card.number = "5454545454545454";
-			requestKeyedRefund.credit_card.expiration_month = "12";
-			requestKeyedRefund.credit_card.expiration_year = "2018";
+			requestKeyedRefund.ObjCreditCard = new CreditCard ();
+			requestKeyedRefund.ObjCreditCard.CcNumber = "5454545454545454";
+			requestKeyedRefund.ObjCreditCard.ExpirationMonth = "12";
+			requestKeyedRefund.ObjCreditCard.ExpirationYear = "2018";
 
-			requestKeyedRefund.csc = "999";
+			requestKeyedRefund.Csc = "999";
 
-			requestKeyedRefund.billing_address = new BillingAddress ();
-			requestKeyedRefund.billing_address.name = "Tom Smith";
-			requestKeyedRefund.billing_address.street_address = "8320 E. West St.";
-			requestKeyedRefund.billing_address.city = "Spokane";
-			requestKeyedRefund.billing_address.state = "WA";
-			requestKeyedRefund.billing_address.zip = "85284";
+			requestKeyedRefund.ObjBillingAddress = new BillingAddress ();
+			requestKeyedRefund.ObjBillingAddress.Name = "Tom Smith";
+			requestKeyedRefund.ObjBillingAddress.StreetAddress = "8320 E. West St.";
+			requestKeyedRefund.ObjBillingAddress.City = "Spokane";
+			requestKeyedRefund.ObjBillingAddress.State = "WA";
+			requestKeyedRefund.ObjBillingAddress.Zip = "85284";
 
 			return requestKeyedRefund;
 

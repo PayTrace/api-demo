@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 
 namespace AspNetClientEncryptionExample
@@ -88,11 +89,16 @@ namespace AspNetClientEncryptionExample
     /// </summary>
     public class CreditCard  
 	{
-		
-		// Declare 'encrypted_number' instead of 'number' in case of using PayTrace Client-Side Encryption JavaScript Library.
-		public string number { get; set; } 
-		public string expiration_month { get; set; }
-		public string expiration_year { get; set; }
+
+        // Declare 'encrypted_number' instead of 'number' in case of using PayTrace Client-Side Encryption JavaScript Library.
+        [JsonProperty("number")]
+        public string CcNumber { get; set; }
+
+        [JsonProperty("expiration_month")]
+        public string ExpirationMonth { get; set; }
+
+        [JsonProperty("expiration_year")]
+        public string ExpirationYear { get; set; }
 	}
 
     /// <summary>
@@ -100,26 +106,40 @@ namespace AspNetClientEncryptionExample
     /// </summary>
     public class BillingAddress 
 	{
+        [JsonProperty("name")]
+        public string Name { get; set; }
 
-		public string name { get; set; }
-		public string street_address { get; set; }
-		public string city { get; set; }
-		public string state { get; set; }
-		public string zip { get; set; }
+        [JsonProperty("street_address")]
+        public string StreetAddress { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("zip")]
+        public string Zip { get; set; }
 	}
-		
 
-	public class KeyedSaleRequest 
+    /// <summary>
+    /// Class for keyed sale request and Keyed Authorization.
+    /// Please refer the account security page on PayTrace virtual Terminal to determine the property.
+    /// </summary>
+    public class KeyedSaleRequest 
 	{
-		/// <summary>
-		/// Class for keyed sale request and Keyed Authorization.
-		/// Please refer the account security page on PayTrace virtual Terminal to determine the property.
-		/// </summary>
-		public double amount { get; set; }
-		public CreditCard credit_card { get; set; } 
-		// Declare 'encrypted_csc' instead of 'csc' in case of using PayTrace Client-Side Encryption JavaScript Library.
-		public string csc { get; set; } 
-		public BillingAddress billing_address { get; set; }
+        [JsonProperty("amount")]
+        public double Amount { get; set; }
+
+        [JsonProperty("credit_card")]
+        public CreditCard ObjCreditCard { get; set; }
+        // Declare 'encrypted_csc' instead of 'csc' in case of using PayTrace Client-Side Encryption JavaScript Library.
+
+        [JsonProperty("csc")]
+        public string Csc { get; set; }
+
+        [JsonProperty("billing_address")]
+        public BillingAddress ObjBillingAddress { get; set; }
 	}
 
     /// <summary>
@@ -128,11 +148,13 @@ namespace AspNetClientEncryptionExample
     /// </summary>
     public class SwipedSaleRequest
 	{
-		public double amount { get; set; }
+        [JsonProperty("amount")]
+        public double Amount { get; set; }
 
-		//declare 'encrypted_swipe' instead of 'swipe' in case of using PayTrace client side encryption
-		//this will include both track1 and track2 data
-		public string swipe { get; set; }  
+        //declare 'encrypted_swipe' instead of 'swipe' in case of using PayTrace client side encryption
+        //this will include both track1 and track2 data
+        [JsonProperty("swipe")]
+        public string SwipeCcData { get; set; }  
 	}
 
     /// <summary>
@@ -143,16 +165,24 @@ namespace AspNetClientEncryptionExample
     /// </summary>
     public class KeyedRefundRequest 
 	{
-		public double amount { get; set; }
-		public CreditCard credit_card { get; set; } 
-		// Declare 'encrypted_csc' instead of 'csc' in case of using PayTrace Client-Side Encryption JavaScript Library.
-		public string csc { get; set; } 
-		public BillingAddress billing_address { get; set; }
+        [JsonProperty("amount")]
+        public double Amount { get; set; }
+
+        [JsonProperty("credit_card")]
+        public CreditCard ObjCreditCard { get; set; }
+        // Declare 'encrypted_csc' instead of 'csc' in case of using PayTrace Client-Side Encryption JavaScript Library.
+
+        [JsonProperty("csc")]
+        public string Csc { get; set; }
+
+        [JsonProperty("billing_address")]
+        public BillingAddress ObjBillingAddress { get; set; }
 	}
 
 	public class VoidTransactionRequest
-    { 
-		public long transaction_id { get; set; }
+    {
+        [JsonProperty("transaction_id")]
+        public long TransactionId { get; set; }
 
 	}
     /// <summary>
@@ -160,9 +190,12 @@ namespace AspNetClientEncryptionExample
     /// </summary>
     public class CaptureTransactionRequest
 	{
-		// uncomment amount if your requirement is to send the amount with capture and make relavant changes
-		// public double amount {get; set; } 
-		public long transaction_id { get; set; }
+        // uncomment amount if your requirement is to send the amount with capture and make relavant changes
+        [JsonProperty("amount")]
+        public double Amount {get; set; } 
+
+        [JsonProperty("transaction_id")]
+        public long TransactionId { get; set; }
 
 	}
 
@@ -171,9 +204,12 @@ namespace AspNetClientEncryptionExample
     /// Include other optional inputs from the PayTrace Capture page as needed.
     /// </summary>
     public class VaultSaleByCustomerIdRequest
-    { 
-		public double amount {get; set; }
-		public string customer_id { get; set; }
+    {
+        [JsonProperty("amount")]
+        public double Amount {get; set; }
+
+        [JsonProperty("customer_id")]
+        public string CustomerId { get; set; }
 
 	}
     /// <summary>
@@ -182,10 +218,15 @@ namespace AspNetClientEncryptionExample
     /// </summary>	
     public class CreateCustomerProfileRequest 
 	{
-	
-		public string customer_id { get; set; }
-		public CreditCard credit_card { get; set; } 
- 		public BillingAddress billing_address { get; set; }
+
+        [JsonProperty("customer_id")]
+        public string CustomerId { get; set; }
+
+        [JsonProperty("credit_card")]
+        public CreditCard ObjCreditCard { get; set; }
+
+        [JsonProperty("billing_address")]
+        public BillingAddress ObjBillingAddress { get; set; }
 		
         /// <summary>
 		/// This Discretionary_data object is optionl - declare it in case you have discretionary data requiered for the customer
@@ -202,7 +243,9 @@ namespace AspNetClientEncryptionExample
 		/// Properties name should be same as Discretionary Data field names - as selected from the PayTrace Virtual Terminals
 		/// </summary>
 		public string TestingField { get; set; }
-		public string Testing_DisData { get; set; }
+
+        [JsonProperty("Testing_DisData")]
+        public string Testing_DisData { get; set; }
 
 	}
 

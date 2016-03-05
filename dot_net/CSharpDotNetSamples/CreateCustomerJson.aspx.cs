@@ -85,19 +85,19 @@ namespace AspNetClientEncryptionExample
             // Build Keyed Sale Request fields from the input source
 
             //Provide unique customer ID everytime for successful request
-            CreateCustomerProfileRequest.customer_id = "customerTest2Demo";
+            CreateCustomerProfileRequest.CustomerId = "customerTest2Demo";
 
-			CreateCustomerProfileRequest.credit_card = new CreditCard ();
-			CreateCustomerProfileRequest.credit_card.number = "5454545454545454";
-			CreateCustomerProfileRequest.credit_card.expiration_month = "12";
-			CreateCustomerProfileRequest.credit_card.expiration_year = "2020";
+			CreateCustomerProfileRequest.ObjCreditCard = new CreditCard ();
+			CreateCustomerProfileRequest.ObjCreditCard.CcNumber = "5454545454545454";
+			CreateCustomerProfileRequest.ObjCreditCard.ExpirationMonth = "12";
+			CreateCustomerProfileRequest.ObjCreditCard.ExpirationYear = "2020";
 
-			CreateCustomerProfileRequest.billing_address = new BillingAddress ();
-			CreateCustomerProfileRequest.billing_address.name = "Mike Smith";
-			CreateCustomerProfileRequest.billing_address.street_address = "8230 E.Indiana St.";
-			CreateCustomerProfileRequest.billing_address.city = "Spokane";
-			CreateCustomerProfileRequest.billing_address.state = "WA";
-			CreateCustomerProfileRequest.billing_address.zip = "85284";
+			CreateCustomerProfileRequest.ObjBillingAddress = new BillingAddress ();
+			CreateCustomerProfileRequest.ObjBillingAddress.Name = "Mike Smith";
+			CreateCustomerProfileRequest.ObjBillingAddress.StreetAddress = "8230 E.Indiana St.";
+			CreateCustomerProfileRequest.ObjBillingAddress.City = "Spokane";
+			CreateCustomerProfileRequest.ObjBillingAddress.State = "WA";
+			CreateCustomerProfileRequest.ObjBillingAddress.Zip = "85284";
 
 			// optionl unless you have Discretionary data required.
 			//CreateCustomerProfileRequest.discretionary_data = new CustomerDiscretionaryData ();

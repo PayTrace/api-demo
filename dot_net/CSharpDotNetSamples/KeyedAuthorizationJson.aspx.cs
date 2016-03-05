@@ -80,24 +80,24 @@ namespace AspNetClientEncryptionExample
 		{
 			// Build Keyed Sale Request fields from the input source
 
-			requestKeyedSale.amount = 4.50;
+			requestKeyedSale.Amount = 4.50;
 
-			requestKeyedSale.credit_card = new CreditCard ();
-			requestKeyedSale.credit_card.number = "4111111111111111";
-			requestKeyedSale.credit_card.expiration_month = "12";
-			requestKeyedSale.credit_card.expiration_year = "2019";
+			requestKeyedSale.ObjCreditCard = new CreditCard ();
+			requestKeyedSale.ObjCreditCard.CcNumber = "4111111111111111";
+			requestKeyedSale.ObjCreditCard.ExpirationMonth = "12";
+			requestKeyedSale.ObjCreditCard.ExpirationYear = "2019";
 
 			// Commented assignments lines will give an error response
 			//requestKeyedSale.credit_card.expiration_month = "13";
 			//requestKeyedSale.credit_card.expiration_year = "2011";
-			requestKeyedSale.csc = "999";
+			requestKeyedSale.Csc = "999";
 
-			requestKeyedSale.billing_address = new BillingAddress ();
-			requestKeyedSale.billing_address.name = "Mike Smith";
-			requestKeyedSale.billing_address.street_address = "8320 E. West St.";
-			requestKeyedSale.billing_address.city = "Spokane";
-			requestKeyedSale.billing_address.state = "WA";
-			requestKeyedSale.billing_address.zip = "85284";
+			requestKeyedSale.ObjBillingAddress = new BillingAddress ();
+			requestKeyedSale.ObjBillingAddress.Name = "Mike Smith";
+			requestKeyedSale.ObjBillingAddress.StreetAddress = "8320 E. West St.";
+			requestKeyedSale.ObjBillingAddress.City = "Spokane";
+			requestKeyedSale.ObjBillingAddress.State = "WA";
+			requestKeyedSale.ObjBillingAddress.Zip = "85284";
 
 			return requestKeyedSale;
 

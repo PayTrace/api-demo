@@ -78,12 +78,23 @@ namespace AspNetClientEncryptionExample
 		}
 		protected CaptureTransactionRequest BuildRequestFromFields(CaptureTransactionRequest requestCaptureTransaction)
 		{
-			// Build Capture Transaction fields from the input sources.
-			// Transaction_id should be collected from previously Authorised API response - Transaction ID or if you have stored anywhere in DB or in any Variables. 
-			// Optional - it shows how to get value from the form text box.
-			// requestCaptureTransaction.amount= 1.0 ;
-			requestCaptureTransaction.transaction_id = Convert.ToInt64(Request.Form["TransactionNumber"]) ;
+            // Build Capture Transaction fields from the input sources.
+            // Transaction_id should be collected from previously Authorised API response - Transaction ID or if you have stored anywhere in DB or in any Variables. 
+            // Optional - it shows how to get value from the form text box.
+            
+            // requestCaptureTransaction.Amount= 1.0 ;
 
+            
+            var transactionId = Request.Form["TransactionNumber"];
+
+            //following IF statement is optional if you already have input validation for Empty Transaction number textbox
+            if (string.IsNullOrEmpty(transactionId))
+            {
+                transactionId = new Random().Next().ToString();
+            }
+
+            requestCaptureTransaction.TransactionId = Convert.ToInt64(transactionId);
+         
 			return requestCaptureTransaction;
 
 		}

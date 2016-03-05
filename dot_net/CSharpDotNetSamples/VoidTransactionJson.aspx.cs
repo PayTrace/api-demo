@@ -74,7 +74,7 @@ namespace AspNetClientEncryptionExample
 
 			// Transaction_id value = Any unsettled Transaction ID.
 			// Transaction_id should be collected from any previous API response which contains Transaction ID of any unsettled Transaction 
-			requestVoidTransaction.transaction_id =  105067320;
+			requestVoidTransaction.TransactionId =  105067320;
 			// requestVoidTransaction.transaction_id =  104541685;
 			return requestVoidTransaction;
 

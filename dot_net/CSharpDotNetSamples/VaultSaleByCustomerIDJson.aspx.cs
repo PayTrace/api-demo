@@ -76,9 +76,9 @@ namespace AspNetClientEncryptionExample
 			// Customer ID can be obtained from any sources where it is stored previously. 
 			// Strorage source could be at the PayTrace repository(if used create customer profile earlier) or at the client repository.  
 
-			requestVaultSaleByCustomerId.amount = 0.99;
+			requestVaultSaleByCustomerId.Amount = 0.99;
             //Providing valid existing Customer ID is one of the key for the succssful transaction.
-            requestVaultSaleByCustomerId.customer_id = "customerTest2Demo";
+            requestVaultSaleByCustomerId.CustomerId = "customerTest2Demo";
 
 			return requestVaultSaleByCustomerId;
 
