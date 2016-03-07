@@ -24,3 +24,17 @@ dot_net/CSharpDotNetSamples/UpgradeLog4.htm
 
 # Ignore MAC System files
 .DS_Store
+=======
+#Ignore all the visual studio solution files
+*.sln
+*.csproj
+/.vs/*
+*.user
+/obj/
+/Backup
+/Backup1
+UpgradeLog.htm
+UpgradeLog2.htm
+/dot_net/AspNetClientEncryptionExample/.vs/
+/dot_net/AspNetClientEncryptionExample/obj/
+
