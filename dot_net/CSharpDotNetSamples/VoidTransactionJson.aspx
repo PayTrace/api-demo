@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Inherits="AspNetClientEncryptionExample.TransactionVoidJson" %>
+﻿<%@ Page Language="C#" Inherits="CSharpDotNetJsonSample.TransactionVoidJson" %>
 <!DOCTYPE html>
 <html>
 <head runat="server">

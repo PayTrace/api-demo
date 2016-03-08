@@ -6,7 +6,7 @@ using System.Collections.Generic ;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json ;
 
-namespace AspNetClientEncryptionExample
+namespace CSharpDotNetJsonSample
 {
 	public class JsonSerializer
 	{

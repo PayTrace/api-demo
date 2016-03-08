@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Inherits="AspNetClientEncryptionExample.VaultSaleByCustomerIDJson" %>
+﻿<%@ Page Language="C#" Inherits="CSharpDotNetJsonSample.VaultSaleByCustomerIDJson" %>
 <!DOCTYPE html>
 <html>
 <head runat="server">

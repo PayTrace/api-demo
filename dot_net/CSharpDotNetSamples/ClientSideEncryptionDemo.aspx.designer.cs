@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AspNetClientEncryptionExample {
+namespace CSharpDotNetJsonSample {
     
     
     public partial class ClientSideEncryptionDemo {

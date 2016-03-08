@@ -3,12 +3,10 @@ using System.Net;
 using System.IO;
 using System.Text;
 using System.Collections.Generic ;
-using System.Runtime.Serialization ;
-using System.Web ;
 using Newtonsoft.Json;
 
 
-namespace AspNetClientEncryptionExample
+namespace CSharpDotNetJsonSample
 {	
 	/// <summary>
 	/// class to hold temprory Json Response and Error message for any response.

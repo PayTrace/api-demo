@@ -5,7 +5,7 @@ using System.Text;
 using System.Collections.Generic ;
 using System.Web.Script.Serialization;
 
-namespace AspNetClientEncryptionExample
+namespace CSharpDotNetJsonSample
 {
     /// <summary>
     /// Method for builiding Transaction with Json Request,call the actual transaction execution method and call for Deseralize Json 

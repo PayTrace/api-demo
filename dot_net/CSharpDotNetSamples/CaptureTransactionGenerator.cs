@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic ;
 
-namespace AspNetClientEncryptionExample
+namespace CSharpDotNetJsonSample
 {
 	public class CaptureTransactionGenerator
 	{

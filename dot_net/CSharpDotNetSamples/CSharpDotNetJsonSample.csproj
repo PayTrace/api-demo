@@ -7,8 +7,8 @@
     <ProjectTypeGuids>{349C5851-65DF-11DA-9384-00065B846F21};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{B10916FB-C186-4F1F-818C-329B6795A0DC}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>AspNetClientEncryptionExample</RootNamespace>
-    <AssemblyName>AspNetClientEncryptionExample</AssemblyName>
+    <RootNamespace>CSharpDotNetJsonSample</RootNamespace>
+    <AssemblyName>CSharpDotNetJsonSample</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
@@ -183,7 +183,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51042</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/AspNetClientEncryptionExample</IISUrl>
+          <IISUrl>http://localhost/CSharpDotNetJsonSample</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

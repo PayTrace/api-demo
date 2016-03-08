@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 
 
-namespace AspNetClientEncryptionExample
+namespace CSharpDotNetJsonSample
 {
     /// <summary>
     /// class that contains API username and password for requesting OAuthToken

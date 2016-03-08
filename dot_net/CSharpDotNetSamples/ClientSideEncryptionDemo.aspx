@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ClientSideEncryptionDemo.aspx.cs" Inherits="AspNetClientEncryptionExample.ClientSideEncryptionDemo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ClientSideEncryptionDemo.aspx.cs" Inherits="CSharpDotNetJsonSample.ClientSideEncryptionDemo" %>
 
 <!DOCTYPE html>
 

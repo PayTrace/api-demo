@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AspNetClientEncryptionExample
+namespace CSharpDotNetJsonSample
 {
 	public class KeyedAuthorizationGenerator
 	{

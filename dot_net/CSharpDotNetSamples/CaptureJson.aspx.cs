@@ -2,7 +2,7 @@
 using System.Web;
 using System.Web.UI;
 
-namespace AspNetClientEncryptionExample
+namespace CSharpDotNetJsonSample
 {
 	
 	public partial class CaptureJson : System.Web.UI.Page

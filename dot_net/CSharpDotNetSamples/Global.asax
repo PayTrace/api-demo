@@ -1,1 +1,1 @@
-﻿<%@ Application Inherits="AspNetClientEncryptionExample.Global" %>
+﻿<%@ Application Inherits="CSharpDotNetJsonSample.Global" %>

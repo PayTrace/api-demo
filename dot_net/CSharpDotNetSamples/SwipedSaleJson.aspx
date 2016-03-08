@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Inherits="AspNetClientEncryptionExample.SwipedSaleJson" %>
+﻿<%@ Page Language="C#" Inherits="CSharpDotNetJsonSample.SwipedSaleJson" %>
 <!DOCTYPE html>
 <html>
 <head runat="server">

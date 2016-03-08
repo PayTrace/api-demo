@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Inherits="AspNetClientEncryptionExample.KeyedSaleJson" %>
+﻿<%@ Page Language="C#" Inherits="CSharpDotNetJsonSample.KeyedSaleJson" %>
 <!DOCTYPE html>
 <html>
 <head runat="server">

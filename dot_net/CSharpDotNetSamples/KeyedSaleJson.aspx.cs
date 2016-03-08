@@ -3,7 +3,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.Script.Serialization ; 
 
-namespace AspNetClientEncryptionExample
+namespace CSharpDotNetJsonSample
 {
 	
 	public partial class KeyedSaleJson : System.Web.UI.Page

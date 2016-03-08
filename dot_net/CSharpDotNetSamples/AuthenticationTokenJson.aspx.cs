@@ -6,7 +6,7 @@ using System.IO;
 using System.Text;
 
 
-namespace AspNetClientEncryptionExample
+namespace CSharpDotNetJsonSample
 {
 	
 	/// <summary>

@@ -5,7 +5,7 @@ using System.Text;
 using System.Web.Script.Serialization;
 
 
-namespace AspNetClientEncryptionExample
+namespace CSharpDotNetJsonSample
 {
 
 	// class for all Swiped Sale Request process and JSON response

@@ -6,7 +6,7 @@ using System.IO;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace AspNetClientEncryptionExample
+namespace CSharpDotNetJsonSample
 {
 	
 	public class OAuthTokenGenerator

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Inherits="AspNetClientEncryptionExample.AuthenticationTokenTest" %>
+﻿<%@ Page Language="C#" Inherits="CSharpDotNetJsonSample.AuthenticationTokenTest" %>
 <!DOCTYPE html>
 <html>
 <head runat="server">

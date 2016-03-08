@@ -5,7 +5,7 @@ using System.Text;
 using System.Collections.Generic ;
 using System.Web.Script.Serialization;
 
-namespace AspNetClientEncryptionExample
+namespace CSharpDotNetJsonSample
 {
 	public class VoidTransactionGenerator
 	{

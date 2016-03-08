@@ -6,7 +6,7 @@ using System.Text;
 using System.Collections.Generic ;
 
 
-namespace AspNetClientEncryptionExample
+namespace CSharpDotNetJsonSample
 {
 	public class CreateCustomerProfileGenerator
 	{
