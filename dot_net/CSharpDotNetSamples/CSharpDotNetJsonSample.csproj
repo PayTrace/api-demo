@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{349C5851-65DF-11DA-9384-00065B846F21};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{B10916FB-C186-4F1F-818C-329B6795A0DC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CSharpDotNetJsonSample</RootNamespace>
+    <AssemblyName>CSharpDotNetJsonSample</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClientSideEncryptionDemo.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="web.config" />
+    <Content Include="Default.aspx" />
+    <Content Include="AuthenticationTokenJson.aspx" />
+    <Content Include="KeyedSaleJson.aspx" />
+    <Content Include="SwipedSaleJson.aspx" />
+    <Content Include="KeyedRefundJson.aspx" />
+    <Content Include="VoidTransactionJson.aspx" />
+    <Content Include="CreateCustomerJson.aspx" />
+    <Content Include="KeyedAuthorizationJson.aspx" />
+    <Content Include="CaptureJson.aspx" />
+    <Content Include="VaultSaleByCustomerIDJson.aspx" />
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClientSideEncryptionDemo.aspx.cs">
+      <DependentUpon>ClientSideEncryptionDemo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClientSideEncryptionDemo.aspx.designer.cs">
+      <DependentUpon>ClientSideEncryptionDemo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AuthenticationTokenJson.aspx.cs">
+      <DependentUpon>AuthenticationTokenJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AuthenticationTokenJson.aspx.designer.cs">
+      <DependentUpon>AuthenticationTokenJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OAuthTokenGenerator.cs" />
+    <Compile Include="KeyedSaleJson.aspx.designer.cs">
+      <DependentUpon>KeyedSaleJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KeyedSaleJson.aspx.cs">
+      <DependentUpon>KeyedSaleJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KeyedSaleGenerator.cs" />
+    <Compile Include="SwipedSaleJson.aspx.cs">
+      <DependentUpon>SwipedSaleJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SwipedSaleJson.aspx.designer.cs">
+      <DependentUpon>SwipedSaleJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SwipedSaleGenerator.cs" />
+    <Compile Include="PayTraceResponse.cs" />
+    <Compile Include="KeyedRefundJson.aspx.cs">
+      <DependentUpon>KeyedRefundJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KeyedRefundJson.aspx.designer.cs">
+      <DependentUpon>KeyedRefundJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KeyedRefundGenerator.cs" />
+    <Compile Include="VoidTransactionGenerator.cs" />
+    <Compile Include="VoidTransactionJson.aspx.cs">
+      <DependentUpon>VoidTransactionJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VoidTransactionJson.aspx.designer.cs">
+      <DependentUpon>VoidTransactionJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CreateCustomerJson.aspx.cs">
+      <DependentUpon>CreateCustomerJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateCustomerJson.aspx.designer.cs">
+      <DependentUpon>CreateCustomerJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CreateCustomerProfileGenerator.cs" />
+    <Compile Include="KeyedAuthorizationJson.aspx.cs">
+      <DependentUpon>KeyedAuthorizationJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KeyedAuthorizationJson.aspx.designer.cs">
+      <DependentUpon>KeyedAuthorizationJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CaptureJson.aspx.cs">
+      <DependentUpon>CaptureJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CaptureJson.aspx.designer.cs">
+      <DependentUpon>CaptureJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CaptureTransactionGenerator.cs" />
+    <Compile Include="VaultSaleByCustomerIDJson.aspx.cs">
+      <DependentUpon>VaultSaleByCustomerIDJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VaultSaleByCustomerIDJson.aspx.designer.cs">
+      <DependentUpon>VaultSaleByCustomerIDJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VaultSaleByCustomerIDGenerator.cs" />
+    <Compile Include="PayTraceRequest.cs" />
+    <Compile Include="JsonSerializer.cs" />
+    <Compile Include="KeyedAuthorizationGenerator.cs" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
+      </Properties>
+    </MonoDevelop>
+    <VisualStudio>
+      <FlavorProperties GUID="{349C5851-65DF-11DA-9384-00065B846F21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51042</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/CSharpDotNetJsonSample</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+</Project>

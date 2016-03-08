@@ -12,5 +12,29 @@
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
+/log/*.logfiles
 /tmp
+dot_net/CSharpDotNetSamples/Backup/
+dot_net/CSharpDotNetSamples/Backup1/
+dot_net/CSharpDotNetSamples/Backup2
+dot_net/CSharpDotNetSamples/UpgradeLog.htm
+dot_net/CSharpDotNetSamples/UpgradeLog2.htm
+dot_net/CSharpDotNetSamples/UpgradeLog3.htm
+dot_net/CSharpDotNetSamples/UpgradeLog4.htm
+
+# Ignore MAC System files
+.DS_Store
+=======
+#Ignore all the visual studio solution files
+*.sln
+*.csproj
+/.vs/*
+*.user
+/obj/
+/Backup
+/Backup1
+UpgradeLog.htm
+UpgradeLog2.htm
+/dot_net/AspNetClientEncryptionExample/.vs/
+/dot_net/AspNetClientEncryptionExample/obj/
+
