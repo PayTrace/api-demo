@@ -164,7 +164,7 @@ else
     // For transation successfully approved 
     if($json['success']== true && $json['response_code'] == 101){
 
-        echo "<br><br>Swiped sale :  success !";
+        echo "<br><br>Swiped sale :  Success !";
         displayHttpStatus($trans_result['http_status_code']);
         //to display individual keys of successful OAuth Json response 
         displaySwipedSaleTransactionResponse($json);   

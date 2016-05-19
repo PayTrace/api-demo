@@ -122,7 +122,7 @@ function buildRequestData(){
 function verifyTransactionResult($trans_result){      
 //Handle curl level error, ExitOnCurlError
 if($trans_result['curl_error'] ){
-    echo "<br>Error occrued : ";
+    echo "<br>Error occcured : ";
     echo '<br>curl error with Transaction request: ' . $trans_result['curl_error'] ;
     exit();  
 }
@@ -163,7 +163,7 @@ else
     // For transation successfully approved 
     if($json['success']== true && $json['response_code'] == 101){
 
-        echo "<br><br>Keyed sale :  success !";
+        echo "<br><br>Keyed sale :  Success !";
         displayHttpStatus($trans_result['http_status_code']);
         //to display individual keys of successful OAuth Json response 
         displayKeyedTransactionResponse($json);   
