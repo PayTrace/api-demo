@@ -24,7 +24,7 @@ define("URL_OAUTH",BASE_URL."/oauth/token");
 define("URL_KEYED_SALE",BASE_URL.API_VERSION."/transactions/sale/keyed");
 
 // URL for Swiped Sale
-define("url_swiped_sale" , BASE_URL. API_VERSION."/transactions/sale/swiped");
+define("URL_SWIPED_SALE" , BASE_URL.API_VERSION."/transactions/sale/swiped");
 		
 // URL for Keyed Authorization
 define("url_keyed_authorization" ,BASE_URL.API_VERSION."/transactions/authorization/keyed");

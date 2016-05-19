@@ -1,11 +1,5 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /*
  * This function will find the associated status message from the file 
  * used in Parse_ini_file( path to the file)
@@ -28,7 +22,7 @@ function oAuthTokenGenerator(){
     
     // create a new cURL resource
     $ch = curl_init();
-   
+    
     //set up oauth_data request 
     $request_data = "grant_type=".GRANT_TYPE."&username=".USERNAME."&password=".PASSWORD ;   
 
@@ -42,15 +36,15 @@ function oAuthTokenGenerator(){
    
     // following SSL settings should be removed in production code. 
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,false);
-    curl_setopt ($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST,0);
     
     //Execute the request
     $response = curl_exec($ch);
     $curl_error = curl_error($ch).' '. curl_errno($ch); 
-    
-    
-    if($response != true ){
-        echo "Inside if" ;
+   
+     
+    if($response === false){
+       
         $result['curl_error'] = $curl_error;
         //To Do : use similar functionality as Finally in C# to free the resources.
         // close cURL resource, and free up system resources
@@ -124,7 +118,7 @@ function processTransaction($oauth_token,$request_data, $url ){
     
     //echo "<br>" .$response ; 
     
-    if($response != true){
+    if($response === false){
         $result['curl_error'] = $curl_error;
         
         // close cURL resource, and free up system resources
