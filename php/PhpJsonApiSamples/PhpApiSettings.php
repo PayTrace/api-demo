@@ -27,7 +27,7 @@ define("URL_KEYED_SALE",BASE_URL.API_VERSION."/transactions/sale/keyed");
 define("URL_SWIPED_SALE" , BASE_URL.API_VERSION."/transactions/sale/swiped");
 		
 // URL for Keyed Authorization
-define("url_keyed_authorization" ,BASE_URL.API_VERSION."/transactions/authorization/keyed");
+define("URL_KEYED_AUTHORIZATION" ,BASE_URL.API_VERSION."/transactions/authorization/keyed");
 
 // URL for Keyed Refund
 define("url_keyed_refund" , BASE_URL.API_VERSION."/transactions/refund/keyed");

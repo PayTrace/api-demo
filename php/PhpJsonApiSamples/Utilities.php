@@ -16,7 +16,7 @@ function oAuthTokenGenerator(){
    
     // array variable to store the Response value, httpstatus code and curl error.
     $result = array(
-                 'json_response' => '',
+                 'temp_json_response' => '',
                  'curl_error' => '',
                  'http_status_code' => '');
     
@@ -59,7 +59,7 @@ function oAuthTokenGenerator(){
     * $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
     $result['json_response'] = substr($response,$header_size);*/
     
-    $result['json_response'] = $response ;
+    $result['temp_json_response'] = $response ;
     $result['http_status_code'] =  curl_getinfo($ch, CURLINFO_HTTP_CODE);
     
     // close cURL resource, and free up system resources
@@ -85,7 +85,7 @@ function displayOAuthError($json_string){
 function processTransaction($oauth_token,$request_data, $url ){
     // array variable to store the Response value, httpstatus code and curl error.
     $result = array(
-                 'json_response' => '',
+                 'temp_json_response' => '',
                  'curl_error' => '',
                  'http_status_code' => '');
     
@@ -132,8 +132,8 @@ function processTransaction($oauth_token,$request_data, $url ){
     * $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
     $result['json_response'] = substr($response,$header_size);*/
     
-    $result['json_response'] = $response ;
-    $result['http_status_code'] =  curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $result['temp_json_response'] = $response ;
+    $result['http_status_code'] = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     
     // close cURL resource, and free up system resources
     curl_close($ch);

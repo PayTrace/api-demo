@@ -15,7 +15,7 @@ and open the template in the editor.
      <br>
  <?php
        
-/* this code will shows how to access and make a request of OAuth  */
+/* this code will shows how to access and make a request of OAuth token  */
 
 include 'PhpApiSettings.php';
 include 'Utilities.php';
@@ -40,13 +40,13 @@ if($oauth_result['curl_error'] )
 //If we reach here, we have been able to communicate with the service, 
 //next is decode the json response and then review Http Status code of the request
  
-$json = jsonDecode($oauth_result['json_response']);  
+$json = jsonDecode($oauth_result['temp_json_response']);  
 
 if($oauth_result['http_status_code'] != 200){
     echo "<br>Error : ";
-    if(!(is_null($oauth_result['json_response'])) ){
+    if(!(is_null($oauth_result['temp_json_response'])) ){
         // to display json response
-        displayRawJsonResponse($oauth_result['json_response']);
+        displayRawJsonResponse($oauth_result['temp_json_response']);
    
         //Display http status code and message.
         displayHttpStatus($oauth_result['http_status_code']);
@@ -63,7 +63,7 @@ if($oauth_result['http_status_code'] != 200){
 }
 else{
     // to display json response
-    displayRawJsonResponse($oauth_result['json_response']);
+    displayRawJsonResponse($oauth_result['temp_json_response']);
    
     //Display http status code and message.
     displayHttpStatus($oauth_result['http_status_code']);
