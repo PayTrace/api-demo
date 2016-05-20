@@ -46,10 +46,10 @@ and open the template in the editor.
 		<tr>
 			<td><a href="KeyedAuthorizationJson.php">Keyed Authorization(Card-Not Present)</a> </td>
   		</tr>
-		<!--<tr>
-			<td><a href="CaptureJson.aspx">Capture Authorized Transaction</a> </td>
-  		</tr>
 		<tr>
+			<td><a href="CaptureJson.php">Capture Authorized Transaction</a> </td>
+  		</tr>
+		<!--<tr>
 			<td><a href="KeyedRefundJson.aspx">Keyed Refund</a> </td>
  		 </tr>
 		<tr>

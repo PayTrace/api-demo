@@ -33,7 +33,7 @@ define("URL_KEYED_AUTHORIZATION" ,BASE_URL.API_VERSION."/transactions/authorizat
 define("url_keyed_refund" , BASE_URL.API_VERSION."/transactions/refund/keyed");
 
 // URL for Capture Transaction
-define("url_capture", BASE_URL.API_VERSION."/transactions/authorization/capture");
+define("URL_CAPTURE", BASE_URL.API_VERSION."/transactions/authorization/capture");
 
 // URL for Void Sale Transaction
 define("url_void_transaction", BASE_URL. API_VERSION."/transactions/void");
