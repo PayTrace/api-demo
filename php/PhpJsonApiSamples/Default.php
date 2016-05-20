@@ -47,7 +47,7 @@ and open the template in the editor.
 			<td><a href="KeyedAuthorizationJson.php">Keyed Authorization(Card-Not Present)</a> </td>
   		</tr>
 		<tr>
-			<td><a href="CaptureJson.php">Capture Authorized Transaction</a> </td>
+			<td><a href="CaptureJsonUI.php">Capture Authorized Transaction</a> </td>
   		</tr>
 		<!--<tr>
 			<td><a href="KeyedRefundJson.aspx">Keyed Refund</a> </td>

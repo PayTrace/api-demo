@@ -94,10 +94,17 @@ function buildRequestData(){
 
     /* you can assign the values from the input source fields instead of hard coded values.
      * Note: amount is optional if not provided, transaction will be catured with the authorized amount 
+     * Transaction id should be provided from any kind of input source,
+     * for Demo purpose, Transaction ID is collected from the input field of the UI form - CaptureJsonUI,
+     * Do your own input validation.
      */
+    
+    $transation_id = $_POST["TransactionId"] ;
+    
+    
     $request_data = array(
                     /*"amount" => "4.50",*/
-                    "transaction_id" => "105968439" );
+                    "transaction_id" => $transation_id );
     
     $request_data = json_encode($request_data);
    
