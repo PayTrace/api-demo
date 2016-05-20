@@ -4,6 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -13,8 +14,8 @@ and open the template in the editor.
         <br>
             <a href="Default.php">Back to Home </a> 
         <br>
-
 <?php
+// this page will show you 
 include 'PhpApiSettings.php';
 include 'Utilities.php';
 include 'Json.php';
@@ -32,7 +33,7 @@ $oauth_result = oAuthTokenGenerator();
 if($oauth_result['curl_error'])
 {
         echo "<br> Error ! ";
-        echo '<br>curl error with OAuth request: ' . $oauth_result['curl_error'] ;
+        echo "<br> Curl error with OAuth request: " . $oauth_result['curl_error'] ;
         exit();  
 }
 
@@ -40,7 +41,6 @@ if($oauth_result['curl_error'])
 //next is decode the json response and then review Http Status code of the request 
 //and move forward with sale request.
 
-//TODO:Rename this as jsonResponse
 $json = jsonDecode($oauth_result['temp_json_response']);  
 
 
@@ -68,7 +68,7 @@ if($oauth_result['http_status_code'] != 200){
 }
 else
 { 
-    // Make Authentication header based on the  successful oAuth response.
+    // Make Authentication header based on the successful oAuth response.
     $oauth_token = sprintf("Bearer %s",$json['access_token']);
  
     // Build the transaction 
@@ -81,7 +81,7 @@ function buildTransaction($oauth_token){
     $request_data = buildRequestData();
     
     //call to make the actual request
-    $result = processTransaction($oauth_token,$request_data, URL_KEYED_SALE );
+    $result = processTransaction( $oauth_token,$request_data,URL_KEYED_AUTHORIZATION );
     
     /*echo "<br>json_response : " . $result['json_response'];
     echo "<BR>curl_error : ".$result['curl_error'];
@@ -96,18 +96,18 @@ function buildTransaction($oauth_token){
 function buildRequestData(){
    //you can assign the values from the input source fields instead of hard coded values.
     $request_data = array(
-                    "amount" => "2.50",
+                    "amount" => "5.50",
                     "credit_card"=> array (
-                         "number"=> "4111111111111111",
-                         "expiration_month"=> "12",
-                         "expiration_year"=> "2020"),
+                         "number"=> "4012881888818888",
+                         "expiration_month"=> "11",
+                         "expiration_year"=> "2019"),
                     "csc"=> "999",
                     "billing_address"=> array(
-                        "name"=> "Mark Smith",
+                        "name"=> "Princess Leia ",
                         "street_address"=> "8320 E. West St.",
                         "city"=> "Spokane",
                         "state"=> "WA",
-                        "zip"=> "85284")
+                        "zip"=> "84524")
                          );
     
     $request_data = json_encode($request_data);
@@ -142,9 +142,9 @@ if($trans_result['http_status_code'] != 200){
         // Optional :to display raw json response
         displayRawJsonResponse($trans_result['temp_json_response']);
        
-        echo "<br>Keyed sale :  failed !";
+        echo "<br>Keyed Authorization :  failed !";
         //to display individual keys of unsuccessful Transaction Json response
-        displayKeyedTransactionError($json) ;
+        displayKeyedAuthTransactionError($json) ;
     }
     else {
         //in case of  some other error occured, next is to just utilize the http code and message.
@@ -163,10 +163,10 @@ else
     // For transation successfully approved 
     if($json['success']== true && $json['response_code'] == 101){
 
-        echo "<br><br>Keyed sale :  Success !";
+        echo "<br><br>Keyed Authorization:  Success !";
         displayHttpStatus($trans_result['http_status_code']);
         //to display individual keys of successful OAuth Json response 
-        displayKeyedTransactionResponse($json);   
+        displayKeyedAuthTransactionResponse($json);   
    }
    else{
         //do you code here for any additional verification such as - Avs-response and CSC_response as needed.
@@ -179,11 +179,11 @@ else
 
 
 //This function displays keyed transaction successful response.
-function displayKeyedTransactionResponse($json_string){
+function displayKeyedAuthTransactionResponse($json_string){
    
     //optional : Display the output
    
-    echo "<br><br> Keyed Sale Response : ";
+    echo "<br><br> Keyed Authorization Response : ";
     //since php interprets boolean value as 1 for true and 0 for false when accessed.
     echo "<br>success : ";
     echo $json_string['success'] ? 'true' : 'false';  
@@ -201,9 +201,9 @@ function displayKeyedTransactionResponse($json_string){
 
 
 //This function displays keyed transaction error response.
-function displayKeyedTransactionError($json_string){
+function displayKeyedAuthTransactionError($json_string){
     //optional : Display the output
-    echo "<br><br> Keyed Sale Response : ";
+    echo "<br><br> Keyed Authorization Response : ";
     //since php interprets boolean value as 1 for true and 0 for false when accessed.
     echo "<br>success : ";
     echo $json_string['success'] ? 'true' : 'false';  
@@ -232,7 +232,7 @@ function displayKeyedTransactionError($json_string){
 }
 
 
+
 ?>
-    
-</body>
+    </body>
 </html>

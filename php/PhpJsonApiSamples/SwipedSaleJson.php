@@ -39,15 +39,15 @@ if($oauth_result['curl_error'])
 //and move forward with sale request.
 
 //TODO:Rename this as jsonResponse
-$json = jsonDecode($oauth_result['json_response']);  
+$json = jsonDecode($oauth_result['temp_json_response']);  
 
 if($oauth_result['http_status_code'] != 200){
 
    echo "<br> Error ! ";
-   if(!empty($oauth_result['json_response'])){
+   if(!empty($oauth_result['temp_json_response'])){
    
     // Optional : To display Raw json error response
-    displayRawJsonResponse($oauth_result['json_response']);
+    displayRawJsonResponse($oauth_result['temp_json_response']);
    
     //Display http status code and message.
     displayHttpStatus($oauth_result['http_status_code']);
@@ -131,7 +131,7 @@ if($trans_result['curl_error'] ){
 //If we reach here, we have been able to communicate with the service, 
 //next is decode the json response and then review Http Status code, response_code and success of the response
 
-$json = jsonDecode($trans_result['json_response']);  
+$json = jsonDecode($trans_result['temp_json_response']);  
 
 if($trans_result['http_status_code'] != 200){
     if($json['success'] === false){
@@ -141,7 +141,7 @@ if($trans_result['http_status_code'] != 200){
         displayHttpStatus($trans_result['http_status_code']);
         
         // Optional :to display raw json response
-        displayRawJsonResponse($trans_result['json_response']);
+        displayRawJsonResponse($trans_result['temp_json_response']);
        
         echo "<br>Swiped sale :  failed !";
         //to display individual keys of unsuccessful Transaction Json response
@@ -156,7 +156,7 @@ if($trans_result['http_status_code'] != 200){
 else
 {
     // Optional : to display raw json response - this may be helpful with initial testing.
-    displayRawJsonResponse($trans_result['json_response']);
+    displayRawJsonResponse($trans_result['temp_json_response']);
    
     // Do your code when Response is available based on the response_code. 
     // Please refer PayTrace-Error page for possible errors and Response Codes
