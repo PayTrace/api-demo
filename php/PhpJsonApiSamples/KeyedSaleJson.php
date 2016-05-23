@@ -28,53 +28,25 @@ include 'Json.php';
 //call a function of Utilities.php to generate oAuth toaken 
 $oauth_result = oAuthTokenGenerator();
 
-//Handle curl level for OAuth error, ExitOnCurlError
-if($oauth_result['curl_error'])
-{
-        echo "<br> Error ! ";
-        echo '<br>curl error with OAuth request: ' . $oauth_result['curl_error'] ;
-        exit();  
-}
+//call a function of Utilities.php to verify if there is any error with OAuth token. 
+$oauth_moveforward = isFoundOAuthTokenError($oauth_result);
 
-//If we reach here, we have been able to communicate with the service, 
-//next is decode the json response and then review Http Status code of the request 
-//and move forward with sale request.
+//If IsFoundOAuthTokenError results True, means no error 
+//next is to move forward for the actual request 
 
-//TODO:Rename this as jsonResponse
-$json = jsonDecode($oauth_result['temp_json_response']);  
-
-
-if($oauth_result['http_status_code'] != 200){
-
-   echo "<br> Error ! ";
-   if(!empty($oauth_result['temp_json_response'])){
-   
-    // Optional : To display Raw json error response
-    displayRawJsonResponse($oauth_result['temp_json_response']);
-   
-    //Display http status code and message.
-    displayHttpStatus($oauth_result['http_status_code']);
-   
-    //Optional :to display individual keys of unsuccessful OAuth Json response
-    displayOAuthError($json) ;
+if(!$oauth_moveforward){
+    //Decode the Raw Json response.
+    $json = jsonDecode($oauth_result['temp_json_response']); 
     
-   }
-   else{
-      echo "<br> Request Error !" ;
-      //in case of some other error, utilize the httpstatus code and message.
-      displayHttpStatus($oauth_result['http_status_code']);
-   }
- 
-}
-else
-{ 
-    // Make Authentication header based on the  successful oAuth response.
+    //set Authentication value based on the successful oAuth response.
+    //Add a space between 'Bearer' and access _token 
     $oauth_token = sprintf("Bearer %s",$json['access_token']);
  
     // Build the transaction 
-    buildTransaction($oauth_token);
+    buildTransaction($oauth_token);  
     
 }
+//end of main script
 
 function buildTransaction($oauth_token){
     // Build the request data
@@ -224,7 +196,7 @@ function displayKeyedTransactionError($json_string){
         foreach($no_of_errors as $item)
         {
            //Optional - error message with each individual error key.
-            echo " = " . $item ; 
+            echo "  " . $item ; 
         } 
     }
     
