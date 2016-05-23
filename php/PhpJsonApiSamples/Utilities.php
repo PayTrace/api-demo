@@ -69,19 +69,8 @@ function oAuthTokenGenerator(){
     
     }
    
-    
-//function to display individual keys of unsuccessful OAuth Json response turns into OAuth error response 
-function displayOAuthError($json_string){
 
-    // Display the actual output
-    echo "<br><br> OAuth Error :" ;
-    echo "<br> error : " . $json_string['error'] ;
-    echo "<br> error_description : " . $json_string['error_description'];
-    
-}
-
-
-// This function will actually execute the transaction based the request data, url and oauth token
+// This function will actually execute the transaction based on the request data, url and OAuth token
 function processTransaction($oauth_token,$request_data, $url ){
     // array variable to store the Response value, httpstatus code and curl error.
     $result = array(
@@ -142,7 +131,70 @@ function processTransaction($oauth_token,$request_data, $url ){
     
   }
   
-  /*this function is used to display the http status */
+
+
+function isFoundOAuthTokenError($oauth_response){
+    //set a variable with default 'false' value assuming some error occurred.
+    $bool_oauth_error = false ;
+    
+    //Handle curl level for OAuth error, ExitOnCurlError
+    if($oauth_response['curl_error']){
+        echo "<br> Error ! ";
+        echo '<br>curl error with OAuth request: ' . $oauth_response['curl_error'] ;
+        $bool_oauth_error = true ;
+        return $bool_oauth_error  ;
+    }
+
+    //If we reach here, we have been able to communicate with the service, 
+    //next is decode the json response and then review Http Status code of the request 
+    //and move forward with further request.
+    
+    $json = jsonDecode($oauth_response['temp_json_response']);  
+
+    if($oauth_response['http_status_code'] != 200){
+        
+        $bool_oauth_error = true ;
+        echo "<br> OAuth Error ! ";
+        
+        if(!empty($oauth_response['temp_json_response'])){
+   
+            // Optional : To display Raw json error response
+            displayRawJsonResponse($oauth_response['temp_json_response']);
+   
+            //Display http status code and message.
+            displayHttpStatus($oauth_response['http_status_code']);
+   
+            //Optional :to display individual keys of unsuccessful OAuth Json response
+            displayOAuthError($json) ;
+    
+        }
+        else{
+            echo "<br> OAuth Request Error !" ;
+             //in case of some other error, utilize the httpstatus code and message.
+            displayHttpStatus($oauth_response['http_status_code']);
+        }
+    }
+    else{
+        // Reaching at this point means OAuth request was successful. 
+        $bool_oauth_error = false ;
+    }
+    
+    return $bool_oauth_error ;
+   
+}
+
+    
+//function to display individual keys of unsuccessful OAuth Json response turns into OAuth error response 
+function displayOAuthError($json_string){
+
+    // Display the actual output
+    echo "<br><br> OAuth Error :" ;
+    echo "<br> error : " . $json_string['error'] ;
+    echo "<br> error_description : " . $json_string['error_description'];
+    
+}
+
+//this function is used to display the http status 
 function displayHttpStatus($http_status_code){
     echo "<br><br> Http Status : " . httpStatusInfo($http_status_code);  
 }
