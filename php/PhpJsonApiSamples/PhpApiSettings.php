@@ -30,7 +30,7 @@ define("URL_SWIPED_SALE" , BASE_URL.API_VERSION."/transactions/sale/swiped");
 define("URL_KEYED_AUTHORIZATION" ,BASE_URL.API_VERSION."/transactions/authorization/keyed");
 
 // URL for Keyed Refund
-define("url_keyed_refund" , BASE_URL.API_VERSION."/transactions/refund/keyed");
+define("URL_KEYED_REFUND" , BASE_URL.API_VERSION."/transactions/refund/keyed");
 
 // URL for Capture Transaction
 define("URL_CAPTURE", BASE_URL.API_VERSION."/transactions/authorization/capture");
@@ -43,12 +43,6 @@ define("url_create_customer", BASE_URL.$API_VERSION."/customer/create");
 		
 // URL for Vault Sale by CustomerId Method
 define("url_vault_saleby_customer_id", BASE_URL.API_VERSION."/transactions/sale/by_customer");
-
-
-
-
-
-
 
 
 //URL for API Method
