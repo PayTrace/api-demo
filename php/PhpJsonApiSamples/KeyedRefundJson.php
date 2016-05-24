@@ -63,14 +63,14 @@ function buildTransaction($oauth_token){
     verifyTransactionResult($result);
 }
 
-
+//To build a Request from the input source and encode into JSON
 function buildRequestData(){
    //you can assign the values from the input source fields instead of hard coded values.
     $request_data = array(
-                    "amount" => "0.00",
+                    "amount" => "4.45",
                     "credit_card"=> array (
                          "number"=> "5454545454545454",
-                         "expiration_month"=> "08",
+                         "expiration_month"=> "09",
                          "expiration_year"=> "2019"),
                     "csc"=> "999",
                     "billing_address"=> array(
@@ -89,7 +89,7 @@ function buildRequestData(){
     return $request_data ;  
 }
 
-//this function verify the Transaction result by checking the transaction result 
+//this function will verify the Transaction result by checking the transaction result 
 function verifyTransactionResult($trans_result){      
 //Handle curl level error, ExitOnCurlError
 if($trans_result['curl_error'] ){
