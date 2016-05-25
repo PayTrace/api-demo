@@ -52,10 +52,10 @@ and open the template in the editor.
 		<tr>
 			<td><a href="KeyedRefundJson.php">Keyed Refund</a> </td>
  		 </tr>
-		<!--<tr>
-			<td><a href="VoidTransactionJson.aspx">Void Transaction</a> </td>
-  		</tr>
 		<tr>
+			<td><a href="VoidTransactionJsonUI.php">Void Transaction</a> </td>
+  		</tr>
+		<!--<tr>
 			<td><a href="CreateCustomerJson.aspx">Create Customer Profile</a> </td>
  		</tr>
  		<tr>
