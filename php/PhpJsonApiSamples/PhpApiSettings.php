@@ -36,7 +36,7 @@ define("URL_KEYED_REFUND" , BASE_URL.API_VERSION."/transactions/refund/keyed");
 define("URL_CAPTURE", BASE_URL.API_VERSION."/transactions/authorization/capture");
 
 // URL for Void Sale Transaction
-define("url_void_transaction", BASE_URL. API_VERSION."/transactions/void");
+define("URL_VOID_TRANSACTION", BASE_URL. API_VERSION."/transactions/void");
 
 // URL for Vault Sale by CustomerId Method
 define("url_create_customer", BASE_URL.$API_VERSION."/customer/create");
