@@ -20,11 +20,6 @@ include 'PhpApiSettings.php';
 include 'Utilities.php';
 include 'Json.php';
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 //call a function of Utilities.php to generate oAuth toaken 
 $oauth_result = oAuthTokenGenerator();
@@ -56,21 +51,16 @@ function buildTransaction($oauth_token){
     //call to make the actual request
     $result = processTransaction($oauth_token,$request_data, URL_VAULT_SALE_BY_CUSTOMER_ID );
     
-    /*echo "<br>json_response : " . $result['json_response'];
-    echo "<BR>curl_error : ".$result['curl_error'];
-    echo "<br>http_status_code :".  $result['http_status_code'];
-    */
-
     //check the result
     verifyTransactionResult($result);
 }
 
 
 function buildRequestData(){
-   //you can assign the values from the input source fields instead of hard coded values.
+    //you can assign the values from any input source fields instead of hard coded values.
     $request_data = array(
-                    "amount" => "2.55",
-                    "customer_id" => "ustomerTest123"
+                    "amount" => "5.49",
+                    "customer_id" => "customerTest123"
                     );
     
     $request_data = json_encode($request_data);
@@ -81,7 +71,7 @@ function buildRequestData(){
     return $request_data ;  
 }
 
-//this function verify the Transaction result by checking the transaction result 
+//this function is to verify the Transaction result by checking the transaction result 
 function verifyTransactionResult($trans_result){      
 //Handle curl level error, ExitOnCurlError
 if($trans_result['curl_error'] ){
@@ -96,13 +86,13 @@ if($trans_result['curl_error'] ){
 $json = jsonDecode($trans_result['temp_json_response']);  
 
 if($trans_result['http_status_code'] != 200){
-    if($json['success'] === false){
-        echo "<br><br>Transaction Error occured : "; 
+    if($json['success'] === false || $json['response_code']== 1){
+        echo "<br><br>Transaction Error occurred : "; 
         
-        //Optional : display Http status code and message
+        //Optional : to display Http status code and message
         displayHttpStatus($trans_result['http_status_code']);
         
-        // Optional :to display raw json response
+        //Optional : to display raw json response
         displayRawJsonResponse($trans_result['temp_json_response']);
        
         echo "<br>Vault sale by Customer Id :  failed !";
@@ -110,7 +100,7 @@ if($trans_result['http_status_code'] != 200){
         displayVaultSaleByCustIdError($json) ;
     }
     else {
-        //in case of  some other error occured, next is to just utilize the http code and message.
+        //In case of some other error occured, next is to just utilize the http code and message.
         echo "<br><br> Request Error occured !" ;
         displayHttpStatus($trans_result['http_status_code']);
     }
@@ -120,7 +110,7 @@ else
     // Optional : to display raw json response - this may be helpful with initial testing.
     displayRawJsonResponse($trans_result['temp_json_response']);
    
-    // Do your code when Response is available based on the response_code. 
+    // Do your code : when Response is available and based on the response_code. 
     // Please refer PayTrace-Error page for possible errors and Response Codes
     
     // For transation successfully approved 
@@ -128,12 +118,12 @@ else
 
         echo "<br><br>Vault sale by Customer Id :  Success !";
         displayHttpStatus($trans_result['http_status_code']);
-        //to display individual keys of successful OAuth Json response 
+        //to display individual keys of successful Json response 
         displayVaultSaleByCustIdResponse($json);   
    }
    else{
-        //do you code here for any additional verification such as - Avs-response and CSC_response as needed.
-        //Please refer PayTrace-Error pagefor possible errors and Response Codes
+        //Do you code here for any additional verification such as - Avs-response and CSC_response as needed.
+        //Please refer PayTrace-Error page for possible errors and Response Codes
         //success = true and response_code == 103 approved but voided because of CSC did not match.
    }
 }
@@ -141,14 +131,15 @@ else
 }
 
 
-//This function displays keyed transaction successful response.
+//This function displays Vault Sale transaction successful response.
 function displayVaultSaleByCustIdResponse($json_string){
    
     //optional : Display the output
    
     echo "<br><br> Vault Sale By Customer Id Response : ";
-    //since php interprets boolean value as 1 for true and 0 for false when accessed.
+   
     echo "<br>success : ";
+    //since php interprets boolean value as 1 for true and 0 for false when accessed.
     echo $json_string['success'] ? 'true' : 'false';  
     echo "<br>response_code : ".$json_string['response_code'] ; 
     echo "<br>status_message : ".$json_string['status_message'] ; 
@@ -162,7 +153,7 @@ function displayVaultSaleByCustIdResponse($json_string){
 }
 
 
-//This function displays keyed transaction error response.
+//This function displays Vault Sale transaction error response.
 function displayVaultSaleByCustIdError($json_string){
     //optional : Display the output
     echo "<br><br> Vault Sale by Customer Id Response : ";
@@ -172,7 +163,7 @@ function displayVaultSaleByCustIdError($json_string){
     echo "<br>response_code : ".$json_string['response_code'] ; 
     echo "<br>status_message : ".$json_string['status_message'] ;  
     echo "<br>external_transaction_id: ".$json_string['external_transaction_id'] ;  
-   
+     
     //to check the actual API errors and get the individual error keys 
     echo "<br>API Errors : " ;
    
@@ -187,11 +178,9 @@ function displayVaultSaleByCustIdError($json_string){
            //Optional - error message with each individual error key.
             echo "  " . $item ; 
         } 
-    }
-    
+    } 
      
 }
-
 
 ?>
     </body>
