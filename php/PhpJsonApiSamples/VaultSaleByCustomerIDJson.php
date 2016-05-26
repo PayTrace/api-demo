@@ -21,7 +21,8 @@ include 'Utilities.php';
 include 'Json.php';
 
 
-//call a function of Utilities.php to generate oAuth toaken 
+//call a function of Utilities.php to generate oAuth token
+//This sample code doesn't use any 0Auth Library
 $oauth_result = oAuthTokenGenerator();
 
 //call a function of Utilities.php to verify if there is any error with OAuth token. 
@@ -66,7 +67,7 @@ function buildRequestData(){
     $request_data = json_encode($request_data);
    
     //optional : Display the Jason response - this may be helpful during initial testing.
-    displayJsonRequest($request_data);
+    displayRawJsonRequest($request_data);
    
     return $request_data ;  
 }
@@ -100,8 +101,8 @@ if($trans_result['http_status_code'] != 200){
         displayVaultSaleByCustIdError($json) ;
     }
     else {
-        //In case of some other error occured, next is to just utilize the http code and message.
-        echo "<br><br> Request Error occured !" ;
+        //In case of some other error occurred, next is to just utilize the http code and message.
+        echo "<br><br> Request Error occurred !" ;
         displayHttpStatus($trans_result['http_status_code']);
     }
 }

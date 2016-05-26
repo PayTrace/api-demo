@@ -24,6 +24,7 @@ include 'Utilities.php';
 include 'Json.php';
 
 //call a function of Utilities.php to generate oAuth token 
+//This sample code doesn't use any 0Auth Library
 $oauth_result = oAuthTokenGenerator();
 
 //call a function of Utilities.php to verify if there is any error with OAuth token. 
@@ -77,7 +78,7 @@ function buildRequestData(){
                     "swipe" => "%B4012881888818888^Demo/Customer^2412101001020001000000701000000?;4012881888818888=24121010010270100001?",
                     "csc"=> "999",
                     "billing_address"=> array(
-                        "name"=> "Steve Harper",
+                        "name"=> "Tom Harper",
                         "street_address"=> "8320 E. West St.",
                         "city" => "Spokane",
                         "state"=> "WA",
@@ -87,7 +88,7 @@ function buildRequestData(){
     $request_data = json_encode($request_data);
    
     //optional : Display the Jason response - this may be helpful during initial testing.
-    displayJsonRequest($request_data);
+    displayRawJsonRequest($request_data);
    
     return $request_data ;  
 }
@@ -110,7 +111,7 @@ $json = jsonDecode($trans_result['temp_json_response']);
 
 if($trans_result['http_status_code'] != 200){
     if($json['success'] === false){
-        echo "<br><br>Transaction Error occured : "; 
+        echo "<br><br>Transaction Error occurred : "; 
         
         //Optional : display Http status code and message
         displayHttpStatus($trans_result['http_status_code']);
@@ -123,8 +124,8 @@ if($trans_result['http_status_code'] != 200){
         displaySwipedSaleTransactionError($json) ;
     }
     else {
-        //in case of  some other error occured, next is to just utilize the http code and message.
-        echo "<br><br> Request Error occured !" ;
+        //in case of  some other error occurred, next is to just utilize the http code and message.
+        echo "<br><br> Request Error occurred !" ;
         displayHttpStatus($trans_result['http_status_code']);
     }
 }

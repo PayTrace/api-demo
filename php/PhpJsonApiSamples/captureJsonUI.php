@@ -10,12 +10,12 @@ triggers 'CaptureJson.php' which is a sample code for capturing a transaction. -
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Capture a Transaction Number</title>
+        <title>Capture a Transaction </title>
     </head>
     <body>
         <form action="CaptureJson.php" method="post">
             <p>Authorized Transaction Id : <input type="text" name="TransactionId" /></p>
-            <p><input type="submit" value="Capture" /></p>
+            <p><input type="submit" value="Capture Transaction" /></p>
         </form>
         <br>
             <a href="Default.php">Back to Home </a> 

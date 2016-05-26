@@ -13,14 +13,18 @@ and open the template in the editor.
         <br>
             <a href="Default.php">Back to Home </a> 
         <br>
-    <?php
-// this page shows Sample code for Keyed Refund Sample.
+
+<?php
+
+// This page shows Sample code for Keyed Refund Sample.
 include 'PhpApiSettings.php';
 include 'Utilities.php';
 include 'Json.php';
 
 
-//call a function of Utilities.php to generate oAuth toaken 
+//call a function of Utilities.php to generate oAuth token 
+//This sample code doesn't use any 0Auth Library
+
 $oauth_result = oAuthTokenGenerator();
 
 //call a function of Utilities.php to verify if there is any error with OAuth token. 
@@ -42,9 +46,7 @@ if (!$oauth_moveforward) {
     
 }
 
-//end of main script// </editor-fold>
-
-
+//end of main script// 
 
 
 function buildTransaction($oauth_token){
@@ -60,7 +62,7 @@ function buildTransaction($oauth_token){
 
 //To build a Request from the input source and encode into JSON
 function buildRequestData(){
-   //you can assign the values from the input source fields instead of hard coded values.
+   //you can assign the values from any input source fields instead of hard coded values.
     $request_data = array(
                     "amount" => "4.45",
                     "credit_card"=> array (
@@ -79,7 +81,7 @@ function buildRequestData(){
     $request_data = json_encode($request_data);
    
     //optional : Display the Jason response - this may be helpful during initial testing.
-    displayJsonRequest($request_data);
+    displayRawJsonRequest($request_data);
    
     return $request_data ;  
 }
@@ -100,9 +102,9 @@ $json = jsonDecode($trans_result['temp_json_response']);
 
 if($trans_result['http_status_code'] != 200){
     if($json['success'] === false){
-        echo "<br><br>Transaction Error occured : "; 
+        echo "<br><br>Transaction Error occurred : "; 
         
-        //Optional : display Http status code and message
+        //Optional :to display Http status code and message
         displayHttpStatus($trans_result['http_status_code']);
         
         // Optional :to display raw json response
@@ -113,8 +115,8 @@ if($trans_result['http_status_code'] != 200){
         displayKeyedRefundTransactionError($json) ;
     }
     else {
-        //in case of  some other error occured, next is to just utilize the http code and message.
-        echo "<br><br> Request Error occured !" ;
+        //in case of  some other error occurred, next is to just utilize the http code and message.
+        echo "<br><br> Request Error occurred !" ;
         displayHttpStatus($trans_result['http_status_code']);
     }
 }

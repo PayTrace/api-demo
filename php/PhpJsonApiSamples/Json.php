@@ -34,6 +34,6 @@ function displayRawJsonResponse($json_string){
 }
 
 // this function will display the json string 
-function displayJsonRequest($json_string){
+function displayRawJsonRequest($json_string){
     echo "<br> Raw Json Request : " . $json_string ;
 }
