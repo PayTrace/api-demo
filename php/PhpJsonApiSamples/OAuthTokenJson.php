@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>OAuth Token</title>
     </head>
     <body>
      <br>
@@ -15,16 +15,12 @@ and open the template in the editor.
      <br>
  <?php
        
-/* this code will shows how to access and make a request of OAuth token  */
+/* This code will shows how to access and make a request of OAuth token  */
 
 include 'PhpApiSettings.php';
 include 'Utilities.php';
 include 'Json.php';
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 //call a function of Utilities.php to generate oAuth toaken 
 $oauth_result = oAuthTokenGenerator();
@@ -62,7 +58,9 @@ if($oauth_result['http_status_code'] != 200){
     }
 }
 else{
-    // to display json response
+    
+     echo "<br>" . "OAuth Request: Success !";
+    //To display json response
     displayRawJsonResponse($oauth_result['temp_json_response']);
    
     //Display http status code and message.

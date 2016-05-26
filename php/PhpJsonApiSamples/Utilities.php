@@ -1,5 +1,7 @@
 <?php
-
+/*
+ * This file contains all the common functions that are accessilbe and used on sample codes.
+ */
 /*
  * This function will find the associated status message from the file 
  * used in Parse_ini_file( path to the file)
@@ -12,6 +14,10 @@ function httpStatusInfo($http_status_code){
     return $http_info ;
 }
 
+/*
+ * This function will make a request to accuire the OAuth token 
+ * Returns an array with Json response, Curl_error and http status code of the request.
+ */
 function oAuthTokenGenerator(){
    
     // array variable to store the Response value, httpstatus code and curl error.
@@ -56,8 +62,8 @@ function oAuthTokenGenerator(){
     //collect the output data.
     
     /* Following commented code is needed where the header is added with code line above - curl_setopt($ch, CURLOPT_HEADER, true);
-    * $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-    $result['json_response'] = substr($response,$header_size);*/
+       $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+        $result['json_response'] = substr($response,$header_size);*/
     
     $result['temp_json_response'] = $response ;
     $result['http_status_code'] =  curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -132,7 +138,12 @@ function processTransaction($oauth_token,$request_data, $url ){
   }
   
 
-
+/*
+ * This function will check for the OAuth request error. 
+ * Display the error if any and
+ * Returns the boolean flag
+ */
+  
 function isFoundOAuthTokenError($oauth_response){
     //set a variable with default 'false' value assuming some error occurred.
     $bool_oauth_error = false ;
@@ -184,7 +195,7 @@ function isFoundOAuthTokenError($oauth_response){
 }
 
     
-//function to display individual keys of unsuccessful OAuth Json response turns into OAuth error response 
+//Tunction to display individual keys of unsuccessful OAuth Json response turns into OAuth error response 
 function displayOAuthError($json_string){
 
     // Display the actual output
@@ -194,7 +205,7 @@ function displayOAuthError($json_string){
     
 }
 
-//this function is used to display the http status 
+//This function is used to display the http status 
 function displayHttpStatus($http_status_code){
     echo "<br><br> Http Status : " . httpStatusInfo($http_status_code);  
 }

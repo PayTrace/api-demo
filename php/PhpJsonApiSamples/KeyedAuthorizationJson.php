@@ -15,18 +15,15 @@ and open the template in the editor.
             <a href="Default.php">Back to Home </a> 
         <br>
 <?php
-// this page will show you 
+// this page will show you Keyed Authorization Sample 
 include 'PhpApiSettings.php';
 include 'Utilities.php';
 include 'Json.php';
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-//call a function of Utilities.php to generate oAuth toaken 
+//call a function of Utilities.php to generate oAuth token 
+//This sample code doesn't use any 0Auth Library
+
 $oauth_result = oAuthTokenGenerator();
 
 //call a function of Utilities.php to verify if there is any error with OAuth token. 
@@ -48,8 +45,7 @@ if (!$oauth_moveforward) {
     
 }
 
-//end of main script// </editor-fold>
-
+//end of main script//
 
 
 
@@ -57,7 +53,7 @@ function buildTransaction($oauth_token){
     // Build the request data
     $request_data = buildRequestData();
     
-    //call to make the actual request
+    //call to make the actual request with appropriate URL constant
     $result = processTransaction( $oauth_token,$request_data,URL_KEYED_AUTHORIZATION );
    
     //check the result
@@ -66,7 +62,7 @@ function buildTransaction($oauth_token){
 
 
 function buildRequestData(){
-   //you can assign the values from the input source fields instead of hard coded values.
+   //you can assign the values from any input source fields instead of hard coded values.
     $request_data = array(
                     "amount" => "4.50",
                     "credit_card"=> array (
@@ -85,13 +81,14 @@ function buildRequestData(){
     $request_data = json_encode($request_data);
    
     //optional : Display the Jason response - this may be helpful during initial testing.
-    displayJsonRequest($request_data);
+    displayRawJsonRequest($request_data);
    
     return $request_data ;  
 }
 
-//this function verify the Transaction result by checking the transaction result 
+//This function is to verify the Transaction result 
 function verifyTransactionResult($trans_result){      
+
 //Handle curl level error, ExitOnCurlError
 if($trans_result['curl_error'] ){
     echo "<br>Error occcured : ";
@@ -106,7 +103,7 @@ $json = jsonDecode($trans_result['temp_json_response']);
 
 if($trans_result['http_status_code'] != 200){
     if($json['success'] === false){
-        echo "<br><br>Transaction Error occured : "; 
+        echo "<br><br>Transaction Error occurred : "; 
         
         //Optional : display Http status code and message
         displayHttpStatus($trans_result['http_status_code']);
@@ -119,20 +116,20 @@ if($trans_result['http_status_code'] != 200){
         displayKeyedAuthTransactionError($json) ;
     }
     else {
-        //in case of  some other error occured, next is to just utilize the http code and message.
-        echo "<br><br> Request Error occured !" ;
+        //In case of some other error occurred, next is to just utilize the http code and message.
+        echo "<br><br> Request Error occurred !" ;
         displayHttpStatus($trans_result['http_status_code']);
     }
 }
 else
 {
-    // Optional : to display raw json response - this may be helpful with initial testing.
+    //Optional : to display raw json response - this may be helpful with initial testing.
     displayRawJsonResponse($trans_result['temp_json_response']);
    
-    // Do your code when Response is available based on the response_code. 
-    // Please refer PayTrace-Error page for possible errors and Response Codes
+    //Do your code when Response is available based on the response_code. 
+    //Please refer PayTrace-Error page for possible errors and Response Codes
     
-    // For transation successfully approved 
+    //For transation successfully approved 
     if($json['success']== true && $json['response_code'] == 101){
 
         echo "<br><br>Keyed Authorization:  Success !";

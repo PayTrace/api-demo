@@ -77,7 +77,7 @@ function buildRequestData(){
     $request_data = json_encode($request_data);
     
     //optional : Display the Jason response - this may be helpful during initial testing.
-    displayJsonRequest($request_data);
+    displayRawJsonRequest($request_data);
    
     return $request_data ;  
 }
@@ -106,7 +106,7 @@ if($trans_result['http_status_code'] != 200){
         //Optional : display Http status code and message
         displayHttpStatus($trans_result['http_status_code']);
         
-        // Optional :to display raw json response
+        //Optional :to display raw json response
         displayRawJsonResponse($trans_result['temp_json_response']);
        
         echo "<br>Void Transaction  :  failed !";
@@ -114,20 +114,20 @@ if($trans_result['http_status_code'] != 200){
         displayVoidTransactionError($json) ;
     }
     else {
-        //in case of some other error occured, next is to just utilize the http code and message.
+        //In case of some other error occurred, next is to just utilize the http code and message.
         echo "<br><br> Request Error occurred !" ;
         displayHttpStatus($trans_result['http_status_code']);
     }
 }
 else
 {
-    // Optional : to display raw json response - this may be helpful with initial testing.
+    //Optional : to display raw json response - this may be helpful with initial testing.
     displayRawJsonResponse($trans_result['temp_json_response']);
    
-    // Do your code when Response is available based on the response_code. 
-    // Please refer PayTrace-Error page for possible errors and Response Codes
+    //Do your code when Response is available based on the response_code. 
+    //Please refer PayTrace-Error page for possible errors and Response Codes
     
-    // For transation successfully approved 
+    //For transation successfully approved 
     if($json['success']== true && $json['response_code'] == 109){
 
         echo "<br><br>Void Transaction :  Success !";
@@ -141,10 +141,11 @@ else
         //response code = 110 is void unsuccessful. 
         //response code = 114 is for test void transaction.
    }
-}
-  
+   
+   
 }
 
+}
 
 //This function displays void transaction successful response.
 function displayVoidTransactionResponse($json_string){
@@ -161,7 +162,6 @@ function displayVoidTransactionResponse($json_string){
     echo "<br>transaction_id : ".$json_string['transaction_id'] ;  
         
 }
-
 
 //This function displays void transaction error response.
 function displayVoidTransactionError($json_string){

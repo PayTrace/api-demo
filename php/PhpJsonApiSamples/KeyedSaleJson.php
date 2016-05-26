@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Keyed Sale Sample</title>
     </head>
     <body>
         <br>
@@ -19,13 +19,9 @@ include 'PhpApiSettings.php';
 include 'Utilities.php';
 include 'Json.php';
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-//call a function of Utilities.php to generate oAuth toaken 
+//call a function of Utilities.php to generate oAuth token 
+//This sample code doesn't use any 0Auth Library
 $oauth_result = oAuthTokenGenerator();
 
 //call a function of Utilities.php to verify if there is any error with OAuth token. 
@@ -59,14 +55,13 @@ function buildTransaction($oauth_token){
     echo "<BR>curl_error : ".$result['curl_error'];
     echo "<br>http_status_code :".  $result['http_status_code'];
     */
-
     //check the result
     verifyTransactionResult($result);
 }
 
 
 function buildRequestData(){
-   //you can assign the values from the input source fields instead of hard coded values.
+   //you can assign the values from any input source fields instead of hard coded values.
     $request_data = array(
                     "amount" => "2.50",
                     "credit_card"=> array (
@@ -80,18 +75,19 @@ function buildRequestData(){
                         "city"=> "Spokane",
                         "state"=> "WA",
                         "zip"=> "85284")
-                         );
+                    );
     
     $request_data = json_encode($request_data);
    
     //optional : Display the Jason response - this may be helpful during initial testing.
-    displayJsonRequest($request_data);
+    displayRawJsonRequest($request_data);
    
     return $request_data ;  
 }
 
-//this function verify the Transaction result by checking the transaction result 
+//This function is to verify the Transaction result 
 function verifyTransactionResult($trans_result){      
+
 //Handle curl level error, ExitOnCurlError
 if($trans_result['curl_error'] ){
     echo "<br>Error occcured : ";
@@ -106,12 +102,12 @@ $json = jsonDecode($trans_result['temp_json_response']);
 
 if($trans_result['http_status_code'] != 200){
     if($json['success'] === false){
-        echo "<br><br>Transaction Error occured : "; 
+        echo "<br><br>Transaction Error occurred : "; 
         
         //Optional : display Http status code and message
         displayHttpStatus($trans_result['http_status_code']);
         
-        // Optional :to display raw json response
+        //Optional :to display raw json response
         displayRawJsonResponse($trans_result['temp_json_response']);
        
         echo "<br>Keyed sale :  failed !";
@@ -119,8 +115,8 @@ if($trans_result['http_status_code'] != 200){
         displayKeyedTransactionError($json) ;
     }
     else {
-        //in case of  some other error occured, next is to just utilize the http code and message.
-        echo "<br><br> Request Error occured !" ;
+        //In case of some other error occurred, next is to just utilize the http code and message.
+        echo "<br><br> Request Error occurred !" ;
         displayHttpStatus($trans_result['http_status_code']);
     }
 }
@@ -129,7 +125,7 @@ else
     // Optional : to display raw json response - this may be helpful with initial testing.
     displayRawJsonResponse($trans_result['temp_json_response']);
    
-    // Do your code when Response is available based on the response_code. 
+    // Do your code when Response is available and based on the response_code. 
     // Please refer PayTrace-Error page for possible errors and Response Codes
     
     // For transation successfully approved 
@@ -141,8 +137,8 @@ else
         displayKeyedTransactionResponse($json);   
    }
    else{
-        //do you code here for any additional verification such as - Avs-response and CSC_response as needed.
-        //Please refer PayTrace-Error pagefor possible errors and Response Codes
+        //Do you code here for any additional verification such as - Avs-response and CSC_response as needed.
+        //Please refer PayTrace-Error page for possible errors and Response Codes
         //success = true and response_code == 103 approved but voided because of CSC did not match.
    }
 }
