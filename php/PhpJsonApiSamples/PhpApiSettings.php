@@ -42,7 +42,7 @@ define("URL_VOID_TRANSACTION", BASE_URL. API_VERSION."/transactions/void");
 define("url_create_customer", BASE_URL.$API_VERSION."/customer/create");
 		
 // URL for Vault Sale by CustomerId Method
-define("url_vault_saleby_customer_id", BASE_URL.API_VERSION."/transactions/sale/by_customer");
+define("URL_VAULT_SALE_BY_CUSTOMER_ID", BASE_URL.API_VERSION."/transactions/sale/by_customer");
 
 
 //URL for API Method

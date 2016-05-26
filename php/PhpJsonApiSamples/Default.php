@@ -57,11 +57,11 @@ and open the template in the editor.
   		</tr>
 		<!--<tr>
 			<td><a href="CreateCustomerJson.aspx">Create Customer Profile</a> </td>
- 		</tr>
+ 		</tr> -->
  		<tr>
-    		<td><a href="VaultSaleByCustomerIDJson.aspx">Vault Sale By Customer ID</a> </td>
+    		<td><a href="VaultSaleByCustomerIDJson.php">Vault Sale By Customer ID</a> </td>
   		</tr>
-	-->
+	
 </table>
 	</form>
 <?php
