@@ -38,10 +38,10 @@ and open the template in the editor.
                     <td><a href="OAuthTokenJson.php">Authentication Token</a> </td>
   		</tr>
 		<tr>
-			<td><a href="KeyedSaleJson.php">Keyed Sale (Card not present)</a> </td>
+			<td><a href="KeyedSaleJson.php">Keyed Sale (Card-Not Present)</a> </td>
   		</tr>
 		<tr>
-			<td><a href="SwipedSaleJson.php">Swiped Sale (Card present)</a> </td>
+			<td><a href="SwipedSaleJson.php">Swiped Sale (Card Present)</a> </td>
  		 </tr>
 		<tr>
 			<td><a href="KeyedAuthorizationJson.php">Keyed Authorization(Card-Not Present)</a> </td>

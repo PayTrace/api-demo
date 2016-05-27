@@ -22,7 +22,7 @@ include 'Json.php';
 
 
 //call a function of Utilities.php to generate oAuth token 
-//This sample code doesn't use any 0Auth Library
+//Note: This sample code doesn't use any 0Auth Library
 
 $oauth_result = oAuthTokenGenerator();
 
@@ -37,7 +37,7 @@ if (!$oauth_moveforward) {
     $json = jsonDecode($oauth_result['temp_json_response']);
 
     //set Authentication value based on the successful oAuth response.
-    //Add a space between 'Bearer' and access _token 
+    //Note: Add a space between 'Bearer' and access _token 
     $oauth_token = sprintf("Bearer %s", $json['access_token']);
 
     // Build the transaction 
@@ -54,9 +54,9 @@ function buildTransaction($oauth_token){
     $request_data = buildRequestData();
     
     //call to make the actual request with appropriate URL constant
-    //echo "<br>".URL_CREATE_CUSTOMER ;
+  
     $result = processTransaction( $oauth_token,$request_data,URL_CREATE_CUSTOMER );
-    /*echo "<br>json_response : " . $result['json_response'];
+    /*echo "<br>json_response : " . $result['temp_json_response'];
     echo "<BR>curl_error : ".$result['curl_error'];
     echo "<br>http_status_code :".  $result['http_status_code'];*/
     
@@ -66,7 +66,9 @@ function buildTransaction($oauth_token){
 
 
 function buildRequestData(){
-   //you can assign the values from any input source fields instead of hard coded values.
+    //you can assign the values from any input source fields instead of hard coded values.
+    //customer_id represents a value that you would like use as a reference ID to store customer data
+    //This Id can be used for future reference to the particular customer at PayTrace Vault.
     $request_data = array(
                     "customer_id" => "customerTest120",
                     "credit_card"=> array (
@@ -112,7 +114,7 @@ if($trans_result['http_status_code'] != 200){
         //Optional : display Http status code and message
         displayHttpStatus($trans_result['http_status_code']);
         
-        // Optional :to display raw json response
+        //Optional : to display raw json response
         displayRawJsonResponse($trans_result['temp_json_response']);
        
         echo "<br>Create Customer : failed !";
