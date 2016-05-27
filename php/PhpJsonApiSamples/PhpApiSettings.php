@@ -38,8 +38,8 @@ define("URL_CAPTURE", BASE_URL.API_VERSION."/transactions/authorization/capture"
 // URL for Void Sale Transaction
 define("URL_VOID_TRANSACTION", BASE_URL. API_VERSION."/transactions/void");
 
-// URL for Vault Sale by CustomerId Method
-define("url_create_customer", BASE_URL.$API_VERSION."/customer/create");
+// URL for Create Customer(PayTrace Vault) Method
+define("URL_CREATE_CUSTOMER", BASE_URL.API_VERSION."/customer/create");
 		
 // URL for Vault Sale by CustomerId Method
 define("URL_VAULT_SALE_BY_CUSTOMER_ID", BASE_URL.API_VERSION."/transactions/sale/by_customer");
