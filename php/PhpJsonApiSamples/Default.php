@@ -55,9 +55,9 @@ and open the template in the editor.
 		<tr>
 			<td><a href="VoidTransactionJsonUI.php">Void Transaction</a> </td>
   		</tr>
-		<!--<tr>
-			<td><a href="CreateCustomerJson.aspx">Create Customer Profile</a> </td>
- 		</tr> -->
+		<tr>
+			<td><a href="CreateCustomerJson.php">Create Customer Profile</a> </td>
+ 		</tr> 
  		<tr>
     		<td><a href="VaultSaleByCustomerIDJson.php">Vault Sale By Customer ID</a> </td>
   		</tr>
