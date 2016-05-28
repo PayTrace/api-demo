@@ -31,9 +31,9 @@ and open the template in the editor.
 	<form id="form1" runat="server">
 	<table style="width:40%">
 		<tr><th>Select any option </th></tr>
-		<!--<tr> 
-			<td><a href="ClientSideEncryptionDemo.aspx">ClientSide Encryption </a> </td>
-		</tr>   -->
+		<tr> 
+			<td><a href="ClientSideEncryption.php">Client Side Encryption </a> </td>
+		</tr>   
 		<tr>
                     <td><a href="OAuthTokenJson.php">Authentication Token</a> </td>
   		</tr>
@@ -64,8 +64,6 @@ and open the template in the editor.
 	
 </table>
 	</form>
-<?php
-        // put your code here
- ?>
+
     </body>
 </html>
