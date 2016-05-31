@@ -24,13 +24,11 @@ and open the template in the editor.
             paytrace.setKeyAjax('DemoPublic_Key.pem');
         });
         </script>
-            <form id="DemoForm" action="ClientEncryptionDemo.php" method="post">
+       <form id="DemoForm" action="ClientEncryptionDemo.php" method="post">
         <div>
     	    <!-- On each field to be encrypted at the browser, add the pt-encrypt class. -->
             <p>Enter Credit Card Number : <input id="ccNumber" type="text" class="form-control pt-encrypt"  name="ccNumber" placeholder="Credit card number"/> </p>
-            <br>
-            <p>Enter Credit Card Number : <input id="ccCSC" type="text" class="form-control pt-encrypt"  name="ccCSC" placeholder="Card security code" /> </p>	
-            <br>
+            <p>Enter Card Security code  : <input id="ccCSC" type="text" class="form-control pt-encrypt"  name="ccCSC" placeholder="Card security code" /> </p>	
             <input type="submit" id="enterPayment" value="Submit" name="commit" /> 
     	</div>
         </form>
