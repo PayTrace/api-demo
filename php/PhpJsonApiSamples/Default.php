@@ -32,8 +32,11 @@ and open the template in the editor.
 	<table style="width:40%">
 		<tr><th>Select any option </th></tr>
 		<tr> 
-			<td><a href="ClientSideEncryption.php">Client Side Encryption </a> </td>
+			<td><a href="ClientSideEncryptionDemo1.html">Client Side Encryption Demo 1(ESC-346) </a> </td>
 		</tr>   
+                <tr> 
+			<td><a href="ClientSideEncryptionDemo2.html">Client Side Encryption Demo 2 </a> </td>
+		</tr> 
 		<tr>
                     <td><a href="OAuthTokenJson.php">Authentication Token</a> </td>
   		</tr>
