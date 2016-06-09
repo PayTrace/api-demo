@@ -34,6 +34,7 @@ and open the template in the editor.
                         // Do your validation and if all validations are met, 
                         // Next is to submit the form with paytrace.submitEncrypted.
                         if ($("#ccNumber").val() && $("#ccCSC").val()) {
+                           //if all validations are met, submit the form to Paytrace library for encyption.
                             paytrace.submitEncrypted("#DemoForm");
                         }
                         else{ 
@@ -64,7 +65,7 @@ and open the template in the editor.
                     }else if(cscNumber.length == 0){
                           alert("Please enter the CSCnumber.");
                     }else{
-                    // if all validation are true
+                    //if all validation are met, submit the form to Paytrace library for encyption.
                     paytrace.submitEncrypted("#DemoForm"); }
                 });    
                });*/
