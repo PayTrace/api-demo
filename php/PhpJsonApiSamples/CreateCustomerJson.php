@@ -67,10 +67,11 @@ function buildTransaction($oauth_token){
 
 function buildRequestData(){
     //you can assign the values from any input source fields instead of hard coded values.
-    //customer_id represents a value that you would like use as a reference ID to store customer data
+    //customer_id represents a value that you would like use as a reference ID to that customer from your DB/any data storage  
     //This Id can be used for future reference to the particular customer at PayTrace Vault.
+    //This Id should be unique with each customer.
     $request_data = array(
-                    "customer_id" => "customerTest121-Demo",
+                    "customer_id" => "customerTest122-Demo",
                     "credit_card"=> array (
                          "number"=> "4012881888818888",
                          "expiration_month"=> "11",
