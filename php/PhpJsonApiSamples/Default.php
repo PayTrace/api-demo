@@ -59,7 +59,7 @@ and open the template in the editor.
 			<td><a href="VoidTransactionJsonUI.php">Void Transaction</a> </td>
   		</tr>
 		<tr>
-			<td><a href="CreateCustomerJson.php">Create Customer Profile</a> </td>
+			<td><a href="CreateCustomerJson.php">Create Customer Profile(Tokenization)</a> </td>
  		</tr> 
  		<tr>
     		<td><a href="VaultSaleByCustomerIDJson.php">Vault Sale By Customer ID</a> </td>
