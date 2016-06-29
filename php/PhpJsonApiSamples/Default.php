@@ -32,10 +32,12 @@ and open the template in the editor.
 	<table style="width:40%">
 		<tr><th>Select any option </th></tr>
 		<tr> 
-			<td><a href="ClientSideEncryptionDemo1.html">Client Side Encryption Demo 1(ESC-346) </a> </td>
+                        <!-- Demo1 checks the client side validations and then submit the valid form with PayTrace client side library  -->
+			<td><a href="ClientSideEncryptionDemo1.html">Client Side Encryption Demo 1 </a> </td>
 		</tr>   
                 <tr> 
-			<td><a href="ClientSideEncryptionDemo2.html">Client Side Encryption Demo 2 </a> </td>
+			 <!-- Demo2 submits the form with PayTrace client side library as soon as form is submitted. -->
+                        <td><a href="ClientSideEncryptionDemo2.html">Client Side Encryption Demo 2 </a> </td>
 		</tr> 
 		<tr>
                     <td><a href="OAuthTokenJson.php">Authentication Token</a> </td>

@@ -7,12 +7,12 @@
  */
 //Define variables that holds API settings and urls.
 //Get the user credential for the account and change the user credentials
-define("USERNAME", "TestSampleApi");
-define("PASSWORD", "TestS@mple123"); //pvc
+define("USERNAME", "Replace with  your username");
+define("PASSWORD", "Replace with your password"); //pvc
 define("GRANT_TYPE","password");
 
-define("BASE_URL","https://rmapi.paytrace.com"); //PVC
-//define("BASE_URL","https://api.paytrace.com"); //Production
+
+define("BASE_URL","https://api.paytrace.com"); //Production
 
 //API version
 define("API_VERSION", "/v1");
@@ -44,7 +44,6 @@ define("URL_CREATE_CUSTOMER", BASE_URL.API_VERSION."/customer/create");
 // URL for Vault Sale by CustomerId Method
 define("URL_VAULT_SALE_BY_CUSTOMER_ID", BASE_URL.API_VERSION."/transactions/sale/by_customer");
 
-
 //URL for API Method
-$ping_url =  API_VERSION."/ping"; 
+define("PING_URL",BASE_URL.API_VERSION."/ping"); 
 
