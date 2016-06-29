@@ -12,7 +12,7 @@ and open the template in the editor.
     </head>
     <body>
         <br>
-            <a href="Default.php">Back to Home </a> 
+            <a href="Default.html">Back to Home </a>  
         <br>
 <?php
 // this page will show you Keyed Authorization Sample 
