@@ -15,7 +15,7 @@ and open the template in the editor.
             <p><input type="submit" value="Void Transaction" /></p>
         </form>
         <br>
-            <a href="Default.php">Back to Home </a> 
+            <a href="Default.html">Back to Home </a>  
         <br>
     </body>
 </html>

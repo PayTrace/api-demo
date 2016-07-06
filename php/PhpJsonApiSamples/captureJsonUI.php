@@ -18,7 +18,7 @@ triggers 'CaptureJson.php' which is a sample code for capturing a transaction. -
             <p><input type="submit" value="Capture Transaction" /></p>
         </form>
         <br>
-            <a href="Default.php">Back to Home </a> 
+            <a href="Default.html">Back to Home </a> 
         <br>
     </body>
 </html>

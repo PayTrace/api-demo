@@ -11,7 +11,7 @@ and open the template in the editor.
     </head>
     <body>
          <br>
-            <a href="Default.php">Back to Home </a> 
+            <a href="Default.html">Back to Home </a>  
         <br>
 
             <?php
@@ -67,10 +67,11 @@ function buildTransaction($oauth_token){
 
 function buildRequestData(){
     //you can assign the values from any input source fields instead of hard coded values.
-    //customer_id represents a value that you would like use as a reference ID to store customer data
+    //customer_id represents a value that you would like use as a reference ID to that customer from your DB/any data storage  
     //This Id can be used for future reference to the particular customer at PayTrace Vault.
+    //This Id should be unique with each customer.
     $request_data = array(
-                    "customer_id" => "customerTest120",
+                    "customer_id" => "customerTest122-Demo",
                     "credit_card"=> array (
                          "number"=> "4012881888818888",
                          "expiration_month"=> "11",
@@ -164,7 +165,7 @@ function displayCreateCustomerResponse($json_string){
     echo $json_string['success'] ? 'true' : 'false';  
     echo "<br>response_code : ".$json_string['response_code'] ; 
     echo "<br>status_message : ".$json_string['status_message'] ; 
-    echo "<br>customer_id : ".$json_string['transaction_id'] ;  
+    echo "<br>customer_id : ".$json_string['customer_id'] ;  
     
     echo "<br>masked_card_number : ".$json_string['masked_card_number'] ;       
 
