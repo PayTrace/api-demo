@@ -38,3 +38,5 @@ UpgradeLog2.htm
 /dot_net/AspNetClientEncryptionExample/.vs/
 /dot_net/AspNetClientEncryptionExample/obj/
 
+#php netbeans file.
+/nbproject
