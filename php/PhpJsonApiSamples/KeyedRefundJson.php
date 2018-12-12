@@ -80,7 +80,7 @@ function buildRequestData(){
     
     $request_data = json_encode($request_data);
    
-    //optional : Display the Jason response - this may be helpful during initial testing.
+    //optional : Display the Json response - this may be helpful during initial testing.
     displayRawJsonRequest($request_data);
    
     return $request_data ;  
