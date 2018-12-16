@@ -114,7 +114,7 @@ else
     // Do your code : when Response is available and based on the response_code. 
     // Please refer PayTrace-Error page for possible errors and Response Codes
     
-    // For transation successfully approved 
+    // For transaction successfully approved 
     if($json['success']== true && $json['response_code'] == 101){
 
         echo "<br><br>Vault sale by Customer Id :  Success !";
