@@ -131,7 +131,7 @@ namespace CSharpDotNetJsonSample
 			{
 				// Do your code when Response is available based on the response_code. 
 				// Please refer PayTrace-HTTP Status and Error Codes page for possible errors and Response Codes
-				// For transation successfully approved 
+				// For transaction successfully approved 
 				if (result.ResponseCode == 101 && result.Success == true ) 
 				{
 					// Do you code for any additional verification
