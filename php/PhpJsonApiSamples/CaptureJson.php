@@ -72,9 +72,9 @@ function buildRequestData(){
      * Do your own input validation.
      */
     
-    $transation_id = $_POST["TransactionId"] ;
+    $transaction_id = $_POST["TransactionId"] ;
     
-    $request_data = array( "transaction_id" => $transation_id );
+    $request_data = array( "transaction_id" => $transaction_id );
     
     // encode Json data by calling a function from json.php
     $request_data = json_encode($request_data);
@@ -129,7 +129,7 @@ else
     // Do your code when Response is available based on the response_code. 
     // Please refer PayTrace-Error page for possible errors and Response Codes
     
-    // For transation successfully approved 
+    // For transaction successfully approved 
     if($json['success']== true && $json['response_code'] == 112){
 
         echo "<br><br>Capture a Transaction :  Success !";
