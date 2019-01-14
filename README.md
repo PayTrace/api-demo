@@ -1,8 +1,8 @@
 This repository contains instructions and information for using the Paytrace JSON API (code name: Hermes). A general directory structure follows:
 
-/dot_net -- code samples and documentation for using the JSON API with the C#.NET language
-/java -- code samples and documentation for using the JSON API with the Java language
-/php -- code samples and documentation for using the JSON API with the PHP language
+/dot_net -- code samples and documentation for using the JSON API with the C#.NET language<br>
+/java -- code samples and documentation for using the JSON API with the Java language<br>
+/php -- code samples and documentation for using the JSON API with the PHP language<br>
 
 
 Note:
